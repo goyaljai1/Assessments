@@ -1,0 +1,53 @@
+<main>
+  <div id="content" class="container-fluid">
+    <div class="container text-center" id="home_text">
+      <h2>Available Detailed Assessments</h2>
+    </div>
+    <div class="container text-center">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered" id="assessment-table">
+          <thead>
+            <tr>
+              <th scope="col">First</th>
+              <th scope="col">Second</th>
+              <th scope="col">Last</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let card of arrAssessmentCards">
+              <td *ngFor="let card of arrAssessmentCards">
+                <div class="card" style="width: 18rem">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ card.cardSTitle }}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">
+                      {{ card.cardTitle }}
+                    </h6>
+                    <p class="card-text">
+                      {{ card.cardDes }}
+                    </p>
+                    <div style="padding: 10px">
+                      <button
+                        class="btn btn-primary"
+                        (click)="
+                          displayDetails(card.cardTitle, card.cardSTitle)
+                        "
+                      >
+                        View Details
+                      </button>
+                    </div>
+                    <button
+                      class="btn btn-success"
+                      (click)="displayCartDetails(card.cardTitle)"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

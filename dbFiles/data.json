@@ -1,0 +1,102 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "fName": "John",
+      "lName": "Doe",
+      "email": "john.doe@example.com",
+      "mobile": 1234567890,
+      "dob": "1990-01-01",
+      "role": "Admin",
+      "password": "pass123",
+      "address": {
+        "street": "18th Cross",
+        "city": "Random",
+        "state": "Random State",
+        "zipCode": "12345",
+        "country": "India"
+      }
+    },
+    {
+      "id": "2",
+      "fName": "Jack",
+      "lName": "Doe",
+      "email": "john.doe@example.com",
+      "mobile": 1234567890,
+      "dob": "1990-01-01",
+      "role": "Admin",
+      "password": "pass123",
+      "address": {
+        "street": "18th Cross",
+        "city": "Random",
+        "state": "Random State",
+        "zipCode": "12345",
+        "country": "India"
+      }
+    },
+    {
+      "id": "3",
+      "fName": "Peter",
+      "lName": "Parker",
+      "email": "this@gmail",
+      "mobile": "123",
+      "dob": "2024-06-12",
+      "role": "user",
+      "password": "1234",
+      "address": {
+        "houseNo": "",
+        "street": "",
+        "area": "",
+        "state": "",
+        "country": "",
+        "pincode": ""
+      }
+    },
+    {
+      "id": "4",
+      "fName": "Jai",
+      "lName": "Goyal",
+      "email": "jai@",
+      "mobile": "10223",
+      "dob": "2024-06-13",
+      "role": "user",
+      "password": "",
+      "address": {
+        "houseNo": "",
+        "street": "",
+        "area": "",
+        "state": "",
+        "country": "",
+        "pincode": ""
+      }
+    },
+    {
+      "id": "5",
+      "fName": "Rick",
+      "lName": "Sanchez",
+      "email": "rick@123",
+      "mobile": "898912",
+      "dob": "",
+      "role": "faculty",
+      "password": "",
+      "address": {
+        "houseNo": "",
+        "street": "",
+        "area": "",
+        "state": "",
+        "country": "",
+        "pincode": ""
+      }
+    }
+  ],
+  "course-categories": [
+    {
+      "id": "1",
+      "category": "software"
+    },
+    {
+      "id": "2",
+      "category": "Economics"
+    }
+  ]
+}

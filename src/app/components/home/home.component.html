@@ -1,0 +1,35 @@
+<main>
+  <div class="container text-center" id="home_text">
+    <h2>Available Assessments</h2>
+  </div>
+
+  <div id="content_cards" class="row justify-content-around">
+    <div
+      class="col-12 col-md-4 home_card"
+      *ngFor="let assessment of arrAssesments"
+    >
+      <div class="card mb-3">
+        <img [src]="assessment.imgSrc" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ assessment.cardTitle }}</h5>
+          <p class="card-text">
+            {{ assessment.cardDes }}
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+          <button
+            class="btn btn-primary"
+            (click)="displayDetails(assessment.id)"
+          >
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
