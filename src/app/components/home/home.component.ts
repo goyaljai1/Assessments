@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Assessment } from '../../models/assessment';
 import { AssessmentService } from '../../services/assessment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,10 @@ import { AssessmentService } from '../../services/assessment.service';
 export class HomeComponent {
   arrAssesments: Assessment[] = [];
 
-  constructor(private assessmentservice: AssessmentService) {
+  constructor(
+    private assessmentservice: AssessmentService,
+    private router: Router
+  ) {
     this.arrAssesments = this.assessmentservice.getAssessments();
   }
   isActive(active: string) {
@@ -22,5 +26,6 @@ export class HomeComponent {
   }
   displayDetails(aid: number) {
     console.log(aid);
+    this.router.navigate(['view-assessment-details/' + aid]);
   }
 }

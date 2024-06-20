@@ -30,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { ViewUserComponent } from './components/user/view-user/view-user.component';
+import { ViewAssessmentDetailsComponent } from './components/view-assessment-details/view-assessment-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { ViewUserComponent } from './components/user/view-user/view-user.compone
     AddAssessmentComponent,
     UpdateUserComponent,
     ViewUserComponent,
+    ViewAssessmentDetailsComponent,
   ],
   imports: [
     BrowserModule,
