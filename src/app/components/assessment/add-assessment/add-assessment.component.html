@@ -1,0 +1,251 @@
+<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{ !isLinear ? "Enable linear mode" : "Disable linear mode" }}
+</button>
+<mat-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup" label="Basic Assessment Details">
+    <form
+      [formGroup]="firstFormGroup"
+      (ngSubmit)="saveFirstStepData(firstFormGroup)"
+    >
+      <!-- <ng-template matStepLabel>Fill out your name</ng-template> -->
+      <mat-toolbar color="primary"> Add Assessment details </mat-toolbar>
+      <mat-form-field appearance="fill" style="padding-right: 20px">
+        <mat-label>Assessment Name</mat-label>
+        <input
+          matInput
+          placeholder="Assessment Name"
+          formControlName="aNameCtrl"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="padding-right: 20px">
+        <mat-label>Total Marks</mat-label>
+        <input
+          matInput
+          placeholder="Total Marks"
+          formControlName="marksCtrl"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="padding-right: 20px">
+        <mat-label>Total Time</mat-label>
+        <input
+          matInput
+          placeholder="Total Time"
+          formControlName="timeCtrl"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="padding-right: 20px">
+        <mat-label>Course Id</mat-label>
+        <input
+          matInput
+          placeholder="Course Id"
+          formControlName="cIdCtrl"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext type="submit">Save</button>
+      </div>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup" label="Fill Out Question Details">
+    <form
+      class="basic-container"
+      [formGroup]="itineryForm"
+      (ngSubmit)="saveSecondStepData(itineryForm.value)"
+    >
+      <mat-toolbar color="primary">
+        Add or Remove Multiple Questions
+      </mat-toolbar>
+      <div formArrayName="itineries">
+        <div
+          class="row"
+          *ngFor="let question of itineriesArr().controls; let i = index"
+          [formGroupName]="i"
+        >
+          <div>
+            <label>Select Question Category: </label>
+            <mat-radio-group formControlName="category">
+              <mat-radio-button value="mcq">MCQ</mat-radio-button>
+              <mat-radio-button value="truefalse">True/False</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div [ngSwitch]="question.get('category')?.value">
+            <div *ngSwitchCase="'mcq'">
+              <!-- MCQ question input fields -->
+              <mat-form-field class="col">
+                <mat-label>Question</mat-label>
+                <textarea
+                  matInput
+                  formControlName="question"
+                  placeholder="Question"
+                ></textarea>
+              </mat-form-field>
+              <div class="container-fluid">
+                <div class="row">
+                  <mat-form-field class="col-6">
+                    <input
+                      matInput
+                      formControlName="optionA"
+                      placeholder="Option A"
+                    />
+                  </mat-form-field>
+                  <mat-form-field class="col-6">
+                    <input
+                      matInput
+                      formControlName="optionB"
+                      placeholder="Option B"
+                    />
+                  </mat-form-field>
+                </div>
+                <div class="row">
+                  <mat-form-field class="col-6">
+                    <input
+                      matInput
+                      formControlName="optionC"
+                      placeholder="Option C"
+                    />
+                  </mat-form-field>
+                  <mat-form-field class="col-6">
+                    <input
+                      matInput
+                      formControlName="optionD"
+                      placeholder="Option D"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="container-fluid">
+                <div class="row">
+                  <mat-form-field class="col-6">
+                    <input
+                      matInput
+                      placeholder="Correct Answer"
+                      style="background-color: aquamarine"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div *ngSwitchCase="'truefalse'">
+              <!-- True/False question input fields -->
+              <mat-form-field class="col">
+                <mat-label>Question</mat-label>
+                <textarea
+                  matInput
+                  formControlName="question"
+                  placeholder="Question"
+                ></textarea>
+              </mat-form-field>
+              <div class="container-fluid">
+                <div class="row">
+                  <mat-form-field class="col-6">
+                    <input
+                      matInput
+                      placeholder="Correct Answer"
+                      style="background-color: aquamarine"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-3">
+            <button
+              class="float-left"
+              mat-icon-button
+              color="primary"
+              aria-label="Remove/clear"
+              (click)="removeOrClearItinery(i)"
+              matTooltip="Remove"
+            >
+              <mat-icon>highlight_off</mat-icon>
+            </button>
+            <button
+              class="float-left"
+              mat-icon-button
+              color="primary"
+              aria-label="Add"
+              (click)="addItineryFormGroup()"
+              matTooltip="Add"
+            >
+              <mat-icon>add_circle_outline</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperNext type="submit">Save</button>
+      </div>
+    </form>
+
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>
+
+<hr />
+<div *ngFor="let prod of arrProducts">
+  <!--Not required for single product-->
+  <mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title> </mat-panel-title>
+        <mat-panel-description>
+          <div style="font-size: larger; font-weight: bolder">
+            Questions for: {{ prod.course_id }} {{ prod.aName }}
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>Details:</p>
+      <br />
+      <p>Total Marks: {{ prod.marks }} Total Time: {{ prod.time }}</p>
+    </mat-expansion-panel>
+    <mat-expansion-panel
+      *ngFor="let itinIndividual of prod.itinery; let i = index"
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Question: {{ itinIndividual.question }}
+        </mat-panel-title>
+
+        <mat-panel-description>
+          <div *ngIf="itinIndividual.category === 'mcq'">
+            <div>
+              Options A: {{ itinIndividual.options.optionA }} B:
+              {{ itinIndividual.options.optionB }}
+            </div>
+            <div>
+              Options C: {{ itinIndividual.options.optionC }} D:
+              {{ itinIndividual.options.optionD }}
+            </div>
+          </div>
+          <div *ngIf="itinIndividual.category === 'truefalse'">
+            <div>Option True: {{ itinIndividual.options.optionTrue }}</div>
+            <div>Option False: {{ itinIndividual.options.optionFalse }}</div>
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
