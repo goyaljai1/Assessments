@@ -2,6 +2,10 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+<<<<<<< HEAD
+    
+=======
+>>>>>>> 1d5db161c2b943821481ee236353a2d4e8fbd0e3
     {
       "name": "ng serve",
       "type": "chrome",
