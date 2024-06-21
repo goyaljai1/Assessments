@@ -1,0 +1,9 @@
+<p>cart works!</p>
+
+
+<div class="container-fluid" *ngIf="!checkLogin">
+    <p>Login First</p>
+</div>
+<div  *ngIf="checkLogin">
+    Empty Cart
+</div>
