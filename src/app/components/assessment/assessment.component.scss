@@ -1,6 +1,16 @@
 main {
   background-color: #cadcfc;
 }
+.card {
+  width: 18rem;
+  margin: 10px auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 #banner {
   background-color: #00246b;

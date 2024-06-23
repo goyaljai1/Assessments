@@ -45,6 +45,44 @@
           required
         />
       </mat-form-field>
+      <mat-form-field appearance="fill" style="padding-right: 20px">
+        <mat-label>Assessment Price</mat-label>
+        <input
+          matInput
+          placeholder="Assessment Price"
+          formControlName="priceCtrl"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="padding-right: 20px">
+        <mat-label>Assessment Description</mat-label>
+        <input
+          matInput
+          placeholder="Assessment Description"
+          formControlName="aDesCtrl"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="padding-right: 20px">
+        <mat-label>Image Source</mat-label>
+        <input
+          matInput
+          placeholder="Image Source"
+          formControlName="imgSrcCtrl"
+          required
+        />
+      </mat-form-field>
+
+      <!-- <mat-form-field appearance="fill" style="padding-right: 20px">
+        <mat-label>Assessment Price</mat-label>
+        <input
+          matInput
+          placeholder="Assessment Price"
+          formControlName="priceCtrl"
+          required
+        />
+      </mat-form-field> -->
+
       <div>
         <button mat-button matStepperNext type="submit">Save</button>
       </div>
@@ -126,6 +164,7 @@
                   <mat-form-field class="col-6">
                     <input
                       matInput
+                      formControlName="correctAns"
                       placeholder="Correct Answer"
                       style="background-color: aquamarine"
                     />

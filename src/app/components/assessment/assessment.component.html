@@ -4,49 +4,26 @@
       <h2>Available Detailed Assessments</h2>
     </div>
     <div class="container text-center">
-      <div class="table-responsive">
-        <table class="table table-striped table-bordered" id="assessment-table">
-          <thead>
-            <tr>
-              <th scope="col">First</th>
-              <th scope="col">Second</th>
-              <th scope="col">Last</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let card of arrAssessmentCards">
-              <td *ngFor="let card of arrAssessmentCards">
-                <div class="card" style="width: 18rem">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ card.cardSTitle }}</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">
-                      {{ card.cardTitle }}
-                    </h6>
-                    <p class="card-text">
-                      {{ card.cardDes }}
-                    </p>
-                    <div style="padding: 10px">
-                      <button
-                        class="btn btn-primary"
-                        (click)="
-                          displayDetails(card.cardTitle, card.cardSTitle)
-                        "
-                      >
-                        View Details
-                      </button>
-                    </div>
-                    <button
-                      class="btn btn-success"
-                      (click)="displayCartDetails(card.cardTitle)"
-                    >
-                      Add to Cart
-                    </button>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="row">
+        <!-- Outer loop to create rows -->
+        <div class="col-md-4" *ngFor="let product of arrProducts; let i = index">
+          <div class="card" style="width: 18rem; margin-bottom: 20px;">
+            <img [src]="product.aImgSrc" class="card-img-top" alt="{{ product.aName }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.aName }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{ product.aDes }}</h6>
+              <p class="card-text">{{ product.aPrice | currency }}</p>
+              <div style="padding: 10px">
+                <button class="btn btn-primary">
+                  View Details
+                </button>
+              </div>
+              <button class="btn btn-success">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

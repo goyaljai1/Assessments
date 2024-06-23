@@ -1,34 +1,20 @@
-import { Component } from '@angular/core';
-import { Assessment_cards } from '../../models/assessments';
+import { Component, OnInit } from '@angular/core';
+import { Product } from '../../models/add-assessment';
+import { ProductService } from '../../services/add-assessment.service';
 @Component({
   selector: 'app-assessment',
   templateUrl: './assessment.component.html',
   styleUrl: './assessment.component.scss',
 })
-export class AssessmentComponent {
-  arrAssessmentCards = [
-    new Assessment_cards(
-      'Card title',
-      'Card Sub-title',
-      'Some quick example text to build on the card title and make up the bulk of the cards content.'
-    ),
-    new Assessment_cards(
-      'Card title',
-      'Card Sub-title',
-      'Some quick example text to build on the card title and make up the bulk of the cards content.'
-    ),
-    new Assessment_cards(
-      'Card title',
-      'Card Sub-title',
-      'Some quick example text to build on the card title and make up the bulk of the cards content.'
-    ),
-  ];
+export class AssessmentComponent implements OnInit {
+  arrProducts: Product[] = [];
 
-  displayDetails(cardTitle: string, cardSTitle: string) {
-    alert(`Card Title: ${cardTitle}. Card Sub-Title: ${cardSTitle}`);
-  }
+  constructor(private productService: ProductService) {}
 
-  displayCartDetails(cardTitle: string) {
-    alert(`Assessment ${cardTitle} added to cart successfully!`);
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe((data: Product[]) => {
+      this.arrProducts = data;
+      console.log(this.arrProducts);
+    });
   }
 }

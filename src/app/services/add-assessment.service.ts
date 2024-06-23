@@ -1,47 +1,70 @@
 import { Injectable } from '@angular/core';
-import { Activity, Itinery, Product } from '../models/add-assessment';
+import { Itinery, Product } from '../models/add-assessment';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
   arrProducts: Product[] = [];
-
-  constructor() {
-    this.arrProducts = [
-      new Product(0, 'Maths', 20, '60 mins', 101, [
-        new Itinery(1, 'mcq', 'What is 2+2?', {
-          optionA: '1',
-          optionB: '2',
-          optionC: '3',
-          optionD: '4',
-        }),
-        new Itinery(2, 'truefalse', '2+2 = 3?', {
-          optionTrue: 'True',
-          optionFalse: 'False',
-        }),
-      ]),
-      new Product(1, 'Social Science', 30, '40 mins', 102, [
-        new Itinery(1, 'mcq', 'What is the capital of England?', {
-          optionA: 'London',
-          optionB: 'Bristol',
-          optionC: 'Manchester',
-          optionD: 'Liverpool',
-        }),
-        new Itinery(2, 'truefalse', 'Manchester is the capital of England.', {
-          optionTrue: 'True',
-          optionFalse: 'False',
-        }),
-      ]),
-    ];
+  baseUrl: string = 'http://localhost:3000';
+  httpHeader = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+  constructor(private httpClient: HttpClient) {
+    this, (this.arrProducts = []);
   }
 
-  getProducts() {
-    return this.arrProducts;
+  getProducts(): Observable<Product[]> {
+    return this.httpClient
+      .get<Product[]>(`${this.baseUrl}/assessment`)
+      .pipe(catchError(this.httpError));
+  }
+  addProduct(p: Product): Observable<Product> {
+    return this.httpClient
+      .post<Product>(
+        this.baseUrl + '/assessment',
+        JSON.stringify(p),
+        this.httpHeader
+      )
+      .pipe(catchError(this.httpError));
+  }
+  getProductById(id: string): Product {
+    for (let i = 0; i < this.arrProducts.length; i++) {
+      if (id == this.arrProducts[i].id) {
+        return this.arrProducts[i];
+      }
+    }
+
+    return new Product('', '', '', '', 0, 0, '', '', []);
   }
 
-  addProduct(p: Product) {
-    this.arrProducts.push(p);
-    console.log(this.arrProducts);
+  updateProduct(p: Product): Observable<Product[]> {
+    return this.httpClient
+      .put<Product[]>(
+        this.baseUrl + '/users/' + p.id,
+        JSON.stringify(p),
+        this.httpHeader
+      )
+      .pipe(catchError(this.httpError));
+  }
+  private httpError(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred.
+      errorMessage = `An error occurred: ${error.error.message}`;
+    } else {
+      // The backend returned an unsuccessful response code.
+      errorMessage = `Server returned code: ${error.status}, error message is: ${error.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
   }
 }

@@ -20,31 +20,7 @@ export class UserService {
     }),
   };
   constructor(private httpClient: HttpClient) {
-    this,
-      (this.arrUser = [
-        // new User(
-        //   0,
-        //   'John',
-        //   'Hugh',
-        //   'john@example.com',
-        //   1234567890,
-        //   '1990-01-01',
-        //   'admin',
-        //   'password123',
-        //   new Address('123', 'Main Street', 'Downtown', 'CA', 'USA', '9001')
-        // ),
-        // new User(
-        //   1,
-        //   'Jack',
-        //   'Hugh',
-        //   'jack@example.com',
-        //   1234567890,
-        //   '1990-01-01',
-        //   'user',
-        //   'password1234',
-        //   new Address('123', 'Main Street', 'Downtown', 'CA', 'USA', '9001')
-        // ),
-      ]);
+    this, (this.arrUser = []);
   }
 
   getUsers(): Observable<User[]> {
@@ -94,14 +70,16 @@ export class UserService {
       .pipe(catchError(this.httpError));
   }
 
-  httpError(error: HttpErrorResponse) {
-    let msg = '';
+  private httpError(error: HttpErrorResponse) {
+    let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
-      msg = error.error.message;
+      // A client-side or network error occurred.
+      errorMessage = `An error occurred: ${error.error.message}`;
     } else {
-      msg = `Error Code:${error.status}\nMessafe:${error.message}`;
+      // The backend returned an unsuccessful response code.
+      errorMessage = `Server returned code: ${error.status}, error message is: ${error.message}`;
     }
-    console.log(msg);
-    return throwError(msg);
+    console.error(errorMessage);
+    return throwError(errorMessage);
   }
 }

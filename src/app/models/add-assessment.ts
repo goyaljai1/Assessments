@@ -1,21 +1,30 @@
 export class Product {
-  id: number;
+  id: string;
   aName: string;
+  aDes: string;
+  aImgSrc: string;
+  aPrice: number;
   marks: number;
   time: string;
-  course_id: number;
+  course_id: string;
   itinery: Itinery[] = [];
 
   constructor(
-    id: number,
+    id: string,
     aName: string,
+    aDes: string,
+    aImgSrc: string,
+    aPrice: number,
     marks: number,
     time: string,
-    course_id: number,
+    course_id: string,
     itin: Itinery[]
   ) {
     this.id = id;
     this.aName = aName;
+    this.aDes = aDes;
+    this.aImgSrc = aImgSrc;
+    this.aPrice = aPrice;
     this.marks = marks;
     this.time = time;
     this.course_id = course_id;
@@ -24,25 +33,33 @@ export class Product {
 }
 
 export class Itinery {
-  id: number;
+  id: string;
   category: string;
   question: string;
   options: any;
+  correctAns: string;
 
-  constructor(id: number, category: string, question: string, options: any) {
+  constructor(
+    id: string,
+    category: string,
+    question: string,
+    options: any,
+    correctAns: string
+  ) {
     this.id = id;
     this.category = category;
     this.question = question;
     this.options = options;
+    this.correctAns = correctAns;
   }
 }
 
-export class Activity {
-  id: number;
-  actName: string;
+// export class Activity {
+//   id: number;
+//   actName: string;
 
-  constructor(id: number, actNm: string) {
-    this.id = id;
-    this.actName = actNm;
-  }
-}
+//   constructor(id: number, actNm: string) {
+//     this.id = id;
+//     this.actName = actNm;
+//   }
+// }
