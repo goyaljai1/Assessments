@@ -8,6 +8,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminGaurd } from './guard/admingaurd';
 import { ViewAssessmentDetailsComponent } from './components/view-assessment-details/view-assessment-details.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'assessment', component: AssessmentComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AdminGaurd] },
   { path: 'navbar', component: NavbarComponent },
+  { path: 'cart', component: CartComponent},
   {
     path: 'view-assessment-details/:id',
     component: ViewAssessmentDetailsComponent,

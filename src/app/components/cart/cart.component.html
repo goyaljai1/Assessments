@@ -1,9 +1,20 @@
-<p>cart works!</p>
-
-
-<div class="container-fluid" *ngIf="!checkLogin">
+<div *ngIf="!isLoggIn" class="container-fluid">
     <p>Login First</p>
-</div>
-<div  *ngIf="checkLogin">
-    Empty Cart
-</div>
+  </div>
+  <div *ngIf="isLoggIn" class="container-fluid">
+    <p *ngIf="cartItems.length === 0">Empty Cart</p>
+    <div *ngIf="cartItems.length > 0">
+      <div *ngFor="let cartItem of cartItems" class="card cart-item-card">
+        <div class="card-body">
+          <h5 class="card-title">{{ cartItem.item.cardSTitle }}</h5>
+          <div class="quantity-controls">
+            <button class="btn btn-secondary" (click)="decreaseQuantity(cartItem.item)">-</button>
+            <span>{{ cartItem.quantity }}</span>
+            <button class="btn btn-secondary" (click)="increaseQuantity(cartItem.item)">+</button>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" (click)="checkout()">Checkout</button>
+    </div>
+  </div>
+  

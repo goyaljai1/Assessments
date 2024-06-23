@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { LocalStorageService } from '../../services/local-storage-service.service';
-
+import {CartComponent} from '../cart/cart.component';
+import { checkLogin } from '../../helper/helper';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,6 +13,7 @@ import { LocalStorageService } from '../../services/local-storage-service.servic
 export class NavbarComponent implements OnInit {
   myForm: FormGroup;
   userArr: User[] = [];
+  isLoggedIn: boolean = false;
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -33,7 +35,9 @@ export class NavbarComponent implements OnInit {
         console.error('Error fetching users:', error);
       }
     );
+
   }
+
 
   onSubmit(): void {
     const email = this.myForm.value.email;
@@ -45,12 +49,27 @@ export class NavbarComponent implements OnInit {
     );
 
     if (loggedInUser) {
-      console.log('Login successful!');
+      this.isLoggedIn = true;
+    
       this.localStorageService.setItem('role', loggedInUser.role);
       let role = this.localStorageService.getItem('role');
       console.log(role);
+      if (role === 'Admin') {
+        console.log('Admin login successful!');
+      } else {
+        console.log('User login successful!');
+      }  
+    //   if (this.isLoggedIn) {
+    //     location.reload();
+    // }
     } else {
       console.log('Login failed. Incorrect email or password.');
+
     }
+  }
+  onLogout(): void {
+    this.localStorageService.removeItem('role');
+    this.isLoggedIn = false;
+    console.log('Logout successful!');
   }
 }

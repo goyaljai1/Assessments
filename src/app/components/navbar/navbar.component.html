@@ -35,16 +35,19 @@
             </li>
             
             <li class="nav-item">
-              <!-- Button trigger modal -->
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#loginModal"
-              >
+              <a class="nav-link" [routerLink]="['/cart']">Cart</a>
+            </li>
+            <li class="nav-item" *ngIf="!isLoggedIn">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal" >
                 Login
               </button>
             </li>
+            <li class="nav-item" *ngIf="isLoggedIn">
+              <button type="button" class="btn btn-primary" (click)="onLogout()">
+                Logout
+              </button>
+            </li>
+            
           </ul>
           <!-- Modal -->
 
@@ -113,7 +116,7 @@
                         >Check me out</label
                       >
                     </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Login</button>
                   </form>
                 </div>
                 <div class="modal-footer">
