@@ -31,6 +31,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { ViewUserComponent } from './components/user/view-user/view-user.component';
 import { ViewAssessmentDetailsComponent } from './components/view-assessment-details/view-assessment-details.component';
+import { CartComponent } from './components/cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { ViewAssessmentDetailsComponent } from './components/view-assessment-det
     UpdateUserComponent,
     ViewUserComponent,
     ViewAssessmentDetailsComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
