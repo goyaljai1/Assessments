@@ -3,11 +3,6 @@ import { Assessment_cards } from '../models/assessments';
 // import { CartItem } from '../models/cart';
 import { LocalStorageService } from '../services/local-storage-service.service';
 
-interface CartItem {
-  item: Assessment_cards;
-  quantity: number;
-}
-
 @Injectable({
   providedIn: 'root',
 })
