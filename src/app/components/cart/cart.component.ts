@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { LocalStorageService } from '../../services/local-storage-service.service';
 import { Product } from '../../models/add-assessment';
-
+import { CheckoutServiceService } from '../../services/checkout-service.service';
 interface CartItem {
   item: Product;
   quantity: number;
@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
   totalAmount: number = 0;
   totalQuantity: number = 0;
 
-  constructor(private localStorageService: LocalStorageService, private cartService: CartService) {}
+  constructor(private localStorageService: LocalStorageService, private cartService: CartService,private checkoutService: CheckoutServiceService) {}
 
   ngOnInit() {
     this.checkLogin();
@@ -63,6 +63,7 @@ export class CartComponent implements OnInit {
 
   checkout() {
     alert('Checkout functionality to be implemented.');
+    this.checkoutService.emitCheckoutEvent(this.cartItems); 
     this.cartService.clearCart();
     this.cartItems = this.cartService.getCartItems();
     this.calculateTotals();

@@ -34,8 +34,8 @@
               <a class="nav-link" [routerLink]="['/contact-us']">Contact Us</a>
             </li>
             <li class="nav-item">
-              <div matBadge="4" matBadgeOverlap="true" class="demo-section">
-                <a class="nav-link">Dashboard</a>
+              <div matBadge="{{ totalItems }}" matBadgeOverlap="true" class="demo-section" >
+                <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
               </div>
             </li>
 
@@ -206,159 +206,67 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="mb-3">
-                          <label for="dob" class="form-label"
-                            >Date of Birth</label
-                          >
-                          <input
-                            required
-                            type="date"
-                            class="form-control"
-                            id="dob"
-                            onfocus="this.max = new Date().toISOString().split('T')[0]"
-                          />
-                          <div class="invalid-feedback">
-                            Enter a valid date!
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="mb-3">
-                          <label for="email" class="form-label"
-                            >Email Contact</label
-                          >
-                          <input
-                            required
-                            type="email"
-                            class="form-control"
-                            id="email"
-                          />
-                        </div>
-                      </div>
+
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email</label>
+                      <input
+                        required
+                        type="email"
+                        class="form-control"
+                        id="email"
+                      />
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="mb-3">
-                          <label for="password" class="form-label"
-                            >Password</label
-                          >
-                          <input
-                            required
-                            type="password"
-                            class="form-control"
-                            id="password"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="mb-3">
-                          <label for="confirmPassword" class="form-label"
-                            >Confirm Password</label
-                          >
-                          <input
-                            required
-                            type="password"
-                            class="form-control"
-                            id="confirmPassword"
-                          />
-                        </div>
-                      </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input
+                        required
+                        type="password"
+                        class="form-control"
+                        id="password"
+                      />
                     </div>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="mb-3">
-                          <label for="houseNumber" class="form-label"
-                            >House Number</label
-                          >
-                          <input
-                            required
-                            type="text"
-                            class="form-control"
-                            id="houseNumber"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-md-8">
-                        <div class="mb-3">
-                          <label for="streetName" class="form-label"
-                            >Street Name</label
-                          >
-                          <input
-                            required
-                            type="text"
-                            class="form-control"
-                            id="streetName"
-                          />
-                        </div>
-                      </div>
+
+                    <div class="mb-3">
+                      <label for="confirmPassword" class="form-label"
+                        >Confirm Password</label
+                      >
+                      <input
+                        required
+                        type="password"
+                        class="form-control"
+                        id="confirmPassword"
+                      />
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="mb-3">
-                          <label for="area" class="form-label">Area</label>
-                          <input
-                            required
-                            type="text"
-                            class="form-control"
-                            id="area"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="mb-3">
-                          <label for="city" class="form-label">City</label>
-                          <input
-                            required
-                            type="text"
-                            class="form-control"
-                            id="city"
-                          />
-                        </div>
-                      </div>
+                    <div class="mb-3">
+                      <label for="phoneNumber" class="form-label"
+                        >Phone Number</label
+                      >
+                      <input
+                        required
+                        type="tel"
+                        class="form-control"
+                        id="phoneNumber"
+                      />
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="mb-3">
-                          <label for="state" class="form-label">State</label>
-                          <input
-                            required
-                            type="text"
-                            class="form-control"
-                            id="state"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="mb-3">
-                          <label for="country" class="form-label"
-                            >Country</label
-                          >
-                          <input
-                            required
-                            type="text"
-                            class="form-control"
-                            id="country"
-                          />
-                        </div>
-                      </div>
+                    <div class="mb-3">
+                      <label for="dateOfBirth" class="form-label"
+                        >Date of Birth</label
+                      >
+                      <input
+                        required
+                        type="date"
+                        class="form-control"
+                        id="dateOfBirth"
+                      />
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="mb-3">
-                          <label for="pincode" class="form-label"
-                            >Pincode</label
-                          >
-                          <input
-                            required
-                            type="text"
-                            class="form-control"
-                            id="pincode"
-                          />
-                        </div>
-                      </div>
+                    <div class="mb-3">
+                      <label for="role" class="form-label">Role</label>
+                      <select required class="form-control" id="role">
+                        <option value="Admin">Admin</option>
+                        <option value="User">User</option>
+                      </select>
                     </div>
+
                     <button type="submit" class="btn btn-primary">
                       Register
                     </button>
@@ -369,15 +277,14 @@
                     type="button"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal"
-                    data-bs-toggle="modal"
-                    data-bs-target="#loginModal"
                   >
-                    Back to Login
+                    Close
                   </button>
                 </div>
               </div>
             </div>
           </div>
+          <!-- End of Register Modal -->
         </div>
       </div>
     </div>

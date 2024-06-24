@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { LocalStorageService } from '../../services/local-storage-service.service';
-import { CartComponent } from '../cart/cart.component';
-import { checkLogin } from '../../helper/helper';
+import { CheckoutServiceService } from '../../services/checkout-service.service';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,17 +12,16 @@ import { checkLogin } from '../../helper/helper';
 })
 export class NavbarComponent implements OnInit {
   hidden = false;
-
-  toggleBadgeVisibility() {
-    this.hidden = !this.hidden;
-  }
   myForm: FormGroup;
   userArr: User[] = [];
   isLoggedIn: boolean = false;
+  totalItems: number = 0;
+
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private checkoutService: CheckoutServiceService // Inject CheckoutService
   ) {
     this.myForm = this.fb.group({
       email: ['', Validators.required],
@@ -40,6 +39,17 @@ export class NavbarComponent implements OnInit {
         console.error('Error fetching users:', error);
       }
     );
+
+    this.checkoutService.checkoutEvent.subscribe((cartItems) => {
+      this.totalItems = cartItems.length;
+    });
+
+    this.checkLogin();
+  }
+
+  checkLogin() {
+    const role = this.localStorageService.getItem('role');
+    this.isLoggedIn = role !== null;
   }
 
   onSubmit(): void {
@@ -62,16 +72,18 @@ export class NavbarComponent implements OnInit {
       } else {
         console.log('User login successful!');
       }
-      //   if (this.isLoggedIn) {
-      //     location.reload();
-      // }
     } else {
       console.log('Login failed. Incorrect email or password.');
     }
   }
+
   onLogout(): void {
     this.localStorageService.removeItem('role');
     this.isLoggedIn = false;
     console.log('Logout successful!');
+  }
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
   }
 }
