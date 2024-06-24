@@ -54,6 +54,10 @@ export class Itinery {
   }
 }
 
+export interface CartItem {
+  item: Product;
+  quantity: number;
+}
 // export class Activity {
 //   id: number;
 //   actName: string;

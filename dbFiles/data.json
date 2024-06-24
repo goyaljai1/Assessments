@@ -410,15 +410,9 @@
     },
     {
       "id": "9",
-      "aName": "Product Nine",
-      "aDes": "Description for product nine.",
-      "aImgSrc": "https://example.com/img9.jpg",
-      "aPrice": 99.99,
-      "marks": 98,
-      "time": "2024-07-01T10:00:00Z",
-      "course_id": "course9",
       "itinery": [
         {
+<<<<<<< HEAD
           "id": "17",
           "category": "Math",
           "question": "What is the value of pi?",
@@ -441,8 +435,27 @@
             "Glenn"
           ],
           "correctAns": "Armstrong"
+=======
+          "id": "1",
+          "category": "mcq",
+          "question": "2*3",
+          "options": {
+            "optionA": "1",
+            "optionB": "2",
+            "optionC": "3",
+            "optionD": "6"
+          },
+          "correctAns": "6"
+>>>>>>> c9cb51964d067ee11786288f0d548dd76890717e
         }
-      ]
+      ],
+      "aName": "Maths ",
+      "aDes": "Maths Test for algebra",
+      "aImgSrc": "abc.png",
+      "aPrice": "50",
+      "marks": "100",
+      "time": "60 min",
+      "course_id": "12345"
     }
   ]
 }

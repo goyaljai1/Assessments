@@ -14,11 +14,11 @@
               <h6 class="card-subtitle mb-2 text-muted">{{ product.aDes }}</h6>
               <p class="card-text">{{ product.aPrice | currency }}</p>
               <div style="padding: 10px">
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" (click)="displayDetails(product.aName, product.aDes)">
                   View Details
                 </button>
               </div>
-              <button class="btn btn-success">
+              <button class="btn btn-success" (click)="displayCartDetails(product)">
                 Add to Cart
               </button>
             </div>
