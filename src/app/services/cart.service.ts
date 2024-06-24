@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Assessment_cards } from '../models/assessments';
-// import { CartItem } from '../models/cart';
-import { LocalStorageService } from '../services/local-storage-service.service';
+import { Product, CartItem } from '../models/add-assessment';
+import { LocalStorageService } from './local-storage-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -25,8 +24,8 @@ export class CartService {
     this.localStorageService.setItem(this.storageKey, JSON.stringify(this.cartItems));
   }
 
-  addToCart(item: Assessment_cards) {
-    const existingItem = this.cartItems.find(cartItem => cartItem.item.cardTitle === item.cardTitle);
+  addToCart(item: Product) {
+    const existingItem = this.cartItems.find(cartItem => cartItem.item.aName === item.aName);
     if (existingItem) {
       existingItem.quantity++;
     } else {
@@ -39,20 +38,20 @@ export class CartService {
     return this.cartItems;
   }
 
-  increaseQuantity(item: Assessment_cards) {
-    const cartItem = this.cartItems.find(cartItem => cartItem.item.cardTitle === item.cardTitle);
+  increaseQuantity(item: Product) {
+    const cartItem = this.cartItems.find(cartItem => cartItem.item.aName === item.aName);
     if (cartItem) {
       cartItem.quantity++;
     }
     this.saveCart();
   }
 
-  decreaseQuantity(item: Assessment_cards) {
-    const cartItem = this.cartItems.find(cartItem => cartItem.item.cardTitle === item.cardTitle);
+  decreaseQuantity(item: Product) {
+    const cartItem = this.cartItems.find(cartItem => cartItem.item.aName === item.aName);
     if (cartItem) {
       cartItem.quantity--;
       if (cartItem.quantity === 0) {
-        this.cartItems = this.cartItems.filter(cartItem => cartItem.item.cardTitle !== item.cardTitle);
+        this.cartItems = this.cartItems.filter(cartItem => cartItem.item.aName !== item.aName);
       }
     }
     this.saveCart();
