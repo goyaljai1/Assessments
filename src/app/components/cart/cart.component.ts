@@ -41,6 +41,5 @@ export class CartComponent implements OnInit {
 
   checkout() {
     alert('Checkout functionality to be implemented.');
-    // Implement checkout logic here
   }
 }
