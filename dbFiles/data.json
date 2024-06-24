@@ -412,30 +412,6 @@
       "id": "9",
       "itinery": [
         {
-<<<<<<< HEAD
-          "id": "17",
-          "category": "Math",
-          "question": "What is the value of pi?",
-          "options": [
-            "3.14",
-            "3.15",
-            "3.16",
-            "3.17"
-          ],
-          "correctAns": "3.14"
-        },
-        {
-          "id": "18",
-          "category": "History",
-          "question": "Who was the first man to walk on the moon?",
-          "options": [
-            "Armstrong",
-            "Aldrin",
-            "Collins",
-            "Glenn"
-          ],
-          "correctAns": "Armstrong"
-=======
           "id": "1",
           "category": "mcq",
           "question": "2*3",
@@ -446,7 +422,6 @@
             "optionD": "6"
           },
           "correctAns": "6"
->>>>>>> c9cb51964d067ee11786288f0d548dd76890717e
         }
       ],
       "aName": "Maths ",

@@ -17,12 +17,14 @@ export class CartComponent implements OnInit {
   isLoggIn: boolean = false;
   cartItems: CartItem[] = [];
   totalAmount: number = 0;
+  totalQuantity: number = 0;
+
   constructor(private localStorageService: LocalStorageService, private cartService: CartService) {}
 
   ngOnInit() {
     this.checkLogin();
     this.cartItems = this.cartService.getCartItems();
-    this.calculateTotalAmount();
+    this.calculateTotals();
   }
 
   checkLogin() {
@@ -33,21 +35,36 @@ export class CartComponent implements OnInit {
   increaseQuantity(item: Product) {
     this.cartService.increaseQuantity(item);
     this.cartItems = this.cartService.getCartItems();
+    this.calculateTotals();
   }
 
   decreaseQuantity(item: Product) {
     this.cartService.decreaseQuantity(item);
     this.cartItems = this.cartService.getCartItems();
+    this.calculateTotals();
   }
+
+  calculateTotals() {
+    this.calculateTotalAmount();
+    this.calculateTotalQuantity();
+  }
+
   calculateTotalAmount() {
     this.totalAmount = this.cartItems.reduce((total, cartItem) => {
       return total + (cartItem.item.aPrice * cartItem.quantity);
     }, 0);
   }
+
+  calculateTotalQuantity() {
+    this.totalQuantity = this.cartItems.reduce((total, cartItem) => {
+      return total + cartItem.quantity;
+    }, 0);
+  }
+
   checkout() {
     alert('Checkout functionality to be implemented.');
     this.cartService.clearCart();
     this.cartItems = this.cartService.getCartItems();
-    this.totalAmount = 0;
+    this.calculateTotals();
   }
 }
