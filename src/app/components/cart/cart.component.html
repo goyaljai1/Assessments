@@ -1,29 +1,39 @@
 <main>
-<div *ngIf="!isLoggIn" class="container-fluid">
-  <p>Login First</p>
-</div>
-<div *ngIf="isLoggIn" class="container-fluid">
-  <p *ngIf="cartItems.length === 0">Empty Cart</p>
-  <div *ngIf="cartItems.length > 0">
+  <div *ngIf="!isLoggIn" class="container-fluid">
+    <p>Login First</p>
+  </div>
+  <div *ngIf="isLoggIn" class="container-fluid">
+    <p *ngIf="cartItems.length === 0">Empty-Cart</p>
+    <div *ngIf="cartItems.length > 0">
       <div *ngFor="let cartItem of cartItems" class="card cart-item-card">
-          <div class="card-body">
-              <h5 class="card-title">{{ cartItem.item.aName }}</h5>
-              <br>
-              <h6 class="card-price">Price is: {{cartItem.item.aPrice}}</h6>
-              <div class="quantity-controls">
-                  <button class="btn btn-secondary" (click)="decreaseQuantity(cartItem.item)">-</button>
-                  <span>{{ cartItem.quantity }}</span>
-                  <button class="btn btn-secondary" (click)="increaseQuantity(cartItem.item)">+</button>
-              </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ cartItem.item.aName }}</h5>
+          <br />
+          <h6 class="card-price">Price is: {{ cartItem.item.aPrice }}</h6>
+          <div class="quantity-controls">
+            <button
+              class="btn btn-secondary"
+              (click)="decreaseQuantity(cartItem.item)"
+            >
+              -
+            </button>
+            <span>{{ cartItem.quantity }}</span>
+            <button
+              class="btn btn-secondary"
+              (click)="increaseQuantity(cartItem.item)"
+            >
+              +
+            </button>
           </div>
+        </div>
       </div>
       <div class="total-amount">
         <h5>Total Amount: {{ totalAmount | currency }}</h5>
-    </div>
-    <div class="total-quantity">
-      <h5>Total Quantity: {{totalQuantity}}</h5>
-    </div>
+      </div>
+      <div class="total-quantity">
+        <h5>Total Quantity: {{ totalQuantity }}</h5>
+      </div>
       <button class="btn btn-primary" (click)="checkout()">Checkout</button>
+    </div>
   </div>
-</div>
 </main>
