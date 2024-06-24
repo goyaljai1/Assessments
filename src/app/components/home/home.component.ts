@@ -1,31 +1,33 @@
-import { Component } from '@angular/core';
-import { Assessment } from '../../models/assessment';
-import { AssessmentService } from '../../services/assessment.service';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from '../../models/add-assessment';
+import { ProductService } from '../../services/add-assessment.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
-  arrAssesments: Assessment[] = [];
+export class HomeComponent implements OnInit {
+  arrProducts: Product[] = [];
+  lastThreeProducts: Product[] = [];
 
-  constructor(
-    private assessmentservice: AssessmentService,
-    private router: Router
-  ) {
-    this.arrAssesments = this.assessmentservice.getAssessments();
+  constructor(private productService: ProductService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe((data: Product[]) => {
+      this.arrProducts = data;
+      this.lastThreeProducts = this.arrProducts.slice(-3); // Get the last three products
+      console.log(this.lastThreeProducts);
+    });
   }
+
   isActive(active: string) {
-    if (active == 'true') {
-      return true;
-    } else {
-      return false;
-    }
+    return active === 'true';
   }
-  displayDetails(aid: number) {
+
+  displayDetails(aid: string) {
     console.log(aid);
-    this.router.navigate(['view-assessment-details/' + aid]);
+    this.router.navigate(['view-assessment-details/' + parseInt(aid)]);
   }
 }

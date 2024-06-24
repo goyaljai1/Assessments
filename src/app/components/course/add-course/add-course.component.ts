@@ -1,34 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CourseService } from '../../../services/course.service';
+import { Course } from '../../../models/course';
 
 @Component({
   selector: 'app-add-course',
   templateUrl: './add-course.component.html',
   styleUrl: './add-course.component.scss',
 })
-export class AddCourseComponent {
+export class AddCourseComponent implements OnInit {
   addCourseForm: FormGroup;
   submitted: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private courseService: CourseService) {
     this.addCourseForm = this.fb.group({
       courseId: ['', Validators.required],
+      categoryId: ['', Validators.required],
       courseName: [''],
       courseDescription: [''],
-      categoryId: [''],
     });
   }
+
+  ngOnInit(): void {}
 
   get formControl() {
     return this.addCourseForm.controls;
   }
 
-  onSubmit(): void {
-    this.submitted = true;
-    if (this.addCourseForm.valid) {
-      console.log('Form submitted:', this.addCourseForm.value);
-    } else {
-      console.log('Form is in-valid');
-    }
+  onSubmit(frmValue: any): void {
+    console.log('Form Value:', frmValue);
+
+    this.courseService.getCourses().subscribe(
+      () => {
+        const tempCourse: Course = {
+          id: frmValue.courseId,
+          categoryId: frmValue.categoryId,
+          cName: frmValue.courseName,
+          cDescription: frmValue.courseDescription,
+        };
+
+        this.courseService.addCourse(tempCourse).subscribe(
+          (response: any) => {
+            console.log('Course added successfully', response);
+          },
+          (error: any) => {
+            console.error('Error adding Course', error);
+          }
+        );
+      },
+      (error: any) => {
+        console.error('Error fetching Courses', error);
+      }
+    );
   }
 }

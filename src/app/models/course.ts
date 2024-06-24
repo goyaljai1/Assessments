@@ -1,10 +1,10 @@
 export class Course {
-  id: number;
+  id: string;
   cName: string;
   cDescription: string;
-  categoryId: number;
+  categoryId: string;
 
-  constructor(id: number, cName: string, cDescription: string, categoryId: number) {
+  constructor(id: string, cName: string, cDescription: string, categoryId: string) {
     this.id = id;
     this.cName = cName;
     this.cDescription = cDescription;

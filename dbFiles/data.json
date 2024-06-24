@@ -89,6 +89,26 @@
       }
     }
   ],
+  "courses": [
+    {
+      "id": "1",
+      "cName": "Introduction to Programming",
+      "cDescription": "This course covers the basics of programming using Python.",
+      "categoryId": "101"
+    },
+    {
+      "id": "102",
+      "cName": "Angular is Best",
+      "categoryId": "Web Dev",
+      "cDescription": "Perfect angular course."
+    },
+    {
+      "id": "103",
+      "cName": "HTML Web Dev",
+      "categoryId": "104",
+      "cDescription": "Great course on HTML development from basic to advance."
+    }
+  ],
   "course-categories": [
     {
       "id": "1",
@@ -114,14 +134,24 @@
           "id": "1",
           "category": "Math",
           "question": "What is 2+2?",
-          "options": ["2", "3", "4", "5"],
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
           "correctAns": "4"
         },
         {
           "id": "2",
           "category": "Science",
           "question": "What is H2O?",
-          "options": ["Oxygen", "Hydrogen", "Water", "Carbon Dioxide"],
+          "options": [
+            "Oxygen",
+            "Hydrogen",
+            "Water",
+            "Carbon Dioxide"
+          ],
           "correctAns": "Water"
         }
       ]
@@ -140,14 +170,24 @@
           "id": "3",
           "category": "History",
           "question": "Who was the first President of the USA?",
-          "options": ["Washington", "Lincoln", "Jefferson", "Adams"],
+          "options": [
+            "Washington",
+            "Lincoln",
+            "Jefferson",
+            "Adams"
+          ],
           "correctAns": "Washington"
         },
         {
           "id": "4",
           "category": "Geography",
           "question": "What is the capital of France?",
-          "options": ["Berlin", "Madrid", "Paris", "Rome"],
+          "options": [
+            "Berlin",
+            "Madrid",
+            "Paris",
+            "Rome"
+          ],
           "correctAns": "Paris"
         }
       ]
@@ -166,14 +206,24 @@
           "id": "5",
           "category": "Literature",
           "question": "Who wrote 'Hamlet'?",
-          "options": ["Shakespeare", "Hemingway", "Dickens", "Austen"],
+          "options": [
+            "Shakespeare",
+            "Hemingway",
+            "Dickens",
+            "Austen"
+          ],
           "correctAns": "Shakespeare"
         },
         {
           "id": "6",
           "category": "Math",
           "question": "What is the square root of 16?",
-          "options": ["2", "3", "4", "5"],
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
           "correctAns": "4"
         }
       ]
@@ -192,14 +242,24 @@
           "id": "7",
           "category": "Science",
           "question": "What is the chemical symbol for gold?",
-          "options": ["Au", "Ag", "Pt", "Pb"],
+          "options": [
+            "Au",
+            "Ag",
+            "Pt",
+            "Pb"
+          ],
           "correctAns": "Au"
         },
         {
           "id": "8",
           "category": "History",
           "question": "What year did the Titanic sink?",
-          "options": ["1910", "1912", "1914", "1916"],
+          "options": [
+            "1910",
+            "1912",
+            "1914",
+            "1916"
+          ],
           "correctAns": "1912"
         }
       ]
@@ -218,14 +278,24 @@
           "id": "9",
           "category": "Geography",
           "question": "Which is the largest ocean on Earth?",
-          "options": ["Atlantic", "Indian", "Arctic", "Pacific"],
+          "options": [
+            "Atlantic",
+            "Indian",
+            "Arctic",
+            "Pacific"
+          ],
           "correctAns": "Pacific"
         },
         {
           "id": "10",
           "category": "Literature",
           "question": "Who wrote 'Pride and Prejudice'?",
-          "options": ["Austen", "Bronte", "Eliot", "Woolf"],
+          "options": [
+            "Austen",
+            "Bronte",
+            "Eliot",
+            "Woolf"
+          ],
           "correctAns": "Austen"
         }
       ]
@@ -244,14 +314,24 @@
           "id": "11",
           "category": "Math",
           "question": "What is 3*3?",
-          "options": ["6", "9", "12", "15"],
+          "options": [
+            "6",
+            "9",
+            "12",
+            "15"
+          ],
           "correctAns": "9"
         },
         {
           "id": "12",
           "category": "Science",
           "question": "What planet is known as the Red Planet?",
-          "options": ["Earth", "Mars", "Jupiter", "Venus"],
+          "options": [
+            "Earth",
+            "Mars",
+            "Jupiter",
+            "Venus"
+          ],
           "correctAns": "Mars"
         }
       ]
@@ -270,14 +350,24 @@
           "id": "13",
           "category": "History",
           "question": "Who discovered America?",
-          "options": ["Columbus", "Magellan", "Vespucci", "Cook"],
+          "options": [
+            "Columbus",
+            "Magellan",
+            "Vespucci",
+            "Cook"
+          ],
           "correctAns": "Columbus"
         },
         {
           "id": "14",
           "category": "Geography",
           "question": "What is the largest desert in the world?",
-          "options": ["Sahara", "Gobi", "Kalahari", "Arctic"],
+          "options": [
+            "Sahara",
+            "Gobi",
+            "Kalahari",
+            "Arctic"
+          ],
           "correctAns": "Sahara"
         }
       ]
@@ -296,7 +386,12 @@
           "id": "15",
           "category": "Literature",
           "question": "Who wrote 'Moby Dick'?",
-          "options": ["Melville", "Twain", "Hawthorne", "Thoreau"],
+          "options": [
+            "Melville",
+            "Twain",
+            "Hawthorne",
+            "Thoreau"
+          ],
           "correctAns": "Melville"
         },
         {
@@ -327,14 +422,24 @@
           "id": "17",
           "category": "Math",
           "question": "What is the value of pi?",
-          "options": ["3.14", "3.15", "3.16", "3.17"],
+          "options": [
+            "3.14",
+            "3.15",
+            "3.16",
+            "3.17"
+          ],
           "correctAns": "3.14"
         },
         {
           "id": "18",
           "category": "History",
           "question": "Who was the first man to walk on the moon?",
-          "options": ["Armstrong", "Aldrin", "Collins", "Glenn"],
+          "options": [
+            "Armstrong",
+            "Aldrin",
+            "Collins",
+            "Glenn"
+          ],
           "correctAns": "Armstrong"
         }
       ]

@@ -6,20 +6,26 @@
   <div id="content_cards" class="row justify-content-around">
     <div
       class="col-12 col-md-4 home_card"
-      *ngFor="let assessment of arrAssesments"
+      *ngFor="let assessment of lastThreeProducts"
     >
       <div class="card mb-3">
-        <img [src]="assessment.imgSrc" class="card-img-top" alt="..." />
+        <img
+          [src]="assessment.aImgSrc"
+          class="card-img-top"
+          alt="{{ assessment.aName }}"
+        />
         <div class="card-body">
-          <h5 class="card-title">{{ assessment.cardTitle }}</h5>
+          <h5 class="card-title">{{ assessment.aName }}</h5>
           <p class="card-text">
-            {{ assessment.cardDes }}
+            {{ assessment.aDes }}
           </p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">
+            Price: {{ assessment.aPrice | currency }}
+          </li>
+          <li class="list-group-item">Marks: {{ assessment.marks }}</li>
+          <li class="list-group-item">Date: {{ assessment.time | date }}</li>
         </ul>
         <div class="card-body">
           <button

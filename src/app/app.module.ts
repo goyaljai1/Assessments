@@ -15,7 +15,7 @@ import { AddUserComponent } from './components/user/add-user/add-user.component'
 import { AddCourseComponent } from './components/course/add-course/add-course.component';
 import { AddAssessmentComponent } from './components/assessment/add-assessment/add-assessment.component';
 import { UpdateUserComponent } from './components/user/update-user/update-user.component';
-
+import { UpdateCourseComponent } from './components/course/update-course/update-course.component';
 //Angular Material Module Imports
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -32,6 +32,8 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { ViewUserComponent } from './components/user/view-user/view-user.component';
 import { ViewAssessmentDetailsComponent } from './components/view-assessment-details/view-assessment-details.component';
 import { CartComponent } from './components/cart/cart.component';
+import { ViewCourseComponent } from './components/course/view-course/view-course.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +52,9 @@ import { CartComponent } from './components/cart/cart.component';
     ViewUserComponent,
     ViewAssessmentDetailsComponent,
     CartComponent,
+    UpdateCourseComponent,
+    ViewCourseComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

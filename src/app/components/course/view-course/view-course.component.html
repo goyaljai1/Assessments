@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h4>List of Courses</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Course ID</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Category Id</th>
+        <th scope="col">Course Description</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of arrCourse">
+        <td>{{ user.id }}</td>
+        <td>{{ user.cName }}</td>
+        <td>{{ user.categoryId }}</td>
+        <td>{{ user.cDescription }}</td>
+        <td>
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
