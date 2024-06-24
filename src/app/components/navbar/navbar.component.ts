@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { LocalStorageService } from '../../services/local-storage-service.service';
-import {CartComponent} from '../cart/cart.component';
+import { CartComponent } from '../cart/cart.component';
 import { checkLogin } from '../../helper/helper';
 @Component({
   selector: 'app-navbar',
@@ -11,6 +11,11 @@ import { checkLogin } from '../../helper/helper';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
+  hidden = false;
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
   myForm: FormGroup;
   userArr: User[] = [];
   isLoggedIn: boolean = false;
@@ -35,9 +40,7 @@ export class NavbarComponent implements OnInit {
         console.error('Error fetching users:', error);
       }
     );
-
   }
-
 
   onSubmit(): void {
     const email = this.myForm.value.email;
@@ -50,7 +53,7 @@ export class NavbarComponent implements OnInit {
 
     if (loggedInUser) {
       this.isLoggedIn = true;
-    
+
       this.localStorageService.setItem('role', loggedInUser.role);
       let role = this.localStorageService.getItem('role');
       console.log(role);
@@ -58,13 +61,12 @@ export class NavbarComponent implements OnInit {
         console.log('Admin login successful!');
       } else {
         console.log('User login successful!');
-      }  
-    //   if (this.isLoggedIn) {
-    //     location.reload();
-    // }
+      }
+      //   if (this.isLoggedIn) {
+      //     location.reload();
+      // }
     } else {
       console.log('Login failed. Incorrect email or password.');
-
     }
   }
   onLogout(): void {

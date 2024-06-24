@@ -34,6 +34,7 @@ import { ViewAssessmentDetailsComponent } from './components/view-assessment-det
 import { CartComponent } from './components/cart/cart.component';
 import { ViewCourseComponent } from './components/course/view-course/view-course.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MatBadgeModule } from '@angular/material/badge';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +73,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MatSelectModule,
     MatRadioModule,
     HttpClientModule,
+    MatBadgeModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

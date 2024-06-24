@@ -33,21 +33,34 @@
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/contact-us']">Contact Us</a>
             </li>
-            
+            <li class="nav-item">
+              <div matBadge="4" matBadgeOverlap="true" class="demo-section">
+                <a class="nav-link">Dashboard</a>
+              </div>
+            </li>
+
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/cart']">Cart</a>
             </li>
             <li class="nav-item" *ngIf="!isLoggedIn">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal" >
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#loginModal"
+              >
                 Login
               </button>
             </li>
             <li class="nav-item" *ngIf="isLoggedIn">
-              <button type="button" class="btn btn-primary" (click)="onLogout()">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="onLogout()"
+              >
                 Logout
               </button>
             </li>
-            
           </ul>
           <!-- Modal -->
 
@@ -116,7 +129,13 @@
                         >Check me out</label
                       >
                     </div>
-                    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Login</button>
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      (click)="onSubmit()"
+                    >
+                      Login
+                    </button>
                   </form>
                 </div>
                 <div class="modal-footer">
