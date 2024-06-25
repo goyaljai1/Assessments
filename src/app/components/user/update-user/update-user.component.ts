@@ -104,45 +104,6 @@ export class UpdateUserComponent implements OnInit {
         });
 
         var addressArray = this.arrUsers[i].address;
-        // var addressArrayLength = addressArray.length;
-        // console.log(addressArrayLength);
-
-        // for (var j = 0; j < addressArrayLength; j++) {
-        //   if (j == 0) {
-        //     this.userAddForm.patchValue({
-        //       address: [
-        //         {
-        //           id: addressArray[j].id,
-        //           houseNo: addressArray[j].houseNo,
-        //           street: addressArray[j].street,
-        //           area: addressArray[j].area,
-        //           city: addressArray[j].city,
-        //           state: addressArray[j].state,
-        //           country: addressArray[j].country,
-        //           pincode: addressArray[j].pincode,
-        //         },
-        //       ],
-        //     });
-        //   } else {
-        //     (this.userAddForm.get('address') as FormArray).push(
-        //       this.createAddress()
-        //     );
-        //     this.userAddForm.patchValue({
-        //       address: [
-        //         {
-        //           id: addressArray[j].id,
-        //           houseNo: addressArray[j].houseNo,
-        //           street: addressArray[j].street,
-        //           area: addressArray[j].area,
-        //           city: addressArray[j].city,
-        //           state: addressArray[j].state,
-        //           country: addressArray[j].country,
-        //           pincode: addressArray[j].pincode,
-        //         },
-        //       ],
-        //     });
-        //   }
-        // }
       }
     }
   }

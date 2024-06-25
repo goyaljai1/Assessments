@@ -3,6 +3,8 @@ import { CartService } from '../../services/cart.service';
 import { LocalStorageService } from '../../services/local-storage-service.service';
 import { Product } from '../../models/add-assessment';
 import { CheckoutServiceService } from '../../services/checkout-service.service';
+import { HttpClient } from '@angular/common/http';
+import { Purchase, PurchaseItem } from '../../models/cart';
 interface CartItem {
   item: Product;
   quantity: number;
@@ -11,15 +13,22 @@ interface CartItem {
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
   isLoggIn: boolean = false;
   cartItems: CartItem[] = [];
   totalAmount: number = 0;
   totalQuantity: number = 0;
+  userId: string = '1'; //Need to replace this code with actual logic!
+  purchasesUrl: string = 'http://localhost:3000/purchases';
 
-  constructor(private localStorageService: LocalStorageService, private cartService: CartService,private checkoutService: CheckoutServiceService) {}
+  constructor(
+    private localStorageService: LocalStorageService,
+    private cartService: CartService,
+    private checkoutService: CheckoutServiceService,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
     this.checkLogin();
@@ -35,6 +44,7 @@ export class CartComponent implements OnInit {
   increaseQuantity(item: Product) {
     this.cartService.increaseQuantity(item);
     this.cartItems = this.cartService.getCartItems();
+    console.log(this.cartItems);
     this.calculateTotals();
   }
 
@@ -51,7 +61,7 @@ export class CartComponent implements OnInit {
 
   calculateTotalAmount() {
     this.totalAmount = this.cartItems.reduce((total, cartItem) => {
-      return total + (cartItem.item.aPrice * cartItem.quantity);
+      return total + cartItem.item.aPrice * cartItem.quantity;
     }, 0);
   }
 
@@ -62,10 +72,89 @@ export class CartComponent implements OnInit {
   }
 
   checkout() {
+    console.log(this.cartItems);
     alert('Checkout functionality to be implemented.');
-    this.checkoutService.emitCheckoutEvent(this.cartItems); 
+
+    this.http
+      .get<Purchase[]>(this.purchasesUrl)
+      .subscribe((existingPurchases) => {
+        const existingPurchase = existingPurchases.find(
+          (purchase) => purchase.userId === this.userId
+        );
+
+        if (existingPurchase) {
+          // Update existing purchase
+          existingPurchase.items.forEach((existingItem: PurchaseItem) => {
+            const cartItem = this.cartItems.find(
+              (item) => item.item.id === existingItem.assessmentId
+            );
+            if (cartItem) {
+              existingItem.quantity += cartItem.quantity;
+            }
+          });
+
+          // Add new items that were not in the existing purchase
+          this.cartItems.forEach((cartItem) => {
+            if (
+              !existingPurchase.items.find(
+                (item) => item.assessmentId === cartItem.item.id
+              )
+            ) {
+              existingPurchase.items.push({
+                assessmentId: cartItem.item.id,
+                quantity: cartItem.quantity,
+              });
+            }
+          });
+
+          this.checkoutService.updatePurchase(existingPurchase).subscribe(
+            (response) => {
+              console.log('Purchase details updated successfully:', response);
+              this.cartService.clearCart();
+              this.cartItems = this.cartService.getCartItems();
+              this.calculateTotals();
+            },
+            (error) => {
+              console.error('Error updating purchase details:', error);
+            }
+          );
+        } else {
+          // Create new purchase
+          const purchaseDetails: Purchase = {
+            userId: this.userId,
+            items: this.cartItems.map((item) => ({
+              assessmentId: item.item.id,
+              quantity: item.quantity,
+            })),
+          };
+
+          this.checkoutService.checkout(purchaseDetails).subscribe(
+            (response) => {
+              console.log('Purchase details stored successfully:', response);
+              this.cartService.clearCart();
+              this.cartItems = this.cartService.getCartItems();
+              this.calculateTotals();
+            },
+            (error) => {
+              console.error('Error storing purchase details:', error);
+            }
+          );
+        }
+      });
+
+    this.checkoutService.emitCheckoutEvent(this.cartItems);
     this.cartService.clearCart();
     this.cartItems = this.cartService.getCartItems();
+
     this.calculateTotals();
+  }
+
+  generateUniqueId(items: { id: string }[]): string {
+    if (items.length === 0) {
+      return '1';
+    }
+
+    const maxId = Math.max(...items.map((item) => parseInt(item.id)));
+    return String(maxId + 1);
   }
 }

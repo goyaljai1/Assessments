@@ -35,6 +35,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { ViewCourseComponent } from './components/course/view-course/view-course.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { ViewAssessmentComponent } from './components/assessment/view-assessment/view-assessment.component';
+import { TruncatePipe } from './pipe/truncate.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +58,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     UpdateCourseComponent,
     ViewCourseComponent,
     DashboardComponent,
+    ViewAssessmentComponent,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,
