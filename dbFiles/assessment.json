@@ -1,0 +1,113 @@
+[
+    {
+        "_id": "1",
+        "aName": "Product One",
+        "aDes": "Description for product one.",
+        "aImgSrc": "https://example.com/img1.jpg",
+        "aPrice": 29.99,
+        "marks": 85,
+        "time": "2024-06-23T10:00:00Z",
+        "course_id": "course1",
+        "faculty_id": "5",
+        "itinery": [
+            {
+                "_id": "1",
+                "category": "Math",
+                "question": "What is 2+2?",
+                "options": [
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ],
+                "correctAns": "4"
+            },
+            {
+                "_id": "2",
+                "category": "Science",
+                "question": "What is H2O?",
+                "options": [
+                    "Oxygen",
+                    "Hydrogen",
+                    "Water",
+                    "Carbon Dioxide"
+                ],
+                "correctAns": "Water"
+            }
+        ]
+    },
+    {
+        "_id": "2",
+        "aName": "Product Two",
+        "aDes": "Description for product two.",
+        "aImgSrc": "https://example.com/img2.jpg",
+        "aPrice": 49.99,
+        "marks": 90,
+        "time": "2024-06-24T10:00:00Z",
+        "course_id": "course2",
+        "faculty_id": "5",
+        "itinery": [
+            {
+                "_id": "3",
+                "category": "History",
+                "question": "Who was the first President of the USA?",
+                "options": [
+                    "Washington",
+                    "Lincoln",
+                    "Jefferson",
+                    "Adams"
+                ],
+                "correctAns": "Washington"
+            },
+            {
+                "_id": "4",
+                "category": "Geography",
+                "question": "What is the capital of France?",
+                "options": [
+                    "Berlin",
+                    "Madrid",
+                    "Paris",
+                    "Rome"
+                ],
+                "correctAns": "Paris"
+            }
+        ]
+    },
+    {
+        "_id": "3",
+        "aName": "Product Three",
+        "aDes": "Description for product three.",
+        "aImgSrc": "https://example.com/img3.jpg",
+        "aPrice": 19.99,
+        "marks": 75,
+        "time": "2024-06-25T10:00:00Z",
+        "course_id": "course3",
+        "faculty_id": "5",
+        "itinery": [
+            {
+                "_id": "5",
+                "category": "Literature",
+                "question": "Who wrote 'Hamlet'?",
+                "options": [
+                    "Shakespeare",
+                    "Hemingway",
+                    "Dickens",
+                    "Austen"
+                ],
+                "correctAns": "Shakespeare"
+            },
+            {
+                "_id": "6",
+                "category": "Math",
+                "question": "What is the square root of 16?",
+                "options": [
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ],
+                "correctAns": "4"
+            }
+        ]
+    }
+]

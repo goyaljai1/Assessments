@@ -37,6 +37,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ViewAssessmentComponent } from './components/assessment/view-assessment/view-assessment.component';
 import { TruncatePipe } from './pipe/truncate.pipe';
+import { AddCategoryComponent } from './components/category/add-category/add-category.component';
+import { ViewCategoryComponent } from './components/category/view-category/view-category.component';
+import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
+import { UpdateAssessmentComponent } from './components/assessment/update-assessment/update-assessment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +64,10 @@ import { TruncatePipe } from './pipe/truncate.pipe';
     DashboardComponent,
     ViewAssessmentComponent,
     TruncatePipe,
+    AddCategoryComponent,
+    ViewCategoryComponent,
+    UpdateCategoryComponent,
+    UpdateAssessmentComponent,
   ],
   imports: [
     BrowserModule,
