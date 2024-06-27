@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from '../models/user'; // Adjust the import path as necessary
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,15 @@ export class LocalStorageService {
       localStorage.removeItem(key);
     } else {
       console.warn('localStorage is not available');
+    }
+  }
+
+  getUser(): User | null {
+    const userData = this.getItem('loggedInUser');
+    if (userData) {
+      return JSON.parse(userData);
+    } else {
+      return null;
     }
   }
 

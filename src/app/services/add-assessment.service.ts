@@ -36,22 +36,14 @@ export class ProductService {
       )
       .pipe(catchError(this.httpError));
   }
-  getProductById(id: string): Product {
-    for (let i = 0; i < this.arrProducts.length; i++) {
-      if (id == this.arrProducts[i].id) {
-        return this.arrProducts[i];
-      }
-    }
-
-    return new Product('', '', '', '', 0, 0, '', '', []);
-  }
-  updateAssessment(product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.baseUrl}/assessments/${product.id}`, product);
+  getProductById(id: string): Observable<Product> {
+    return this.httpClient.get<Product>(`${this.baseUrl}/assessment/${id}`)
+      .pipe(catchError(this.httpError));
   }
   updateProduct(p: Product): Observable<Product[]> {
     return this.httpClient
       .put<Product[]>(
-        this.baseUrl + '/users/' + p.id,
+        this.baseUrl + '/assessment/' + p.id,
         JSON.stringify(p),
         this.httpHeader
       )

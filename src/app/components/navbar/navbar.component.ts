@@ -11,7 +11,11 @@ import { CheckoutServiceService } from '../../services/checkout-service.service'
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
+  hidden = false;
   myForm: FormGroup;
+  loginForm: FormGroup;
+  submitted: boolean = false;
+  userArr: User[] = [];
   isLoggedIn: boolean = false;
   totalItems: number = 0;
 
@@ -19,10 +23,30 @@ export class NavbarComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private localStorageService: LocalStorageService,
-    private checkoutService: CheckoutServiceService // Inject CheckoutService
+    private checkoutService: CheckoutServiceService
   ) {
     this.myForm = this.fb.group({
-      email: ['', Validators.required],
+      id: [0, Validators.required],
+      firstName: ['', Validators.required],
+      lastName: [''],
+      email: [''],
+      mobile: [''],
+      dob: [''],
+      role: ['', Validators.required],
+      password: [''],
+      confirmPassword: [''],
+      address: this.fb.group({
+        houseNo: [''],
+        street: [''],
+        area: [''],
+        state: [''],
+        country: [''],
+        pincode: [''],
+      }),
+    });
+
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       rememberMe: [false],
     });
@@ -41,6 +65,16 @@ export class NavbarComponent implements OnInit {
     this.checkoutService.checkoutEvent.subscribe((cartItems) => {
       this.totalItems = cartItems.length;
     });
+
+    this.checkLogin();
+  }
+
+  get formControl() {
+    return this.myForm.controls;
+  }
+
+  get loginFormControl() {
+    return this.loginForm.controls;
   }
 
   checkLogin() {
@@ -48,11 +82,60 @@ export class NavbarComponent implements OnInit {
     this.isLoggedIn = role !== null;
   }
 
-  onSubmit(): void {
-    const email = this.myForm.value.email;
-    const password = this.myForm.value.password;
-    console.log('email: ', email);
-    console.log(this.userArr);
+  onSubmit(frmValue: any): void {
+    this.submitted = true;
+
+    if (this.myForm.invalid) {
+      return;
+    }
+
+    this.userService.getUsers().subscribe(
+      (users: User[]) => {
+        const newUserId = this.generateUniqueId(users);
+        const tempUser: User = {
+          id: newUserId,
+          fName: frmValue.firstName,
+          lName: frmValue.lastName,
+          email: frmValue.email,
+          mobile: frmValue.mobile,
+          dob: frmValue.dob,
+          role: frmValue.role,
+          password: frmValue.password,
+          address: {
+            houseNo: frmValue.address.houseNo,
+            street: frmValue.address.street,
+            area: frmValue.address.area,
+            state: frmValue.address.state,
+            country: frmValue.address.country,
+            pincode: frmValue.address.pincode,
+          },
+        };
+
+        this.userService.addUser(tempUser).subscribe(
+          (response: any) => {
+            console.log('User added successfully', response);
+            // Close the modal here
+            const modal = document.getElementById('registerModal');
+            if (modal) {
+              (modal as any).modal('hide');
+            }
+          },
+          (error: any) => {
+            console.error('Error adding user', error);
+          }
+        );
+      },
+      (error: any) => {
+        console.error('Error fetching users', error);
+      }
+    );
+  }
+
+  onSubmitLogin(): void {
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
+    console.log('Login Form Value:', this.loginForm.value);
+
     const loggedInUser = this.userArr.find(
       (user) => user.email === email && user.password === password
     );
@@ -81,5 +164,14 @@ export class NavbarComponent implements OnInit {
 
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
+  }
+
+  generateUniqueId(users: User[]): string {
+    if (users.length === 0) {
+      return '1';
+    }
+
+    const maxId = Math.max(...users.map((user) => parseInt(user.id)));
+    return String(maxId + 1);
   }
 }

@@ -2,24 +2,15 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" [routerLink]="['/home']">Assessments.Co</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <div class="container-fluid d-flex justify-content-end">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" [routerLink]="['/home']"
-                >Home</a
-              >
+              <a class="nav-link" aria-current="page" [routerLink]="['/home']">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/about-us']">About Us</a>
@@ -34,257 +25,171 @@
               <a class="nav-link" [routerLink]="['/contact-us']">Contact Us</a>
             </li>
             <li class="nav-item">
-              <div matBadge="{{ totalItems }}" matBadgeOverlap="true" class="demo-section" >
+              <div matBadge="{{ totalItems }}" matBadgeOverlap="true" class="demo-section">
                 <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
               </div>
             </li>
-
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/cart']">Cart</a>
             </li>
             <li class="nav-item" *ngIf="!isLoggedIn">
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#loginModal"
-              >
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
                 Login
               </button>
             </li>
             <li class="nav-item" *ngIf="isLoggedIn">
-              <button
-                type="button"
-                class="btn btn-primary"
-                (click)="onLogout()"
-              >
+              <button type="button" class="btn btn-primary" (click)="onLogout()">
                 Logout
               </button>
             </li>
           </ul>
           <!-- Modal -->
 
-          <div
-            class="modal fade"
-            id="loginModal"
-            tabindex="-1"
-            aria-labelledby="loginModalLabel"
-            aria-hidden="true"
-          >
+          <!-- Login Modal -->
+          <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="loginModalLabel">
-                    Login Form
-                  </h1>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
+                  <h1 class="modal-title fs-5" id="loginModalLabel">Login Form</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <form
-                    class="needs-validation"
-                    novalidate
-                    [formGroup]="myForm"
-                    (ngSubmit)="onSubmit()"
-                  >
+                  <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label"
-                        >Email address</label
-                      >
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="exampleInputEmail1"
-                        formControlName="email"
-                        aria-describedby="emailHelp"
-                        required
-                      />
-                      <div id="emailHelp" class="form-text">
-                        We'll never share your email with anyone else.
-                      </div>
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                      <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp"
+                        required />
+                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label"
-                        >Password</label
-                      >
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="exampleInputPassword1"
-                        formControlName="password"
-                        required
-                      />
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input type="password" class="form-control" formControlName="password" required />
                     </div>
                     <div class="mb-3 form-check">
-                      <input
-                        type="checkbox"
-                        class="form-check-input"
-                        id="exampleCheck1"
-                      />
-                      <label class="form-check-label" for="exampleCheck1"
-                        >Check me out</label
-                      >
+                      <input type="checkbox" class="form-check-input" formControlName="rememberMe" />
+                      <label class="form-check-label" for="exampleCheck1">Remember me</label>
                     </div>
-                    <button
-                      type="submit"
-                      class="btn btn-primary"
-                      (click)="onSubmit()"
-                    >
-                      Login
-                    </button>
+                    <button type="submit" class="btn btn-primary">Login</button>
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <p style="padding-right: 20px">
-                    Haven't registered yet? Join Assessments.Co Now!
-                  </p>
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#registerModal"
-                    data-bs-dismiss="modal"
-                  >
+                  <p style="padding-right: 20px">Haven't registered yet? Join Assessments.Co Now!</p>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal"
+                    data-bs-dismiss="modal">
                     Register
                   </button>
                 </div>
               </div>
             </div>
           </div>
+
           <!-- Register Modal -->
-          <div
-            class="modal fade"
-            id="registerModal"
-            tabindex="-1"
-            aria-labelledby="registerModalLabel"
-            aria-hidden="true"
-          >
+          <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="registerModalLabel">
-                    Register Form
-                  </h1>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
+                  <h1 class="modal-title fs-5" id="registerModalLabel">Register Form</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <form class="needs-validation" novalidate>
-                    <div class="row">
+                  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" class="needs-validation" novalidate>
+                    <div class="row mb-3">
                       <div class="col-md-6">
-                        <div class="mb-3">
-                          <label for="firstName" class="form-label"
-                            >First Name</label
-                          >
-                          <input
-                            required
-                            type="text"
-                            class="form-control"
-                            id="firstName"
-                          />
+                        <label for="firstNameInput" class="form-label">First Name</label>
+                        <input type="text" id="firstNameInput" formControlName="firstName" class="form-control" required />
+                        <div *ngIf="submitted && formControl['firstName'].errors?.['required']" class="invalid"
+                          style="background-color: lightcoral; border: 1px solid salmon">
+                          ! First Name is required!
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="mb-3">
-                          <label for="lastName" class="form-label"
-                            >Last Name</label
-                          >
-                          <input
-                            required
-                            type="text"
-                            class="form-control"
-                            id="lastName"
-                          />
+                        <label for="lastNameInput" class="form-label">Last Name</label>
+                        <input type="text" id="lastNameInput" formControlName="lastName" class="form-control" required />
+                        <div *ngIf="submitted && formControl['lastName'].errors?.['required']" class="invalid"
+                          style="background-color: lightcoral; border: 1px solid salmon">
+                          ! Last Name is required!
                         </div>
                       </div>
                     </div>
 
-                    <div class="mb-3">
-                      <label for="email" class="form-label">Email</label>
-                      <input
-                        required
-                        type="email"
-                        class="form-control"
-                        id="email"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="password" class="form-label">Password</label>
-                      <input
-                        required
-                        type="password"
-                        class="form-control"
-                        id="password"
-                      />
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                        <label for="emailInput" class="form-label">Email</label>
+                        <input type="email" id="emailInput" formControlName="email" class="form-control" required />
+                        <div *ngIf="submitted && formControl['email'].errors?.['required']" class="invalid"
+                          style="background-color: lightcoral; border: 1px solid salmon">
+                          ! Email is required!
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="mobileInput" class="form-label">Mobile</label>
+                        <input type="text" id="mobileInput" formControlName="mobile" class="form-control" required />
+                      </div>
                     </div>
 
-                    <div class="mb-3">
-                      <label for="confirmPassword" class="form-label"
-                        >Confirm Password</label
-                      >
-                      <input
-                        required
-                        type="password"
-                        class="form-control"
-                        id="confirmPassword"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="phoneNumber" class="form-label"
-                        >Phone Number</label
-                      >
-                      <input
-                        required
-                        type="tel"
-                        class="form-control"
-                        id="phoneNumber"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="dateOfBirth" class="form-label"
-                        >Date of Birth</label
-                      >
-                      <input
-                        required
-                        type="date"
-                        class="form-control"
-                        id="dateOfBirth"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="role" class="form-label">Role</label>
-                      <select required class="form-control" id="role">
-                        <option value="Admin">Admin</option>
-                        <option value="User">User</option>
-                      </select>
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                        <label for="dobInput" class="form-label">Date of Birth</label>
+                        <input type="date" id="dobInput" formControlName="dob" class="form-control" required />
+                      </div>
+                      <div class="col-md-6">
+                        <label for="roleInput" class="form-label">Role</label>
+                        <input type="text" id="roleInput" formControlName="role" class="form-control" required />
+                      </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">
-                      Register
-                    </button>
+                    <div class="row mb-3">
+                      <div class="col-md-6">
+                        <label for="passwordInput" class="form-label">Password</label>
+                        <input type="password" id="passwordInput" formControlName="password" class="form-control" required />
+                      </div>
+                      <div class="col-md-6">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control"
+                          required />
+                      </div>
+                    </div>
+
+                    <div formGroupName="address">
+                      <div class="row mb-3">
+                        <div class="col-md-6">
+                          <label for="houseNoInput" class="form-label">House Number</label>
+                          <input type="text" id="houseNoInput" formControlName="houseNo" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                          <label for="streetInput" class="form-label">Street</label>
+                          <input type="text" id="streetInput" formControlName="street" class="form-control" />
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-md-6">
+                          <label for="areaInput" class="form-label">Area</label>
+                          <input type="text" id="areaInput" formControlName="area" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                          <label for="stateInput" class="form-label">State</label>
+                          <input type="text" id="stateInput" formControlName="state" class="form-control" />
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-md-6">
+                          <label for="countryInput" class="form-label">Country</label>
+                          <input type="text" id="countryInput" formControlName="country" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                          <label for="pincodeInput" class="form-label">Pincode</label>
+                          <input type="text" id="pincodeInput" formControlName="pincode" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- End of Register Modal -->
         </div>
       </div>
     </div>

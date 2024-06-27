@@ -1,0 +1,101 @@
+<div class="container">
+  <form [formGroup]="firstFormGroup" (ngSubmit)="saveFirstStepData()">
+    <mat-form-field appearance="fill">
+      <mat-label>Assessment Name</mat-label>
+      <mat-select formControlName="assessmentIdCtrl" (selectionChange)="onAssessmentChange($event)">
+        <mat-option *ngFor="let assessment of arrProducts" [value]="assessment.id">
+          {{ assessment.aName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Marks</mat-label>
+      <input matInput formControlName="marksCtrl" type="number" required />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Time</mat-label>
+      <input matInput formControlName="timeCtrl" required />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Course ID</mat-label>
+      <input matInput formControlName="cIdCtrl" required />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="aDesCtrl"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="priceCtrl" type="number" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Image Source</mat-label>
+      <input matInput formControlName="imgSrcCtrl" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Save</button>
+  </form>
+
+  <div class="itineries-container" [formGroup]="itineryForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Select Itinerary</mat-label>
+      <mat-select (selectionChange)="onItineryChange($event)">
+        <mat-option *ngFor="let itinery of selectedProduct?.itinery" [value]="itinery.id">
+          {{ itinery.question }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div formArrayName="itineries">
+      <div *ngFor="let itineryCtrl of itineriesArr().controls; let i = index" [formGroupName]="i" class="itinery-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category" required>
+            <mat-option value="mcq">MCQ</mat-option>
+            <mat-option value="truefalse">True/False</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Question</mat-label>
+          <textarea matInput formControlName="question" required></textarea>
+        </mat-form-field>
+
+        <ng-container *ngIf="itineryCtrl.get('category')?.value === 'mcq'">
+          <mat-form-field appearance="fill">
+            <mat-label>Option A</mat-label>
+            <input matInput formControlName="optionA" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Option B</mat-label>
+            <input matInput formControlName="optionB" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Option C</mat-label>
+            <input matInput formControlName="optionC" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Option D</mat-label>
+            <input matInput formControlName="optionD" />
+          </mat-form-field>
+        </ng-container>
+
+        <ng-container *ngIf="itineryCtrl.get('category')?.value === 'truefalse'">
+          <mat-radio-group formControlName="correctAns">
+            <mat-radio-button value="True">True</mat-radio-button>
+            <mat-radio-button value="False">False</mat-radio-button>
+          </mat-radio-group>
+        </ng-container>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Correct Answer</mat-label>
+          <input matInput formControlName="correctAns" required />
+        </mat-form-field>
+
+        <button mat-raised-button color="warn" (click)="removeOrClearItinery(i)">Remove</button>
+      </div>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addItineryFormGroup()">Add Itinerary</button>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="submitAssessment()">Submit Assessment</button>
+</div>

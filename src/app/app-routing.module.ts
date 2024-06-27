@@ -12,8 +12,10 @@ import { CartComponent } from './components/cart/cart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TestScreenComponent } from './components/test-screen/test-screen.component';
 import { ResultScreenComponent } from './components/dashboard/result-screen/result-screen.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
+ 
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'about-us', component: AboutUsComponent },
@@ -33,6 +35,8 @@ const routes: Routes = [
     path: 'view-assessment-details/:id',
     component: ViewAssessmentDetailsComponent
   },
+  {path: '404', component: PageNotFoundComponent},
+  {path: '**', redirectTo: '/404'},
 ];
 
 @NgModule({

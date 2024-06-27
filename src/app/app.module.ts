@@ -43,6 +43,9 @@ import { ViewCategoryComponent } from './components/category/view-category/view-
 import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
 import { UpdateAssessmentComponent } from './components/assessment/update-assessment/update-assessment.component';
 import { ResultScreenComponent } from './components/dashboard/result-screen/result-screen.component';
+import { FormArray } from '@angular/forms';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SearchPipe } from './pipe/search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +75,8 @@ import { ResultScreenComponent } from './components/dashboard/result-screen/resu
     UpdateCategoryComponent,
     UpdateAssessmentComponent,
     ResultScreenComponent,
+    PageNotFoundComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
