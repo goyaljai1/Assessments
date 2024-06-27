@@ -122,6 +122,126 @@
   ],
   "assessment": [
     {
+      "id": "1",
+      "aName": "Product One",
+      "aDes": "Description for product one.",
+      "aImgSrc": "",
+      "aPrice": 29.99,
+      "marks": 85,
+      "time": 60,
+      "course_id": "course1",
+      "itinery": [
+        {
+          "id": "1",
+          "category": "Math",
+          "question": "What is 2+2?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correctAns": "4"
+        },
+        {
+          "id": "2",
+          "category": "Science",
+          "question": "What is H2O?",
+          "options": [
+            "Oxygen",
+            "Hydrogen",
+            "Water",
+            "Carbon Dioxide"
+          ],
+          "correctAns": "Water"
+        },
+        {
+          "id": "3",
+          "category": "Science",
+          "question": "What is C02?",
+          "options": [
+            "Oxygen",
+            "Hydrogen",
+            "Water",
+            "Carbon Dioxide"
+          ],
+          "correctAns": "Carbon Dioxide"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "aName": "Product Two",
+      "aDes": "Description for product two.",
+      "aImgSrc": "",
+      "aPrice": 49.99,
+      "marks": 90,
+      "time": 60,
+      "course_id": "course2",
+      "itinery": [
+        {
+          "id": "3",
+          "category": "History",
+          "question": "Who was the first President of the USA?",
+          "options": [
+            "Washington",
+            "Lincoln",
+            "Jefferson",
+            "Adams"
+          ],
+          "correctAns": "Washington"
+        },
+        {
+          "id": "4",
+          "category": "Geography",
+          "question": "What is the capital of France?",
+          "options": [
+            "Berlin",
+            "Madrid",
+            "Paris",
+            "Rome"
+          ],
+          "correctAns": "Paris"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "aName": "Product Three",
+      "aDes": "Description for product three.",
+      "aImgSrc": "",
+      "aPrice": 19.99,
+      "marks": 75,
+      "time": 60,
+      "course_id": "course3",
+      "itinery": [
+        {
+          "id": "5",
+          "category": "Literature",
+          "question": "Who wrote 'Hamlet'?",
+          "options": [
+            "Shakespeare",
+            "Hemingway",
+            "Dickens",
+            "Austen"
+          ],
+          "correctAns": "Shakespeare"
+        },
+        {
+          "id": "6",
+          "category": "Math",
+          "question": "What is the square root of 16?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correctAns": "4"
+        }
+      ]
+    },
+    {
       "id": "4",
       "aName": "Product Four",
       "aDes": "Description for product four.",
@@ -458,6 +578,18 @@
         28,
         28,
         0
+      ]
+    },
+    {
+      "id": "6",
+      "assessmentId": "2",
+      "userId": "1",
+      "score": 45,
+      "totalMarks": 90,
+      "assessmentName": "Product Two",
+      "marksArray": [
+        0,
+        45
       ]
     }
   ]

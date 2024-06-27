@@ -8,7 +8,7 @@ export class Product {
   aImgSrc: string;
   aPrice: number;
   marks: number;
-  time: string;
+  time: number;
   course_id: string;
   itinery: Itinery[] = [];
 
@@ -19,7 +19,7 @@ export class Product {
     aImgSrc: string,
     aPrice: number,
     marks: number,
-    time: string,
+    time: number,
     course_id: string,
     itin: Itinery[]
   ) {

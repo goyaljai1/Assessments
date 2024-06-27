@@ -79,6 +79,7 @@ export class CartComponent implements OnInit {
     return String(maxId + 1);
   }
   async checkout() {
+    this.checkoutService.emitCheckoutEvent(this.cartItems);
     alert('Checkout functionality to be implemented.');
     console.log(this.cartItems);
 
@@ -156,7 +157,6 @@ export class CartComponent implements OnInit {
       console.error('Error fetching existing purchases:', error);
     }
 
-    this.checkoutService.emitCheckoutEvent(this.cartItems);
     this.cartService.clearCart();
     this.cartItems = this.cartService.getCartItems();
 

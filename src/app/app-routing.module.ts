@@ -12,6 +12,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TestScreenComponent } from './components/test-screen/test-screen.component';
 import { ResultScreenComponent } from './components/dashboard/result-screen/result-screen.component';
+import { AttendanceScreenComponent } from './components/dashboard/attendance-screen/attendance-screen.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'testScreen', component: TestScreenComponent },
-  {path: 'resultScreen', component:ResultScreenComponent},
+  { path: 'resultScreen', component: ResultScreenComponent },
+  { path: 'attendanceScreen', component: AttendanceScreenComponent },
   {
     path: 'view-assessment',
     component: AssessmentComponent

@@ -46,6 +46,7 @@ import { ResultScreenComponent } from './components/dashboard/result-screen/resu
 import { FormArray } from '@angular/forms';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SearchPipe } from './pipe/search.pipe';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,6 +96,7 @@ import { SearchPipe } from './pipe/search.pipe';
     MatRadioModule,
     HttpClientModule,
     MatBadgeModule,
+    CanvasJSAngularChartsModule
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
