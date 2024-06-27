@@ -1,4 +1,252 @@
 [
+<<<<<<< HEAD
+  {
+    "id": "1",
+    "aName": "Product One",
+    "aDes": "Description for product one.",
+    "aImgSrc": "https://example.com/img1.jpg",
+    "aPrice": 29.99,
+    "marks": 85,
+    "time": "2024-06-23T10:00:00Z",
+    "course_id": "course1",
+    "faculty_id": "faculty1",
+    "itinery": [
+      {
+        "id": "1",
+        "category": "Math",
+        "question": "What is 2+2?",
+        "options": ["2", "3", "4", "5"],
+        "correctAns": "4"
+      },
+      {
+        "id": "2",
+        "category": "Science",
+        "question": "What is H2O?",
+        "options": ["Oxygen", "Hydrogen", "Water", "Carbon Dioxide"],
+        "correctAns": "Water"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "aName": "Product Two",
+    "aDes": "Description for product two.",
+    "aImgSrc": "https://example.com/img2.jpg",
+    "aPrice": 49.99,
+    "marks": 90,
+    "time": "2024-06-24T10:00:00Z",
+    "course_id": "course2",
+    "faculty_id": "faculty2",
+    "itinery": [
+      {
+        "id": "3",
+        "category": "History",
+        "question": "Who was the first President of the USA?",
+        "options": ["Washington", "Lincoln", "Jefferson", "Adams"],
+        "correctAns": "Washington"
+      },
+      {
+        "id": "4",
+        "category": "Geography",
+        "question": "What is the capital of France?",
+        "options": ["Berlin", "Madrid", "Paris", "Rome"],
+        "correctAns": "Paris"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "aName": "Product Three",
+    "aDes": "Description for product three.",
+    "aImgSrc": "https://example.com/img3.jpg",
+    "aPrice": 19.99,
+    "marks": 75,
+    "time": "2024-06-25T10:00:00Z",
+    "course_id": "course3",
+    "faculty_id": "faculty3",
+    "itinery": [
+      {
+        "id": "5",
+        "category": "Literature",
+        "question": "Who wrote 'Hamlet'?",
+        "options": ["Shakespeare", "Hemingway", "Dickens", "Austen"],
+        "correctAns": "Shakespeare"
+      },
+      {
+        "id": "6",
+        "category": "Math",
+        "question": "What is the square root of 16?",
+        "options": ["2", "3", "4", "5"],
+        "correctAns": "4"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "aName": "Product Four",
+    "aDes": "Description for product four.",
+    "aImgSrc": "https://example.com/img4.jpg",
+    "aPrice": 39.99,
+    "marks": 80,
+    "time": "2024-06-26T10:00:00Z",
+    "course_id": "course4",
+    "faculty_id": "faculty4",
+    "itinery": [
+      {
+        "id": "7",
+        "category": "Science",
+        "question": "What is the chemical symbol for gold?",
+        "options": ["Au", "Ag", "Pt", "Pb"],
+        "correctAns": "Au"
+      },
+      {
+        "id": "8",
+        "category": "History",
+        "question": "What year did the Titanic sink?",
+        "options": ["1910", "1912", "1914", "1916"],
+        "correctAns": "1912"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "aName": "Product Five",
+    "aDes": "Description for product five.",
+    "aImgSrc": "https://example.com/img5.jpg",
+    "aPrice": 59.99,
+    "marks": 95,
+    "time": "2024-06-27T10:00:00Z",
+    "course_id": "course5",
+    "faculty_id": "faculty5",
+    "itinery": [
+      {
+        "id": "9",
+        "category": "Geography",
+        "question": "Which is the largest ocean on Earth?",
+        "options": ["Atlantic", "Indian", "Arctic", "Pacific"],
+        "correctAns": "Pacific"
+      },
+      {
+        "id": "10",
+        "category": "Literature",
+        "question": "Who wrote 'Pride and Prejudice'?",
+        "options": ["Austen", "Bronte", "Eliot", "Woolf"],
+        "correctAns": "Austen"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "aName": "Product Six",
+    "aDes": "Description for product six.",
+    "aImgSrc": "https://example.com/img6.jpg",
+    "aPrice": 69.99,
+    "marks": 88,
+    "time": "2024-06-28T10:00:00Z",
+    "course_id": "course6",
+    "faculty_id": "faculty6",
+    "itinery": [
+      {
+        "id": "11",
+        "category": "Math",
+        "question": "What is 3*3?",
+        "options": ["6", "9", "12", "15"],
+        "correctAns": "9"
+      },
+      {
+        "id": "12",
+        "category": "Science",
+        "question": "What planet is known as the Red Planet?",
+        "options": ["Earth", "Mars", "Jupiter", "Venus"],
+        "correctAns": "Mars"
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "aName": "Product Seven",
+    "aDes": "Description for product seven.",
+    "aImgSrc": "https://example.com/img7.jpg",
+    "aPrice": 79.99,
+    "marks": 92,
+    "time": "2024-06-29T10:00:00Z",
+    "course_id": "course7",
+    "faculty_id": "faculty7",
+    "itinery": [
+      {
+        "id": "13",
+        "category": "History",
+        "question": "Who discovered America?",
+        "options": ["Columbus", "Magellan", "Vespucci", "Cook"],
+        "correctAns": "Columbus"
+      },
+      {
+        "id": "14",
+        "category": "Geography",
+        "question": "What is the largest desert in the world?",
+        "options": ["Sahara", "Gobi", "Kalahari", "Arctic"],
+        "correctAns": "Sahara"
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "aName": "Product Eight",
+    "aDes": "Description for product eight.",
+    "aImgSrc": "https://example.com/img8.jpg",
+    "aPrice": 89.99,
+    "marks": 85,
+    "time": "2024-06-30T10:00:00Z",
+    "course_id": "course8",
+    "faculty_id": "faculty8",
+    "itinery": [
+      {
+        "id": "15",
+        "category": "Literature",
+        "question": "Who wrote 'Moby Dick'?",
+        "options": ["Melville", "Twain", "Hawthorne", "Thoreau"],
+        "correctAns": "Melville"
+      },
+      {
+        "id": "16",
+        "category": "Science",
+        "question": "What is the speed of light?",
+        "options": [
+          "299,792,458 m/s",
+          "300,000,000 m/s",
+          "150,000,000 m/s",
+          "299,792,458 km/s"
+        ],
+        "correctAns": "299,792,458 m/s"
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "aName": "Maths",
+    "aDes": "Maths Test for algebra",
+    "aImgSrc": "abc.png",
+    "aPrice": 50,
+    "marks": 100,
+    "time": "2024-06-30T10:00:00Z",
+    "course_id": "12345",
+    "faculty_id": "faculty9",
+    "itinery": [
+      {
+        "id": "1",
+        "category": "mcq",
+        "question": "2*3",
+        "options": {
+          "optionA": "1",
+          "optionB": "2",
+          "optionC": "3",
+          "optionD": "6"
+        },
+        "correctAns": "6"
+      }
+    ]
+  }
+=======
     {
         "_id": "1",
         "aName": "Product One",
@@ -110,4 +358,5 @@
             }
         ]
     }
+>>>>>>> 9e1866ba5cbb5379cee09fd5926c6773166b2c9f
 ]

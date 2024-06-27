@@ -11,6 +11,7 @@ export interface PurchaseItem {
 }
 
 export interface Purchase {
+  id: string;
   userId: string;
   items: PurchaseItem[];
 }

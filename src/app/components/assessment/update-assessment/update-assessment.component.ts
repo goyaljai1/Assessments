@@ -1,4 +1,3 @@
-// update-assessment.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Itinery, Product } from '../../../models/add-assessment';

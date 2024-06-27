@@ -1,4 +1,100 @@
 [
+<<<<<<< HEAD
+  {
+    "_id": "1",
+    "fName": "John",
+    "lName": "Doe",
+    "email": "john.doe@example.com",
+    "mobile": "1234567890",
+    "dob": "1990-01-01",
+    "role": "faculty",
+    "password": "pass123",
+    "address": {
+      "houseNo": "1",
+      "street": "st",
+      "area": "ar",
+      "state": "st",
+      "country": "co",
+      "pincode": "10"
+    }
+  },
+  {
+    "_id": "2",
+    "fName": "Jack",
+    "lName": "Doe",
+    "email": "jack.doe@example.com",
+    "mobile": "1234567890",
+    "dob": "1990-01-01",
+    "role": "faculty",
+    "password": "pass123",
+    "address": {
+      "houseNo": "18",
+      "street": "18th Cross",
+      "area": "Central",
+      "city": "Random",
+      "state": "Random State",
+      "zipCode": "12345",
+      "country": "India"
+    }
+  },
+  {
+    "_id": "3",
+    "fName": "Peter",
+    "lName": "Parker",
+    "email": "this@gmail.com",
+    "mobile": "1234567890",
+    "dob": "1995-05-15",
+    "role": "faculty",
+    "password": "password123",
+    "address": {
+      "houseNo": "20",
+      "street": "Pine Street",
+      "area": "Queens",
+      "city": "New York",
+      "state": "NY",
+      "zipCode": "10001",
+      "country": "USA"
+    }
+  },
+  {
+    "_id": "4",
+    "fName": "Jai",
+    "lName": "Goyal",
+    "email": "jai@example.com",
+    "mobile": "1022345678",
+    "dob": "1988-03-22",
+    "role": "user",
+    "password": "securepass",
+    "address": {
+      "houseNo": "32",
+      "street": "Maple Street",
+      "area": "Downtown",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "zipCode": "400001",
+      "country": "India"
+    }
+  },
+  {
+    "_id": "5",
+    "fName": "Rick",
+    "lName": "Sanchez",
+    "email": "rick@example.com",
+    "mobile": "8989123456",
+    "dob": "1950-12-31",
+    "role": "faculty",
+    "password": "scientist123",
+    "address": {
+      "houseNo": "101",
+      "street": "Elm Street",
+      "area": "Old Town",
+      "city": "San Francisco",
+      "state": "California",
+      "zipCode": "94102",
+      "country": "USA"
+    }
+  }
+=======
     {
         "_id": "1",
         "fName": "John",
@@ -88,4 +184,5 @@
             "pincode": ""
         }
     }
+>>>>>>> 9e1866ba5cbb5379cee09fd5926c6773166b2c9f
 ]

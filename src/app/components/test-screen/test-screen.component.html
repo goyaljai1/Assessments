@@ -1,0 +1,169 @@
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+        <div class="sidebar">
+          <div class="sidebar-header">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="bi bi-person-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+              <path
+                fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+              />
+            </svg>
+            <h4 id="sidebar-username">John</h4>
+          </div>
+
+          <!-- Placeholder for the username -->
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/dashboard']">
+                <span data-feather="home"></span>
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" [routerLink]="['/testScreen']">
+                <span data-feather="file"></span>
+                Assessments
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/resultScreen']">
+                <span data-feather="bar-chart-2"></span>
+                Results
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="users"></span>
+                Attendance
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <div class="col-md-12">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">Recent Assessments</h4>
+            </div>
+            <div class="card-body">
+              <div *ngIf="!selectedAssessment">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Assessment Name</th>
+                      <th>Marks</th>
+                      <th>Time</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let assessment of arrAssessment">
+                      <td>{{ assessment.aName }}</td>
+                      <td>{{ assessment.marks }}</td>
+                      <td>{{ assessment.time | date : "short" }}</td>
+                      <td>
+                        <button
+                          type="button"
+                          class="btn"
+                          [ngClass]="{
+                            'btn-primary': !isAttempted(assessment.id),
+                            'btn-secondary': isAttempted(assessment.id)
+                          }"
+                          [disabled]="isAttempted(assessment.id)"
+                          (click)="attemptAssessment(assessment.id)"
+                        >
+                          {{
+                            isAttempted(assessment.id)
+                              ? "Already Attempted"
+                              : "Attempt"
+                          }}
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button
+                  type="button"
+                  class="btn btn-lg btn-block btn-primary"
+                  (click)="seeAssessments()"
+                >
+                  <a class="nav-link" [routerLink]="['/testScreen']"
+                    >View All</a
+                  >
+                </button>
+              </div>
+              <div *ngIf="selectedAssessment">
+                <h2>{{ selectedAssessment.aName }}</h2>
+                <p>{{ selectedAssessment.aDes }}</p>
+                <p>Marks: {{ selectedAssessment.marks }}</p>
+                <p>Time: {{ selectedAssessment.time | date : "short" }}</p>
+
+                <mat-horizontal-stepper linear>
+                  <ng-container
+                    *ngFor="
+                      let item of selectedAssessment.itinery;
+                      let i = index
+                    "
+                  >
+                    <mat-step [stepControl]="itemForm[i]">
+                      <form [formGroup]="itemForm[i]">
+                        <ng-template matStepLabel>{{
+                          item.category
+                        }}</ng-template>
+                        <p>{{ item.question }}</p>
+                        <mat-radio-group formControlName="selectedOption">
+                          <mat-radio-button
+                            *ngFor="let option of item.options"
+                            [value]="option"
+                          >
+                            {{ option }}
+                          </mat-radio-button>
+                        </mat-radio-group>
+                        <div>
+                          <button mat-button matStepperPrevious *ngIf="i > 0">
+                            Back
+                          </button>
+                          <button
+                            mat-button
+                            matStepperNext
+                            *ngIf="i < selectedAssessment.itinery.length - 1"
+                          >
+                            Next
+                          </button>
+                          <br />
+                          <br />
+                          <button
+                            type="button"
+                            class="btn btn-success"
+                            (click)="goBack()"
+                            *ngIf="i === selectedAssessment.itinery.length - 1"
+                          >
+                            Submit
+                          </button>
+                        </div>
+                      </form>
+                    </mat-step>
+                  </ng-container>
+                </mat-horizontal-stepper>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</main>

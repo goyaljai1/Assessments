@@ -11,9 +11,7 @@ import { CheckoutServiceService } from '../../services/checkout-service.service'
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  hidden = false;
   myForm: FormGroup;
-  userArr: User[] = [];
   isLoggedIn: boolean = false;
   totalItems: number = 0;
 
@@ -43,8 +41,6 @@ export class NavbarComponent implements OnInit {
     this.checkoutService.checkoutEvent.subscribe((cartItems) => {
       this.totalItems = cartItems.length;
     });
-
-    this.checkLogin();
   }
 
   checkLogin() {
@@ -63,8 +59,8 @@ export class NavbarComponent implements OnInit {
 
     if (loggedInUser) {
       this.isLoggedIn = true;
-
       this.localStorageService.setItem('role', loggedInUser.role);
+      this.localStorageService.setItem('name', loggedInUser.fName);
       let role = this.localStorageService.getItem('role');
       console.log(role);
       if (role === 'Admin') {

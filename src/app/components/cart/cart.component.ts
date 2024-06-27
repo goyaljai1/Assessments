@@ -70,20 +70,31 @@ export class CartComponent implements OnInit {
       return total + cartItem.quantity;
     }, 0);
   }
+  generateUniqueId(items: { id: string }[]): string {
+    if (items.length === 0) {
+      return '1';
+    }
 
-  checkout() {
-    console.log(this.cartItems);
+    const maxId = Math.max(...items.map((item) => parseInt(item.id)));
+    return String(maxId + 1);
+  }
+  async checkout() {
     alert('Checkout functionality to be implemented.');
+    console.log(this.cartItems);
 
-    this.http
-      .get<Purchase[]>(this.purchasesUrl)
-      .subscribe((existingPurchases) => {
+    try {
+      const existingPurchases = await this.http
+        .get<Purchase[]>(this.purchasesUrl)
+        .toPromise();
+      console.log(this.cartItems);
+
+      if (existingPurchases) {
         const existingPurchase = existingPurchases.find(
           (purchase) => purchase.userId === this.userId
         );
+        console.log(existingPurchase);
 
         if (existingPurchase) {
-          // Update existing purchase
           existingPurchase.items.forEach((existingItem: PurchaseItem) => {
             const cartItem = this.cartItems.find(
               (item) => item.item.id === existingItem.assessmentId
@@ -93,7 +104,6 @@ export class CartComponent implements OnInit {
             }
           });
 
-          // Add new items that were not in the existing purchase
           this.cartItems.forEach((cartItem) => {
             if (
               !existingPurchase.items.find(
@@ -107,20 +117,22 @@ export class CartComponent implements OnInit {
             }
           });
 
-          this.checkoutService.updatePurchase(existingPurchase).subscribe(
-            (response) => {
-              console.log('Purchase details updated successfully:', response);
-              this.cartService.clearCart();
-              this.cartItems = this.cartService.getCartItems();
-              this.calculateTotals();
-            },
-            (error) => {
-              console.error('Error updating purchase details:', error);
-            }
-          );
+          try {
+            const response = await this.checkoutService
+              .updatePurchase(existingPurchase)
+              .toPromise();
+            console.log('Purchase details updated successfully:', response);
+            this.cartService.clearCart();
+            this.cartItems = this.cartService.getCartItems();
+            this.calculateTotals();
+          } catch (error) {
+            console.error('Error updating purchase details:', error);
+          }
         } else {
-          // Create new purchase
+          const newPurchaseId = this.generateUniqueId(existingPurchases);
+          console.log(this.cartItems);
           const purchaseDetails: Purchase = {
+            id: newPurchaseId,
             userId: this.userId,
             items: this.cartItems.map((item) => ({
               assessmentId: item.item.id,
@@ -128,33 +140,26 @@ export class CartComponent implements OnInit {
             })),
           };
 
-          this.checkoutService.checkout(purchaseDetails).subscribe(
-            (response) => {
-              console.log('Purchase details stored successfully:', response);
-              this.cartService.clearCart();
-              this.cartItems = this.cartService.getCartItems();
-              this.calculateTotals();
-            },
-            (error) => {
-              console.error('Error storing purchase details:', error);
-            }
-          );
+          try {
+            const response = await this.checkoutService
+              .checkout(purchaseDetails)
+              .toPromise();
+            console.log('Purchase details stored successfully:', response);
+          } catch (error) {
+            console.error('Error storing purchase details:', error);
+          }
         }
-      });
+      } else {
+        console.error('Error: existingPurchases is undefined');
+      }
+    } catch (error) {
+      console.error('Error fetching existing purchases:', error);
+    }
 
     this.checkoutService.emitCheckoutEvent(this.cartItems);
     this.cartService.clearCart();
     this.cartItems = this.cartService.getCartItems();
 
     this.calculateTotals();
-  }
-
-  generateUniqueId(items: { id: string }[]): string {
-    if (items.length === 0) {
-      return '1';
-    }
-
-    const maxId = Math.max(...items.map((item) => parseInt(item.id)));
-    return String(maxId + 1);
   }
 }

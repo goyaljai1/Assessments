@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { CartItem } from '../../models/add-assessment';
-import { CheckoutServiceService } from '../../services/checkout-service.service';
-import { Purchase, PurchaseItem } from '../../models/cart';
-import { DashboardService } from '../../services/dashboard.service';
-import { LocalStorageService } from '../../services/local-storage-service.service';
+import { Purchase, PurchaseItem } from '../../../models/cart';
+import { LocalStorageService } from '../../../services/local-storage-service.service';
+import { DashboardService } from '../../../services/dashboard.service';
+
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  selector: 'app-result-screen',
+  templateUrl: './result-screen.component.html',
+  styleUrl: './result-screen.component.scss',
 })
-export class DashboardComponent implements OnInit {
+export class ResultScreenComponent implements OnInit {
   userId: string = '1'; // Replace with actual logic to get current logged-in user ID
   assessments: PurchaseItem[] = [];
   userName: string = 'name';
@@ -23,7 +22,7 @@ export class DashboardComponent implements OnInit {
     if (name) {
       this.userName = name;
     } else {
-      this.userName = ''; 
+      this.userName = '';
     }
   }
   ngOnInit(): void {

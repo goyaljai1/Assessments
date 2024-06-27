@@ -1,0 +1,90 @@
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+        <div class="sidebar">
+          <div class="sidebar-header">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="bi bi-person-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+              <path
+                fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+              />
+            </svg>
+            <h4 id="sidebar-username">{{ userName }}</h4>
+          </div>
+
+          <!-- Placeholder for the username -->
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/dashboard']">
+                <span data-feather="home"></span>
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/testScreen']">
+                <span data-feather="file"></span>
+                Assessments
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" [routerLink]="['/resultScreen']">
+                <span data-feather="bar-chart-2"></span>
+                Results
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="users"></span>
+                Attendance
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+        >
+          <h1 class="h2">Your Performance</h1>
+        </div>
+
+        <!-- Content Cards -->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Assessment Name</th>
+              <th scope="col">Total Marks</th>
+              <th scope="col">Marks Obtained</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Maths</td>
+              <td>100</td>
+              <td>60</td>
+              <td>
+                <button class="btn btn-primary">View Results</button>
+                <button class="btn btn-primary" style="margin-left: 20px">
+                  Download Results
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+    </div>
+  </div>
+</main>

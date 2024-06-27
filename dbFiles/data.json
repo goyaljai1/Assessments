@@ -125,7 +125,7 @@
       "id": "1",
       "aName": "Product One",
       "aDes": "Description for product one.",
-      "aImgSrc": "https://example.com/img1.jpg",
+      "aImgSrc": "",
       "aPrice": 29.99,
       "marks": 85,
       "time": "2024-06-23T10:00:00Z",
@@ -161,7 +161,7 @@
       "id": "2",
       "aName": "Product Two",
       "aDes": "Description for product two.",
-      "aImgSrc": "https://example.com/img2.jpg",
+      "aImgSrc": "",
       "aPrice": 49.99,
       "marks": 90,
       "time": "2024-06-24T10:00:00Z",
@@ -197,7 +197,7 @@
       "id": "3",
       "aName": "Product Three",
       "aDes": "Description for product three.",
-      "aImgSrc": "https://example.com/img3.jpg",
+      "aImgSrc": "",
       "aPrice": 19.99,
       "marks": 75,
       "time": "2024-06-25T10:00:00Z",
@@ -233,7 +233,7 @@
       "id": "4",
       "aName": "Product Four",
       "aDes": "Description for product four.",
-      "aImgSrc": "https://example.com/img4.jpg",
+      "aImgSrc": "",
       "aPrice": 39.99,
       "marks": 80,
       "time": "2024-06-26T10:00:00Z",
@@ -269,7 +269,7 @@
       "id": "5",
       "aName": "Product Five",
       "aDes": "Description for product five.",
-      "aImgSrc": "https://example.com/img5.jpg",
+      "aImgSrc": "",
       "aPrice": 59.99,
       "marks": 95,
       "time": "2024-06-27T10:00:00Z",
@@ -305,7 +305,7 @@
       "id": "6",
       "aName": "Product Six",
       "aDes": "Description for product six.",
-      "aImgSrc": "https://example.com/img6.jpg",
+      "aImgSrc": "",
       "aPrice": 69.99,
       "marks": 88,
       "time": "2024-06-28T10:00:00Z",
@@ -341,7 +341,7 @@
       "id": "7",
       "aName": "Product Seven",
       "aDes": "Description for product seven.",
-      "aImgSrc": "https://example.com/img7.jpg",
+      "aImgSrc": "",
       "aPrice": 79.99,
       "marks": 92,
       "time": "2024-06-29T10:00:00Z",
@@ -377,7 +377,7 @@
       "id": "8",
       "aName": "Product Eight",
       "aDes": "Description for product eight.",
-      "aImgSrc": "https://example.com/img8.jpg",
+      "aImgSrc": "",
       "aPrice": 89.99,
       "marks": 85,
       "time": "2024-06-30T10:00:00Z",
@@ -427,7 +427,7 @@
       ],
       "aName": "Maths ",
       "aDes": "Maths Test for algebra",
-      "aImgSrc": "abc.png",
+      "aImgSrc": "",
       "aPrice": "50",
       "marks": "100",
       "time": "2024-06-30T10:00:00Z",
@@ -458,9 +458,26 @@
   ],
   "purchases": [
     {
-      "id": "49a1",
+      "id": "1",
       "userId": "1",
-      "items": []
+      "items": [
+        {
+          "assessmentId": "2",
+          "quantity": 1
+        },
+        {
+          "assessmentId": "3",
+          "quantity": 1
+        },
+        {
+          "assessmentId": "6",
+          "quantity": 1
+        },
+        {
+          "assessmentId": "8",
+          "quantity": 1
+        }
+      ]
     }
   ],
   "category": [

@@ -10,6 +10,8 @@ import { AdminGaurd } from './guard/admingaurd';
 import { ViewAssessmentDetailsComponent } from './components/view-assessment-details/view-assessment-details.component';
 import { CartComponent } from './components/cart/cart.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TestScreenComponent } from './components/test-screen/test-screen.component';
+import { ResultScreenComponent } from './components/dashboard/result-screen/result-screen.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,8 +21,10 @@ const routes: Routes = [
   { path: 'assessment', component: AssessmentComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AdminGaurd] },
   { path: 'navbar', component: NavbarComponent },
-  { path: 'cart', component: CartComponent},
-  { path: 'dashboard', component: DashboardComponent},
+  { path: 'cart', component: CartComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'testScreen', component: TestScreenComponent },
+  {path: 'resultScreen', component:ResultScreenComponent},
   {
     path: 'view-assessment',
     component: AssessmentComponent

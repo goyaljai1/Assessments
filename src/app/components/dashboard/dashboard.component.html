@@ -3,22 +3,41 @@
     <div class="row">
       <!-- Sidebar -->
       <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-        <div class="sidebar-sticky">
+        <div class="sidebar">
+          <div class="sidebar-header">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="bi bi-person-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+              <path
+                fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+              />
+            </svg>
+            <h4 id="sidebar-username">{{ userName }}</h4>
+          </div>
+
+          <!-- Placeholder for the username -->
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" href="#">
+              <a class="nav-link active" [routerLink]="['/dashboard']">
                 <span data-feather="home"></span>
-                Dashboard <span class="sr-only">(current)</span>
+                Home
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" [routerLink]="['/testScreen']">
                 <span data-feather="file"></span>
                 Assessments
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" [routerLink]="['/resultScreen']">
                 <span data-feather="bar-chart-2"></span>
                 Results
               </a>
@@ -55,8 +74,14 @@
                     {{ assessment.quantity }}
                   </li>
                 </ul>
-                <button type="button" class="btn btn-lg btn-block btn-primary">
-                  View All
+                <button
+                  type="button"
+                  class="btn btn-lg btn-block btn-primary"
+                  (click)="seeAssessments()"
+                >
+                  <a class="nav-link" [routerLink]="['/testScreen']"
+                    >View All</a
+                  >
                 </button>
               </div>
             </div>

@@ -37,10 +37,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ViewAssessmentComponent } from './components/assessment/view-assessment/view-assessment.component';
 import { TruncatePipe } from './pipe/truncate.pipe';
+import { TestScreenComponent } from './components/test-screen/test-screen.component';
 import { AddCategoryComponent } from './components/category/add-category/add-category.component';
 import { ViewCategoryComponent } from './components/category/view-category/view-category.component';
 import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
 import { UpdateAssessmentComponent } from './components/assessment/update-assessment/update-assessment.component';
+import { ResultScreenComponent } from './components/dashboard/result-screen/result-screen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,10 +66,12 @@ import { UpdateAssessmentComponent } from './components/assessment/update-assess
     DashboardComponent,
     ViewAssessmentComponent,
     TruncatePipe,
+    TestScreenComponent,
     AddCategoryComponent,
     ViewCategoryComponent,
     UpdateCategoryComponent,
     UpdateAssessmentComponent,
+    ResultScreenComponent,
   ],
   imports: [
     BrowserModule,
