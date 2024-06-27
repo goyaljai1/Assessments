@@ -43,6 +43,10 @@ import { ViewCategoryComponent } from './components/category/view-category/view-
 import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
 import { UpdateAssessmentComponent } from './components/assessment/update-assessment/update-assessment.component';
 import { ResultScreenComponent } from './components/dashboard/result-screen/result-screen.component';
+import { AttendanceScreenComponent } from './components/dashboard/attendance-screen/attendance-screen.component';
+import { AssessmentPlotComponent } from './components/assessment-plot/assessment-plot.component';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +76,8 @@ import { ResultScreenComponent } from './components/dashboard/result-screen/resu
     UpdateCategoryComponent,
     UpdateAssessmentComponent,
     ResultScreenComponent,
+    AttendanceScreenComponent,
+    AssessmentPlotComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,6 +96,7 @@ import { ResultScreenComponent } from './components/dashboard/result-screen/resu
     MatRadioModule,
     HttpClientModule,
     MatBadgeModule,
+    CanvasJSAngularChartsModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

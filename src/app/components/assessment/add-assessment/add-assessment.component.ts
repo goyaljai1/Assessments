@@ -19,7 +19,7 @@ export class AddAssessmentComponent implements OnInit {
   count = 0;
   countSecondFormSubmit = 0;
 
-  product: Product = new Product('', '', '', '', 0, 0, '', '', []);
+  product: Product = new Product('', '', '', '', 0, 0, 0, '', []);
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   public itineryForm: FormGroup;
@@ -31,7 +31,7 @@ export class AddAssessmentComponent implements OnInit {
   selectedCar: number = 1;
   htmlItinery: Itinery[] = [];
 
-  tempProduct: Product = new Product('', '', '', '', 0, 0, '', '', []);
+  tempProduct: Product = new Product('', '', '', '', 0, 0, 0, '', []);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -55,7 +55,7 @@ export class AddAssessmentComponent implements OnInit {
       secondCtrl: ['', Validators.required],
     });
 
-    this.product = new Product('', '', '', '', 0, 0, '', '', this.itineries);
+    this.product = new Product('', '', '', '', 0, 0, 0, '', this.itineries);
   }
 
   ngOnInit(): void {

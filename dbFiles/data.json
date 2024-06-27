@@ -128,7 +128,7 @@
       "aImgSrc": "",
       "aPrice": 29.99,
       "marks": 85,
-      "time": "2024-06-23T10:00:00Z",
+      "time": 60,
       "course_id": "course1",
       "itinery": [
         {
@@ -154,6 +154,18 @@
             "Carbon Dioxide"
           ],
           "correctAns": "Water"
+        },
+        {
+          "id": "3",
+          "category": "Science",
+          "question": "What is C02?",
+          "options": [
+            "Oxygen",
+            "Hydrogen",
+            "Water",
+            "Carbon Dioxide"
+          ],
+          "correctAns": "Carbon Dioxide"
         }
       ]
     },
@@ -164,7 +176,7 @@
       "aImgSrc": "",
       "aPrice": 49.99,
       "marks": 90,
-      "time": "2024-06-24T10:00:00Z",
+      "time": 60,
       "course_id": "course2",
       "itinery": [
         {
@@ -200,7 +212,7 @@
       "aImgSrc": "",
       "aPrice": 19.99,
       "marks": 75,
-      "time": "2024-06-25T10:00:00Z",
+      "time": 60,
       "course_id": "course3",
       "itinery": [
         {
@@ -236,7 +248,7 @@
       "aImgSrc": "",
       "aPrice": 39.99,
       "marks": 80,
-      "time": "2024-06-26T10:00:00Z",
+      "time": 60,
       "course_id": "course4",
       "itinery": [
         {
@@ -272,7 +284,7 @@
       "aImgSrc": "",
       "aPrice": 59.99,
       "marks": 95,
-      "time": "2024-06-27T10:00:00Z",
+      "time": 60,
       "course_id": "course5",
       "itinery": [
         {
@@ -308,7 +320,7 @@
       "aImgSrc": "",
       "aPrice": 69.99,
       "marks": 88,
-      "time": "2024-06-28T10:00:00Z",
+      "time": 60,
       "course_id": "course6",
       "itinery": [
         {
@@ -344,7 +356,7 @@
       "aImgSrc": "",
       "aPrice": 79.99,
       "marks": 92,
-      "time": "2024-06-29T10:00:00Z",
+      "time": 60,
       "course_id": "course7",
       "itinery": [
         {
@@ -380,7 +392,7 @@
       "aImgSrc": "",
       "aPrice": 89.99,
       "marks": 85,
-      "time": "2024-06-30T10:00:00Z",
+      "time": 60,
       "course_id": "course8",
       "itinery": [
         {
@@ -430,7 +442,7 @@
       "aImgSrc": "",
       "aPrice": "50",
       "marks": "100",
-      "time": "2024-06-30T10:00:00Z",
+      "time": 60,
       "course_id": "12345"
     }
   ],
@@ -441,7 +453,7 @@
       "items": [
         {
           "assessmentId": "2",
-          "quantity": 1
+          "quantity": 3
         },
         {
           "assessmentId": "3",
@@ -453,6 +465,10 @@
         },
         {
           "assessmentId": "8",
+          "quantity": 1
+        },
+        {
+          "assessmentId": "1",
           "quantity": 1
         }
       ]
@@ -478,6 +494,103 @@
     {
       "id": "106",
       "catDescription": "Course Category Description 106"
+    }
+  ],
+  "assessment-score": [
+    {
+      "id": "1",
+      "assessmentId": "1",
+      "userId": "1",
+      "score": 56,
+      "totalMarks": 85,
+      "assessmentName": "Product One",
+      "marksArray": [
+        28,
+        0,
+        28
+      ]
+    },
+    {
+      "id": "2",
+      "assessmentId": "1",
+      "userId": "1",
+      "score": 56,
+      "totalMarks": 85,
+      "assessmentName": "Product One",
+      "marksArray": [
+        28,
+        28,
+        0
+      ]
+    },
+    {
+      "id": "3",
+      "assessmentId": "1",
+      "userId": "1",
+      "score": 112,
+      "totalMarks": 85,
+      "assessmentName": "Product One",
+      "marksArray": [
+        28,
+        28,
+        0,
+        28,
+        28,
+        0
+      ]
+    },
+    {
+      "id": "4",
+      "assessmentId": "1",
+      "userId": "1",
+      "score": 168,
+      "totalMarks": 85,
+      "assessmentName": "Product One",
+      "marksArray": [
+        28,
+        28,
+        0,
+        28,
+        28,
+        0,
+        28,
+        28,
+        0
+      ]
+    },
+    {
+      "id": "5",
+      "assessmentId": "1",
+      "userId": "1",
+      "score": 224,
+      "totalMarks": 85,
+      "assessmentName": "Product One",
+      "marksArray": [
+        28,
+        28,
+        0,
+        28,
+        28,
+        0,
+        28,
+        28,
+        0,
+        28,
+        28,
+        0
+      ]
+    },
+    {
+      "id": "6",
+      "assessmentId": "2",
+      "userId": "1",
+      "score": 45,
+      "totalMarks": 90,
+      "assessmentName": "Product Two",
+      "marksArray": [
+        0,
+        45
+      ]
     }
   ]
 }

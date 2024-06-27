@@ -43,7 +43,7 @@ export class ProductService {
       }
     }
 
-    return new Product('', '', '', '', 0, 0, '', '', []);
+    return new Product('', '', '', '', 0, 0, 0, '', []);
   }
 
   updateProduct(p: Product): Observable<Product[]> {
