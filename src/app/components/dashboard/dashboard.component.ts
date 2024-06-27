@@ -3,6 +3,7 @@ import { CartItem } from '../../models/add-assessment';
 import { CheckoutServiceService } from '../../services/checkout-service.service';
 import { Purchase, PurchaseItem } from '../../models/cart';
 import { DashboardService } from '../../services/dashboard.service';
+import { LocalStorageService } from '../../services/local-storage-service.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,13 +12,27 @@ import { DashboardService } from '../../services/dashboard.service';
 export class DashboardComponent implements OnInit {
   userId: string = '1'; // Replace with actual logic to get current logged-in user ID
   assessments: PurchaseItem[] = [];
+  userName: string = 'name';
 
-  constructor(private assessmentService: DashboardService) {}
-
+  constructor(
+    private assessmentService: DashboardService,
+    private localStorageService: LocalStorageService
+  ) {}
+  private getUserName(): void {
+    const name = this.localStorageService.getItem('name');
+    if (name) {
+      this.userName = name;
+    } else {
+      this.userName = ''; 
+    }
+  }
   ngOnInit(): void {
+    this.getUserName();
     this.loadUserAssessments();
   }
-
+  seeAssessments() {
+    console.log('Hello');
+  }
   loadUserAssessments(): void {
     this.assessmentService.getUserAssessments(this.userId).subscribe(
       (purchases: Purchase[]) => {

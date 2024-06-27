@@ -37,6 +37,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ViewAssessmentComponent } from './components/assessment/view-assessment/view-assessment.component';
 import { TruncatePipe } from './pipe/truncate.pipe';
+import { TestScreenComponent } from './components/test-screen/test-screen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +61,7 @@ import { TruncatePipe } from './pipe/truncate.pipe';
     DashboardComponent,
     ViewAssessmentComponent,
     TruncatePipe,
+    TestScreenComponent,
   ],
   imports: [
     BrowserModule,

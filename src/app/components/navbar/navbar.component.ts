@@ -65,6 +65,7 @@ export class NavbarComponent implements OnInit {
       this.isLoggedIn = true;
 
       this.localStorageService.setItem('role', loggedInUser.role);
+      this.localStorageService.setItem('name', loggedInUser.fName);
       let role = this.localStorageService.getItem('role');
       console.log(role);
       if (role === 'Admin') {
