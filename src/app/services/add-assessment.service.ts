@@ -18,7 +18,7 @@ export class ProductService {
       'Content-Type': 'application/json',
     }),
   };
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,private http: HttpClient) {
     this, (this.arrProducts = []);
   }
 
@@ -45,7 +45,9 @@ export class ProductService {
 
     return new Product('', '', '', '', 0, 0, '', '', []);
   }
-
+  updateAssessment(product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.baseUrl}/assessments/${product.id}`, product);
+  }
   updateProduct(p: Product): Observable<Product[]> {
     return this.httpClient
       .put<Product[]>(

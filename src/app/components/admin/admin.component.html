@@ -6,486 +6,121 @@
     <div class="container" id="admin_crud">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button
-            class="nav-link active"
-            id="user-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#user-tab-pane"
-            type="button"
-            role="tab"
-            aria-controls="user-tab-pane"
-            aria-selected="true"
-          >
+          <button class="nav-link active" id="user-tab" data-bs-toggle="tab" data-bs-target="#user-tab-pane"
+            type="button" role="tab" aria-controls="user-tab-pane" aria-selected="true">
             User
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="course-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#course-tab-pane"
-            type="button"
-            role="tab"
-            aria-controls="course-tab-pane"
-            aria-selected="false"
-          >
+          <button class="nav-link" id="course-tab" data-bs-toggle="tab" data-bs-target="#course-tab-pane" type="button"
+            role="tab" aria-controls="course-tab-pane" aria-selected="false">
             Course
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="course-category-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#course-category-tab-pane"
-            type="button"
-            role="tab"
-            aria-controls="course-category-tab-pane"
-            aria-selected="false"
-          >
+          <button class="nav-link" id="course-category-tab" data-bs-toggle="tab"
+            data-bs-target="#course-category-tab-pane" type="button" role="tab" aria-controls="course-category-tab-pane"
+            aria-selected="false">
             Course Category
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="assessment-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#assessment-tab-pane"
-            type="button"
-            role="tab"
-            aria-controls="assessment-tab-pane"
-            aria-selected="false"
-          >
+          <button class="nav-link" id="assessment-tab" data-bs-toggle="tab" data-bs-target="#assessment-tab-pane"
+            type="button" role="tab" aria-controls="assessment-tab-pane" aria-selected="false">
             Assessment
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="assessment-score-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#assessment-score-tab-pane"
-            type="button"
-            role="tab"
-            aria-controls="assessment-score-tab-pane"
-            aria-selected="false"
-          >
+          <button class="nav-link" id="assessment-score-tab" data-bs-toggle="tab"
+            data-bs-target="#assessment-score-tab-pane" type="button" role="tab"
+            aria-controls="assessment-score-tab-pane" aria-selected="false">
             Assessment Score
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="report-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#report-tab-pane"
-            type="button"
-            role="tab"
-            aria-controls="report-tab-pane"
-            aria-selected="false"
-          >
+          <button class="nav-link" id="report-tab" data-bs-toggle="tab" data-bs-target="#report-tab-pane" type="button"
+            role="tab" aria-controls="report-tab-pane" aria-selected="false">
             Report
           </button>
         </li>
       </ul>
       <div class="tab-content">
-        <div
-          class="tab-pane fade show active"
-          id="user-tab-pane"
-          role="tabpanel"
-          aria-labelledby="user-tab"
-          tabindex="0"
-        >
+        <div class="tab-pane fade show active" id="user-tab-pane" role="tabpanel" aria-labelledby="user-tab"
+          tabindex="0">
           <div class="container" style="padding: 10px">Welcome User...</div>
           <div class="container">
-            <!-- Main Navigation Tabs -->
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <ul class="nav nav-pills mb-3" id="user-pills-tab" role="tablist">
               <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link active"
-                  id="faculty-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#faculty"
-                  type="button"
-                  role="tab"
-                  aria-controls="faculty"
-                  aria-selected="true"
-                >
-                  Faculty
+                <button class="nav-link active" id="user-view-tab" data-bs-toggle="pill" data-bs-target="#user-view"
+                  type="button" role="tab" aria-controls="user-view" aria-selected="true">
+                  View
                 </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="trainee-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#trainee"
-                  type="button"
-                  role="tab"
-                  aria-controls="trainee"
-                  aria-selected="false"
-                >
-                  Trainee
+                <button class="nav-link" id="user-add-tab" data-bs-toggle="pill" data-bs-target="#user-add"
+                  type="button" role="tab" aria-controls="user-add" aria-selected="false">
+                  Add
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="user-update-tab" data-bs-toggle="pill" data-bs-target="#user-update"
+                  type="button" role="tab" aria-controls="user-update" aria-selected="false">
+                  Update
                 </button>
               </li>
             </ul>
-
-            <!-- Main Tab Content -->
-            <div class="tab-content" id="myTabContent">
-              <!-- Faculty Tab Content -->
-              <div
-                class="tab-pane fade show active"
-                id="faculty"
-                role="tabpanel"
-                aria-labelledby="faculty-tab"
-              >
-                <div class="container-fluid">
-                  <!-- Nested Tabs for Faculty -->
-                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                      <button
-                        class="nav-link active"
-                        id="pills-home-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#pills-home"
-                        type="button"
-                        role="tab"
-                        aria-controls="pills-home"
-                        aria-selected="true"
-                      >
-                        View
-                      </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button
-                        class="nav-link"
-                        id="pills-profile-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#pills-profile"
-                        type="button"
-                        role="tab"
-                        aria-controls="pills-profile"
-                        aria-selected="false"
-                      >
-                        Add
-                      </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button
-                        class="nav-link"
-                        id="pills-contact-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#pills-contact"
-                        type="button"
-                        role="tab"
-                        aria-controls="pills-contact"
-                        aria-selected="false"
-                      >
-                        Update
-                      </button>
-                    </li>
-                  </ul>
-                  <div class="tab-content" id="pills-tabContent">
-                    <div
-                      class="tab-pane fade show active"
-                      id="pills-home"
-                      role="tabpanel"
-                      aria-labelledby="pills-home-tab"
-                      tabindex="0"
-                    >
-                      <div>
-                        <div class="d-flex justify-content-center"></div>
-                        <div><app-view-user></app-view-user></div>
-                      </div>
-                    </div>
-                    <div
-                      class="tab-pane fade"
-                      id="pills-profile"
-                      role="tabpanel"
-                      aria-labelledby="pills-profile-tab"
-                      tabindex="0"
-                    >
-                      <div class="container" style="width: 60%">
-                        <h4>Add Faculty Form</h4>
-                        <app-add-user></app-add-user>
-                      </div>
-                    </div>
-                    <div
-                      class="tab-pane fade"
-                      id="pills-contact"
-                      role="tabpanel"
-                      aria-labelledby="pills-contact-tab"
-                      tabindex="0"
-                    >
-                      <div class="container" style="width: 60%">
-                        <h4>Update Faculty Form</h4>
-                        <app-update-user></app-update-user>
-                      </div>
-                    </div>
-                  </div>
+            <div class="tab-content" id="user-pills-tabContent">
+              <div class="tab-pane fade show active" id="user-view" role="tabpanel" aria-labelledby="user-view-tab"
+                tabindex="0">
+                <div>
+                  <div class="d-flex justify-content-center"></div>
+                  <div><app-view-user></app-view-user></div>
                 </div>
               </div>
-              <!-- Trainee Tab Content -->
-              <div
-                class="tab-pane fade"
-                id="trainee"
-                role="tabpanel"
-                aria-labelledby="trainee-tab"
-              >
-                <div class="container-fluid">
-                  <!-- Nested Tabs for Trainee -->
-                  <ul
-                    class="nav nav-pills mb-3"
-                    id="trainee-pills-tab"
-                    role="tablist"
-                  >
-                    <li class="nav-item" role="presentation">
-                      <button
-                        class="nav-link active"
-                        id="trainee-pills-home-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#trainee-pills-home"
-                        type="button"
-                        role="tab"
-                        aria-controls="trainee-pills-home"
-                        aria-selected="true"
-                      >
-                        View
-                      </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button
-                        class="nav-link"
-                        id="trainee-pills-profile-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#trainee-pills-profile"
-                        type="button"
-                        role="tab"
-                        aria-controls="trainee-pills-profile"
-                        aria-selected="false"
-                      >
-                        Add
-                      </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button
-                        class="nav-link"
-                        id="trainee-pills-contact-tab"
-                        data-bs-toggle="pill"
-                        data-bs-target="#trainee-pills-contact"
-                        type="button"
-                        role="tab"
-                        aria-controls="trainee-pills-contact"
-                        aria-selected="false"
-                      >
-                        Update
-                      </button>
-                    </li>
-                  </ul>
-                  <div class="tab-content" id="trainee-pills-tabContent">
-                    <div
-                      class="tab-pane fade show active"
-                      id="trainee-pills-home"
-                      role="tabpanel"
-                      aria-labelledby="trainee-pills-home-tab"
-                      tabindex="0"
-                    >
-                      <div>
-                        <div class="d-flex justify-content-center">
-                          <h4 class="text-center">Trainee Directory</h4>
-                        </div>
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Name</th>
-                              <th scope="col">Email</th>
-                              <th scope="col">Action</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                              <td>John Doe</td>
-                              <td>jdoeexample.com</td>
-                              <td>
-                                <button type="button" class="btn btn-danger">
-                                  Delete
-                                </button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <th scope="row">2</th>
-                              <td>Jane Smith</td>
-                              <td>jsmithexample.com</td>
-                              <td>
-                                <button type="button" class="btn btn-danger">
-                                  Delete
-                                </button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                              <td>Chris Johnson</td>
-                              <td>cjohnsonexample.com</td>
-                              <td>
-                                <button type="button" class="btn btn-danger">
-                                  Delete
-                                </button>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                    <div
-                      class="tab-pane fade"
-                      id="trainee-pills-profile"
-                      role="tabpanel"
-                      aria-labelledby="trainee-pills-profile-tab"
-                      tabindex="0"
-                    >
-                      <div class="container" style="width: 60%">
-                        <h4>Add Trainee Form</h4>
-                        <app-add-user></app-add-user>
-                      </div>
-                    </div>
-                    <div
-                      class="tab-pane fade"
-                      id="trainee-pills-contact"
-                      role="tabpanel"
-                      aria-labelledby="trainee-pills-contact-tab"
-                      tabindex="0"
-                    >
-                      <div class="container" style="width: 50%">
-                        <form class="needs-validation" novalidate>
-                          <div class="mb-3">
-                            <label for="traineeInputName" class="form-label"
-                              >Trainee Name</label
-                            >
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="traineeInputName"
-                              required
-                            />
-                            <div class="invalid-feedback">
-                              Please enter trainee name.
-                            </div>
-                          </div>
-                          <div class="mb-3">
-                            <label for="traineeInputOldEmail" class="form-label"
-                              >Trainee Old Email address</label
-                            >
-                            <input
-                              type="email"
-                              class="form-control"
-                              id="traineeInputOldEmail"
-                              aria-describedby="emailHelp"
-                              required
-                            />
-                            <div class="invalid-feedback">
-                              Please enter a valid email address.
-                            </div>
-                          </div>
-                          <div class="mb-3">
-                            <label for="traineeInputNewEmail" class="form-label"
-                              >Trainee New Email address</label
-                            >
-                            <input
-                              type="email"
-                              class="form-control"
-                              id="traineeInputNewEmail"
-                              aria-describedby="emailHelp"
-                              required
-                            />
-                            <div class="invalid-feedback">
-                              Please enter a valid email address.
-                            </div>
-                          </div>
-                          <div class="mb-3 form-check">
-                            <input
-                              type="checkbox"
-                              class="form-check-input"
-                              id="traineeCheck"
-                            />
-                            <label class="form-check-label" for="traineeCheck"
-                              >Check me out</label
-                            >
-                          </div>
-                          <button type="submit" class="btn btn-success">
-                            Update Details
-                          </button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+              <div class="tab-pane fade" id="user-add" role="tabpanel" aria-labelledby="user-add-tab" tabindex="0">
+                <div class="container" style="width: 60%">
+                  <h4>Add User Form</h4>
+                  <app-add-user></app-add-user>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="user-update" role="tabpanel" aria-labelledby="user-update-tab"
+                tabindex="0">
+                <div class="container" style="width: 60%">
+                  <h4>Update User Form</h4>
+                  <app-update-user></app-update-user>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div
-          class="tab-pane fade"
-          id="course-tab-pane"
-          role="tabpanel"
-          aria-labelledby="course-tab"
-          tabindex="0"
-        >
+        <div class="tab-pane fade" id="course-tab-pane" role="tabpanel" aria-labelledby="course-tab" tabindex="0">
           <div class="container" style="padding-top: 20px">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link active"
-                  id="pills-course-view-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-course-view"
-                  type="button"
-                  role="tab"
-                  aria-controls="pills-course-view"
-                  aria-selected="true"
-                >
+                <button class="nav-link active" id="pills-course-view-tab" data-bs-toggle="pill"
+                  data-bs-target="#pills-course-view" type="button" role="tab" aria-controls="pills-course-view"
+                  aria-selected="true">
                   View
                 </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="pills-course-add-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-course-add"
-                  type="button"
-                  role="tab"
-                  aria-controls="pills-course-add"
-                  aria-selected="false"
-                >
+                <button class="nav-link" id="pills-course-add-tab" data-bs-toggle="pill"
+                  data-bs-target="#pills-course-add" type="button" role="tab" aria-controls="pills-course-add"
+                  aria-selected="false">
                   Add
                 </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="pills-course-update-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-course-update"
-                  type="button"
-                  role="tab"
-                  aria-controls="pills-course-update"
-                  aria-selected="false"
-                >
+                <button class="nav-link" id="pills-course-update-tab" data-bs-toggle="pill"
+                  data-bs-target="#pills-course-update" type="button" role="tab" aria-controls="pills-course-update"
+                  aria-selected="false">
                   Update
                 </button>
               </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
-              <div
-                class="tab-pane fade show active"
-                id="pills-course-view"
-                role="tabpanel"
-                aria-labelledby="pills-course-view-tab"
-              >
+              <div class="tab-pane fade show active" id="pills-course-view" role="tabpanel"
+                aria-labelledby="pills-course-view-tab">
                 <div>
                   <div class="d-flex justify-content-center">
                     <h4 class="text-center">Available Courses List</h4>
@@ -493,94 +128,48 @@
                   <app-view-course></app-view-course>
                 </div>
               </div>
-              <div
-                class="tab-pane fade"
-                id="pills-course-add"
-                role="tabpanel"
-                aria-labelledby="pills-course-add-tab"
-              >
+              <div class="tab-pane fade" id="pills-course-add" role="tabpanel" aria-labelledby="pills-course-add-tab">
                 <div class="container" style="width: 60%">
                   <h4>Add Course Form</h4>
                   <app-add-course></app-add-course>
                 </div>
               </div>
-              <div
-                class="tab-pane fade"
-                id="pills-course-update"
-                role="tabpanel"
-                aria-labelledby="pills-course-update-tab"
-              >
+              <div class="tab-pane fade" id="pills-course-update" role="tabpanel"
+                aria-labelledby="pills-course-update-tab">
                 <app-update-course></app-update-course>
               </div>
             </div>
           </div>
         </div>
-        <div
-          class="tab-pane fade"
-          id="report-tab-pane"
-          role="tabpanel"
-          aria-labelledby="report-tab"
-          tabindex="0"
-        ></div>
-        <div
-          class="tab-pane fade"
-          id="course-category-tab-pane"
-          role="tabpanel"
-          aria-labelledby="course-category-tab"
-          tabindex="0"
-          style="padding-top: 20px"
-        >
+        <div class="tab-pane fade" id="report-tab-pane" role="tabpanel" aria-labelledby="report-tab" tabindex="0"></div>
+        <div class="tab-pane fade" id="course-category-tab-pane" role="tabpanel" aria-labelledby="course-category-tab"
+          tabindex="0" style="padding-top: 20px">
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-              <button
-                class="nav-link active"
-                id="pills-course-category-view-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-course-category-view"
-                type="button"
-                role="tab"
-                aria-controls="pills-course-category-view"
-                aria-selected="true"
-              >
+              <button class="nav-link active" id="pills-course-category-view-tab" data-bs-toggle="pill"
+                data-bs-target="#pills-course-category-view" type="button" role="tab"
+                aria-controls="pills-course-category-view" aria-selected="true">
                 View
               </button>
             </li>
             <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="pills-course-category-add-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-course-category-add"
-                type="button"
-                role="tab"
-                aria-controls="pills-course-category-add"
-                aria-selected="false"
-              >
+              <button class="nav-link" id="pills-course-category-add-tab" data-bs-toggle="pill"
+                data-bs-target="#pills-course-category-add" type="button" role="tab"
+                aria-controls="pills-course-category-add" aria-selected="false">
                 Add
               </button>
             </li>
             <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="pills-course-category-update-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-course-category-update"
-                type="button"
-                role="tab"
-                aria-controls="pills-course-category-update"
-                aria-selected="false"
-              >
+              <button class="nav-link" id="pills-course-category-update-tab" data-bs-toggle="pill"
+                data-bs-target="#pills-course-category-update" type="button" role="tab"
+                aria-controls="pills-course-category-update" aria-selected="false">
                 Update
               </button>
             </li>
           </ul>
           <div class="tab-content" id="pills-tabContent">
-            <div
-              class="tab-pane fade show active"
-              id="pills-course-category-view"
-              role="tabpanel"
-              aria-labelledby="pills-course-category-view-tab"
-            >
+            <div class="tab-pane fade show active" id="pills-course-category-view" role="tabpanel"
+              aria-labelledby="pills-course-category-view-tab">
               <div>
                 <div class="d-flex justify-content-center">
                   <h4 class="text-center">Course Category List</h4>
@@ -588,103 +177,56 @@
                 <app-view-category></app-view-category>
               </div>
             </div>
-            <div
-              class="tab-pane fade"
-              id="pills-course-category-add"
-              role="tabpanel"
-              aria-labelledby="pills-course-category-add-tab"
-            >
+            <div class="tab-pane fade" id="pills-course-category-add" role="tabpanel"
+              aria-labelledby="pills-course-category-add-tab">
               <div class="container" style="width: 60%">
                 <h4>Add Course Category Form</h4>
                 <app-add-category></app-add-category>
               </div>
             </div>
-            <div
-              class="tab-pane fade"
-              id="pills-course-category-update"
-              role="tabpanel"
-              aria-labelledby="pills-course-category-update-tab"
-            >
+            <div class="tab-pane fade" id="pills-course-category-update" role="tabpanel"
+              aria-labelledby="pills-course-category-update-tab">
               <app-update-category></app-update-category>
             </div>
           </div>
         </div>
 
-        <div
-          class="tab-pane fade"
-          id="assessment-tab-pane"
-          role="tabpanel"
-          aria-labelledby="assessment-tab"
-          tabindex="0"
-          style="padding-top: 20px"
-        >
+        <div class="tab-pane fade" id="assessment-tab-pane" role="tabpanel" aria-labelledby="assessment-tab"
+          tabindex="0" style="padding-top: 20px">
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-              <button
-                class="nav-link active"
-                id="pills-assessment-view-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-assessment-view"
-                type="button"
-                role="tab"
-                aria-controls="pills-assessment-view"
-                aria-selected="true"
-              >
+              <button class="nav-link active" id="pills-assessment-view-tab" data-bs-toggle="pill"
+                data-bs-target="#pills-assessment-view" type="button" role="tab" aria-controls="pills-assessment-view"
+                aria-selected="true">
                 View
               </button>
             </li>
             <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="pills-assessment-add-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-assessment-add"
-                type="button"
-                role="tab"
-                aria-controls="pills-assessment-add"
-                aria-selected="false"
-              >
+              <button class="nav-link" id="pills-assessment-add-tab" data-bs-toggle="pill"
+                data-bs-target="#pills-assessment-add" type="button" role="tab" aria-controls="pills-assessment-add"
+                aria-selected="false">
                 Add
               </button>
             </li>
             <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="pills-assessment-update-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-assessment-update"
-                type="button"
-                role="tab"
-                aria-controls="pills-assessment-update"
-                aria-selected="false"
-              >
+              <button class="nav-link" id="pills-assessment-update-tab" data-bs-toggle="pill"
+                data-bs-target="#pills-assessment-update" type="button" role="tab"
+                aria-controls="pills-assessment-update" aria-selected="false">
                 Update
               </button>
             </li>
           </ul>
           <div class="tab-content" id="pills-tabContent">
-            <div
-              class="tab-pane fade show active"
-              id="pills-assessment-view"
-              role="tabpanel"
-              aria-labelledby="pills-assessment-view-tab"
-            >
+            <div class="tab-pane fade show active" id="pills-assessment-view" role="tabpanel"
+              aria-labelledby="pills-assessment-view-tab">
               <app-view-assessment></app-view-assessment>
             </div>
-            <div
-              class="tab-pane fade"
-              id="pills-assessment-add"
-              role="tabpanel"
-              aria-labelledby="pills-assessment-add-tab"
-            >
+            <div class="tab-pane fade" id="pills-assessment-add" role="tabpanel"
+              aria-labelledby="pills-assessment-add-tab">
               <app-add-assessment></app-add-assessment>
             </div>
-            <div
-              class="tab-pane fade"
-              id="pills-assessment-update"
-              role="tabpanel"
-              aria-labelledby="pills-assessment-update-tab"
-            >
+            <div class="tab-pane fade" id="pills-assessment-update" role="tabpanel"
+              aria-labelledby="pills-assessment-update-tab">
               ...
             </div>
           </div>

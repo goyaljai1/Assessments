@@ -27,7 +27,7 @@ export class AdminGaurd implements CanActivate {
     | UrlTree {
     let role = this.localStorageService.getItem('role');
 
-    if (role === 'admin') {
+    if (role === 'admin' || role === 'faculty') {
       return true;
     }
     console.log('Sorry, no access for role ' + role);

@@ -28,6 +28,6 @@ export class HomeComponent implements OnInit {
 
   displayDetails(aid: string) {
     console.log(aid);
-    this.router.navigate(['view-assessment-details/' + parseInt(aid)]);
+    this.router.navigate(['view-assessment']);
   }
 }

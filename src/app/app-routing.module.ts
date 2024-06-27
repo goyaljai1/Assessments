@@ -22,8 +22,12 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent},
   { path: 'dashboard', component: DashboardComponent},
   {
+    path: 'view-assessment',
+    component: AssessmentComponent
+  },
+  {
     path: 'view-assessment-details/:id',
-    component: ViewAssessmentDetailsComponent,
+    component: ViewAssessmentDetailsComponent
   },
 ];
 

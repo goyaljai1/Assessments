@@ -25,7 +25,7 @@
       "email": "jack.doe@example.com",
       "mobile": 1234567890,
       "dob": "1990-01-01",
-      "role": "Admin",
+      "role": "admin",
       "password": "pass123",
       "address": {
         "street": "18th Cross",
@@ -42,7 +42,7 @@
       "email": "this@gmail",
       "mobile": "123",
       "dob": "2024-06-12",
-      "role": "user",
+      "role": "trainee",
       "password": "1234",
       "address": {
         "houseNo": "",
@@ -60,7 +60,7 @@
       "email": "jai@",
       "mobile": "10223",
       "dob": "2024-06-13",
-      "role": "user",
+      "role": "trainee",
       "password": "",
       "address": {
         "houseNo": "",
@@ -432,6 +432,28 @@
       "marks": "100",
       "time": "2024-06-30T10:00:00Z",
       "course_id": "12345"
+    },
+    {
+      "id": "10",
+      "itinery": [
+        {
+          "id": "1",
+          "category": "truefalse",
+          "question": "abcdef",
+          "options": {
+            "optionTrue": "True",
+            "optionFalse": "False"
+          },
+          "correctAns": ""
+        }
+      ],
+      "aName": "ABCDEF",
+      "aDes": "abcdefghijklmno",
+      "aImgSrc": "adadad",
+      "aPrice": "15",
+      "marks": "100",
+      "time": "11",
+      "course_id": "1333213"
     }
   ],
   "purchases": [
