@@ -585,90 +585,7 @@
                 <div class="d-flex justify-content-center">
                   <h4 class="text-center">Course Category List</h4>
                 </div>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Course Id</th>
-                      <th scope="col">Course Name</th>
-                      <th scope="col">Category Id</th>
-                      <th scope="col">Category Name</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Angular</td>
-                      <td>101</td>
-                      <td>Web Development</td>
-                      <td>
-                        A framework for building client applications in HTML and
-                        TypeScript.
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-danger">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>React</td>
-                      <td>102</td>
-                      <td>Web Development</td>
-                      <td>
-                        A JavaScript library for building user interfaces.
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-danger">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Python Basics</td>
-                      <td>201</td>
-                      <td>Programming Languages</td>
-                      <td>An introductory course to Python programming.</td>
-                      <td>
-                        <button type="button" class="btn btn-danger">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Data Science</td>
-                      <td>301</td>
-                      <td>Data Analysis</td>
-                      <td>
-                        A course on data science fundamentals and techniques.
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-danger">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">5</th>
-                      <td>Machine Learning</td>
-                      <td>302</td>
-                      <td>Artificial Intelligence</td>
-                      <td>
-                        An introduction to machine learning algorithms and their
-                        applications.
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-danger">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <app-view-category></app-view-category>
               </div>
             </div>
             <div
@@ -678,8 +595,8 @@
               aria-labelledby="pills-course-category-add-tab"
             >
               <div class="container" style="width: 60%">
-                <h4>Add Course Form</h4>
-                <app-add-course></app-add-course>
+                <h4>Add Course Category Form</h4>
+                <app-add-category></app-add-category>
               </div>
             </div>
             <div
@@ -688,7 +605,7 @@
               role="tabpanel"
               aria-labelledby="pills-course-category-update-tab"
             >
-              ...
+              <!-- <app-update-category></app-update-category> -->
             </div>
           </div>
         </div>

@@ -1,0 +1,22 @@
+<div class="container mt-4">
+    <h4>List of Courses</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Category ID</th>
+          <th scope="col">Category Description</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of arrCategory">
+          <td>{{ user.id }}</td>
+          <td>{{ user.catDescription }}</td>
+          <td>
+            <button class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

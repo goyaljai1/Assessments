@@ -1,0 +1,20 @@
+[
+    {
+      "id": "1",
+      "cName": "Introduction to Programming",
+      "cDescription": "This course covers the basics of programming using Python.",
+      "categoryId": "101"
+    },
+    {
+      "id": "102",
+      "cName": "Angular is Best",
+      "categoryId": "Web Dev",
+      "cDescription": "Perfect angular course."
+    },
+    {
+      "id": "103",
+      "cName": "HTML Web Dev",
+      "categoryId": "104",
+      "cDescription": "Great course on HTML development from basic to advance."
+    }
+  ]

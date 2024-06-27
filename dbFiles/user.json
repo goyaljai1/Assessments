@@ -1,4 +1,5 @@
 [
+<<<<<<< HEAD
   {
     "_id": "1",
     "fName": "John",
@@ -93,4 +94,95 @@
       "country": "USA"
     }
   }
+=======
+    {
+        "_id": "1",
+        "fName": "John",
+        "lName": "Doe",
+        "email": "john.doe@example.com",
+        "mobile": 1234567890,
+        "dob": "1990-01-01",
+        "role": "faculty",
+        "password": "pass123",
+        "address": {
+            "houseNo": "1",
+            "street": "st",
+            "area": "ar",
+            "state": "st",
+            "country": "co",
+            "pincode": "10"
+        }
+    },
+    {
+        "_id": "2",
+        "fName": "Jack",
+        "lName": "Doe",
+        "email": "jack.doe@example.com",
+        "mobile": 1234567890,
+        "dob": "1990-01-01",
+        "role": "admin",
+        "password": "pass123",
+        "address": {
+            "street": "18th Cross",
+            "city": "Random",
+            "state": "Random State",
+            "zipCode": "12345",
+            "country": "India"
+        }
+    },
+    {
+        "_id": "3",
+        "fName": "Peter",
+        "lName": "Parker",
+        "email": "this@gmail",
+        "mobile": "123",
+        "dob": "2024-06-12",
+        "role": "trainee",
+        "password": "1234",
+        "address": {
+            "houseNo": "",
+            "street": "",
+            "area": "",
+            "state": "",
+            "country": "",
+            "pincode": ""
+        }
+    },
+    {
+        "_id": "4",
+        "fName": "Jai",
+        "lName": "Goyal",
+        "email": "jai@",
+        "mobile": "10223",
+        "dob": "2024-06-13",
+        "role": "trainee",
+        "password": "",
+        "address": {
+            "houseNo": "",
+            "street": "",
+            "area": "",
+            "state": "",
+            "country": "",
+            "pincode": ""
+        }
+    },
+    {
+        "_id": "5",
+        "fName": "Rick",
+        "lName": "Sanchez",
+        "email": "rick@123",
+        "mobile": "898912",
+        "dob": "",
+        "role": "faculty",
+        "password": "",
+        "address": {
+            "houseNo": "",
+            "street": "",
+            "area": "",
+            "state": "",
+            "country": "",
+            "pincode": ""
+        }
+    }
+>>>>>>> 9e1866ba5cbb5379cee09fd5926c6773166b2c9f
 ]

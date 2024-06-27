@@ -93,9 +93,9 @@
   "courses": [
     {
       "id": "1",
-      "cName": "Introduction to Programming",
-      "cDescription": "This course covers the basics of programming using Python.",
-      "categoryId": "101"
+      "cName": "Introduction to Programming Course",
+      "categoryId": "102",
+      "cDescription": "This course covers the basics of programming using Python and C++."
     },
     {
       "id": "102",
@@ -456,6 +456,28 @@
           "quantity": 1
         }
       ]
+    }
+  ],
+  "category": [
+    {
+      "id": "102",
+      "catDescription": "102 description"
+    },
+    {
+      "id": "103",
+      "catDescription": ""
+    },
+    {
+      "id": "104",
+      "catDescription": ""
+    },
+    {
+      "id": "105",
+      "catDescription": ""
+    },
+    {
+      "id": "106",
+      "catDescription": "Course Category Description 106"
     }
   ]
 }
