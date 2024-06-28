@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
     }
     this.userId = this.localStorageService.getItem('userId');
     this.userRole = this.localStorageService.getItem('role');
-    if (this.userRole == 'faculty' || this.userRole == 'adming') {
+    if (this.userRole == 'faculty' || this.userRole == 'admin') {
       this.isFacultyOrAdmin = true;
     }
   }
