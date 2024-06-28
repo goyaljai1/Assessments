@@ -55,6 +55,7 @@ import { ViewAssessmentScoreComponent } from './components/AssessmentScore/view-
 import { UpdateAssessmentScoreComponent } from './components/AssessmentScore/update-assessment-score/update-assessment-score.component';
 import { AttendanceScreenComponent } from './components/dashboard/attendance-screen/attendance-screen.component';
 import { AssessmentPlotComponent } from './components/assessment-plot/assessment-plot.component';
+import { DisableAssessmentsComponent } from './components/dashboard/disable-assessments/disable-assessments.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,6 +93,7 @@ import { AssessmentPlotComponent } from './components/assessment-plot/assessment
     SearchPipe,
     ViewAssessmentScoreComponent,
     UpdateAssessmentScoreComponent,
+    DisableAssessmentsComponent,
   ],
   imports: [
     BrowserModule,

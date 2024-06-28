@@ -19,7 +19,7 @@ export class AddAssessmentComponent implements OnInit {
   count = 0;
   countSecondFormSubmit = 0;
 
-  product: Product = new Product('', '', '', '', 0, 0, 0, '', []);
+  product: Product = new Product('', '', '', '', 0, '', 0, 0, '', []);
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   public itineryForm: FormGroup;
@@ -31,7 +31,7 @@ export class AddAssessmentComponent implements OnInit {
   selectedCar: number = 1;
   htmlItinery: Itinery[] = [];
 
-  tempProduct: Product = new Product('', '', '', '', 0, 0, 0, '', []);
+  tempProduct: Product = new Product('', '', '', '', 0, '', 0, 0, '', []);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,6 +46,7 @@ export class AddAssessmentComponent implements OnInit {
       marksCtrl: ['', Validators.required],
       timeCtrl: ['', Validators.required],
       cIdCtrl: ['', Validators.required],
+      facultyIdCtrl: [''],
       aDesCtrl: [''],
       priceCtrl: [''],
       imgSrcCtrl: [''],
@@ -55,7 +56,7 @@ export class AddAssessmentComponent implements OnInit {
       secondCtrl: ['', Validators.required],
     });
 
-    this.product = new Product('', '', '', '', 0, 0, 0, '', this.itineries);
+    this.product = new Product('', '', '', '', 0, '', 0, 0, '', this.itineries);
   }
 
   ngOnInit(): void {
@@ -105,6 +106,7 @@ export class AddAssessmentComponent implements OnInit {
     this.product.marks = formdata.value.marksCtrl;
     this.product.time = formdata.value.timeCtrl;
     this.product.course_id = formdata.value.cIdCtrl;
+    this.product.faculty_id = formdata.value.facultyIdCtrl;
     this.product.aDes = formdata.value.aDesCtrl;
     this.product.aPrice = formdata.value.priceCtrl;
     this.product.aImgSrc = formdata.value.imgSrcCtrl;

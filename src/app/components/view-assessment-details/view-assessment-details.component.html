@@ -15,7 +15,7 @@
             <h3>{{ assessment.aName }}</h3>
             <p>{{ assessment.aDes }}</p>
             <ul>
-              <li><strong>Price:</strong> {{ assessment.aPrice | currency }}</li>
+              <li><strong>Price:</strong> {{ assessment.aPrice | currency:'INR' }}</li>
               <li><strong>Marks:</strong> {{ assessment.marks }}</li>
             </ul>
           </div>

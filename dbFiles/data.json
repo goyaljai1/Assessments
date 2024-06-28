@@ -11,127 +11,127 @@
       "password": "pass123",
       "address": {
         "houseNo": "1",
-        "street": "st",
-        "area": "ar",
-        "state": "st",
-        "country": "co",
-        "pincode": "10"
+        "street": "First Avenue",
+        "area": "Downtown",
+        "state": "California",
+        "country": "USA",
+        "pincode": "90210"
       }
     },
     {
       "id": "2",
       "fName": "Jack",
-      "lName": "Doe",
-      "email": "jack.doe@example.com",
-      "mobile": 1234567890,
-      "dob": "1990-01-01",
+      "lName": "Smith",
+      "email": "jack.smith@example.com",
+      "mobile": 9876543210,
+      "dob": "1985-05-15",
       "role": "admin",
-      "password": "pass123",
+      "password": "admin123",
       "address": {
         "street": "18th Cross",
-        "city": "Random",
-        "state": "Random State",
-        "zipCode": "12345",
-        "country": "India"
+        "city": "Springfield",
+        "state": "Illinois",
+        "zipCode": "62704",
+        "country": "USA"
       }
     },
     {
       "id": "3",
       "fName": "Peter",
       "lName": "Parker",
-      "email": "this@gmail",
-      "mobile": "123",
-      "dob": "2024-06-12",
+      "email": "peter.parker@example.com",
+      "mobile": 1231231234,
+      "dob": "2000-08-10",
       "role": "trainee",
-      "password": "1234",
+      "password": "spidey123",
       "address": {
-        "houseNo": "",
-        "street": "",
-        "area": "",
-        "state": "",
-        "country": "",
-        "pincode": ""
+        "houseNo": "20",
+        "street": "Queens Blvd",
+        "area": "Queens",
+        "state": "New York",
+        "country": "USA",
+        "pincode": "11375"
       }
     },
     {
       "id": "4",
       "fName": "Jai",
       "lName": "Goyal",
-      "email": "jai@",
-      "mobile": "10223",
-      "dob": "2024-06-13",
+      "email": "jai.goyal@example.com",
+      "mobile": 5555555555,
+      "dob": "1992-12-12",
       "role": "trainee",
-      "password": "",
+      "password": "trainee123",
       "address": {
-        "houseNo": "",
-        "street": "",
-        "area": "",
-        "state": "",
-        "country": "",
-        "pincode": ""
+        "houseNo": "30",
+        "street": "MG Road",
+        "area": "Sector 15",
+        "state": "Haryana",
+        "country": "India",
+        "pincode": "122001"
       }
     },
     {
       "id": "5",
       "fName": "Rick",
       "lName": "Sanchez",
-      "email": "rick@123",
-      "mobile": "898912",
-      "dob": "",
+      "email": "rick.sanchez@example.com",
+      "mobile": 9090909090,
+      "dob": "1950-12-02",
       "role": "faculty",
-      "password": "",
+      "password": "wubalubadubdub",
       "address": {
-        "houseNo": "",
-        "street": "",
-        "area": "",
-        "state": "",
-        "country": "",
-        "pincode": ""
+        "houseNo": "42",
+        "street": "Baker Street",
+        "area": "Marylebone",
+        "state": "London",
+        "country": "UK",
+        "pincode": "NW1 6XE"
       }
     },
     {
       "id": "6",
-      "fName": "samay",
-      "lName": "raina",
-      "email": "samay@example.com",
-      "mobile": "100",
-      "dob": "2024-06-21",
+      "fName": "Samay",
+      "lName": "Raina",
+      "email": "samay.raina@example.com",
+      "mobile": 7777777777,
+      "dob": "1995-11-11",
       "role": "trainee",
-      "password": "1024",
+      "password": "checkmate123",
       "address": {
         "houseNo": "12",
-        "street": "St",
-        "area": "Ar",
-        "state": "St",
-        "country": "Co",
-        "pincode": "10010"
+        "street": "High Street",
+        "area": "Central",
+        "state": "Karnataka",
+        "country": "India",
+        "pincode": "560001"
       }
     }
   ],
   "courses": [
     {
       "id": "1",
-      "cName": "Introduction to Programming Course",
+      "cName": "Introduction to Programming",
       "categoryId": "102",
-      "cDescription": "This course covers the basics of programming using Python and C++."
+      "cDescription": "Learn the basics of programming using Python and C++."
     },
     {
       "id": "102",
-      "cName": "Angular is Best",
+      "cName": "Mastering Angular",
       "categoryId": "Web Dev",
-      "cDescription": "Perfect angular course."
+      "cDescription": "A comprehensive Angular course."
     },
     {
       "id": "103",
-      "cName": "HTML Web Dev",
+      "cName": "HTML Web Development",
       "categoryId": "104",
-      "cDescription": "Great course on HTML development from basic to advance."
+      "cDescription": "A detailed course on HTML development from basic to advanced."
     }
   ],
   "course-categories": [
     {
       "id": "1",
-      "category": "software"
+      "category": "Software Development"
     },
     {
       "id": "2",
@@ -141,17 +141,18 @@
   "assessment": [
     {
       "id": "1",
-      "aName": "Product One",
-      "aDes": "Description for product one.",
-      "aImgSrc": "avc",
+      "aName": "Programming Basics Assessment",
+      "aDes": "Assessment for introductory programming course.",
+      "aImgSrc": "assets/images/angular.png",
       "aPrice": 100,
       "marks": 85,
       "time": "30000",
-      "course_id": "course1",
+      "course_id": "1",
+      "faculty_id": "1",
       "itinery": [
         {
           "id": 1,
-          "text": "abcdefghijkl",
+          "text": "Is Python a programming language?",
           "type": "true-false",
           "choices": ["true", "false"],
           "correctAnswer": "true"
@@ -160,23 +161,24 @@
     },
     {
       "id": "2",
-      "aName": "Product Two",
-      "aDes": "Description for product two.",
-      "aImgSrc": "",
+      "aName": "Advanced Angular Assessment",
+      "aDes": "Assessment for advanced Angular course.",
+      "aImgSrc": "assets/images/angular.png",
       "aPrice": 49.99,
       "marks": 90,
       "time": 60,
-      "course_id": "course2",
+      "course_id": "102",
+      "faculty_id": "2",
       "itinery": [
         {
-          "id": "3",
+          "id": 3,
           "category": "History",
           "question": "Who was the first President of the USA?",
           "options": ["Washington", "Lincoln", "Jefferson", "Adams"],
           "correctAns": "Washington"
         },
         {
-          "id": "4",
+          "id": 4,
           "category": "Geography",
           "question": "What is the capital of France?",
           "options": ["Berlin", "Madrid", "Paris", "Rome"],
@@ -186,23 +188,24 @@
     },
     {
       "id": "3",
-      "aName": "Product Three",
-      "aDes": "Description for product three.",
-      "aImgSrc": "",
+      "aName": "HTML Development Assessment",
+      "aDes": "Assessment for HTML development course.",
+      "aImgSrc": "assets/images/angular.png",
       "aPrice": 19.99,
       "marks": 75,
       "time": 60,
-      "course_id": "course3",
+      "course_id": "103",
+      "faculty_id": "3",
       "itinery": [
         {
-          "id": "5",
+          "id": 5,
           "category": "Literature",
           "question": "Who wrote 'Hamlet'?",
           "options": ["Shakespeare", "Hemingway", "Dickens", "Austen"],
           "correctAns": "Shakespeare"
         },
         {
-          "id": "6",
+          "id": 6,
           "category": "Math",
           "question": "What is the square root of 16?",
           "options": ["2", "3", "4", "5"],
@@ -212,23 +215,24 @@
     },
     {
       "id": "4",
-      "aName": "Product Four",
-      "aDes": "Description for product four.",
-      "aImgSrc": "",
+      "aName": "JavaScript Fundamentals",
+      "aDes": "Assessment for JavaScript fundamentals course.",
+      "aImgSrc": "assets/images/angular.png",
       "aPrice": 39.99,
       "marks": 80,
       "time": 60,
-      "course_id": "course4",
+      "course_id": "104",
+      "faculty_id": "4",
       "itinery": [
         {
-          "id": "7",
+          "id": 7,
           "category": "Science",
           "question": "What is the chemical symbol for gold?",
           "options": ["Au", "Ag", "Pt", "Pb"],
           "correctAns": "Au"
         },
         {
-          "id": "8",
+          "id": 8,
           "category": "History",
           "question": "What year did the Titanic sink?",
           "options": ["1910", "1912", "1914", "1916"],
@@ -238,23 +242,24 @@
     },
     {
       "id": "5",
-      "aName": "Product Five",
-      "aDes": "Description for product five.",
-      "aImgSrc": "",
+      "aName": "Web Development",
+      "aDes": "Assessment for web development with React course.",
+      "aImgSrc": "assets/images/angular.png",
       "aPrice": 59.99,
       "marks": 95,
       "time": 60,
-      "course_id": "course5",
+      "course_id": "105",
+      "faculty_id": "5",
       "itinery": [
         {
-          "id": "9",
+          "id": 9,
           "category": "Geography",
           "question": "Which is the largest ocean on Earth?",
           "options": ["Atlantic", "Indian", "Arctic", "Pacific"],
           "correctAns": "Pacific"
         },
         {
-          "id": "10",
+          "id": 10,
           "category": "Literature",
           "question": "Who wrote 'Pride and Prejudice'?",
           "options": ["Austen", "Bronte", "Eliot", "Woolf"],
@@ -264,110 +269,30 @@
     },
     {
       "id": "6",
-      "aName": "Product Six",
-      "aDes": "Description for product six.",
-      "aImgSrc": "",
-      "aPrice": 69.99,
+      "aName": "Node.js Mastery Assessment",
+      "aDes": "Assessment for Node.js mastery course.",
+      "aImgSrc": "assets/images/angular.png",
+      "aPrice": 49.99,
       "marks": 88,
       "time": 60,
-      "course_id": "course6",
+      "course_id": "106",
+      "faculty_id": "6",
       "itinery": [
         {
-          "id": "11",
-          "category": "Math",
-          "question": "What is 3*3?",
-          "options": ["6", "9", "12", "15"],
-          "correctAns": "9"
-        },
-        {
-          "id": "12",
+          "id": 11,
           "category": "Science",
           "question": "What planet is known as the Red Planet?",
-          "options": ["Earth", "Mars", "Jupiter", "Venus"],
+          "options": ["Mars", "Venus", "Jupiter", "Saturn"],
           "correctAns": "Mars"
-        }
-      ]
-    },
-    {
-      "id": "7",
-      "aName": "Product Seven",
-      "aDes": "Description for product seven.",
-      "aImgSrc": "",
-      "aPrice": 79.99,
-      "marks": 92,
-      "time": 60,
-      "course_id": "course7",
-      "itinery": [
-        {
-          "id": "13",
-          "category": "History",
-          "question": "Who discovered America?",
-          "options": ["Columbus", "Magellan", "Vespucci", "Cook"],
-          "correctAns": "Columbus"
         },
         {
-          "id": "14",
-          "category": "Geography",
-          "question": "What is the largest desert in the world?",
-          "options": ["Sahara", "Gobi", "Kalahari", "Arctic"],
-          "correctAns": "Sahara"
+          "id": 12,
+          "category": "Math",
+          "question": "What is the value of Pi (π) to two decimal places?",
+          "options": ["3.14", "3.15", "3.16", "3.17"],
+          "correctAns": "3.14"
         }
       ]
-    },
-    {
-      "id": "8",
-      "aName": "Product Eight",
-      "aDes": "Description for product eight.",
-      "aImgSrc": "",
-      "aPrice": 89.99,
-      "marks": 85,
-      "time": 60,
-      "course_id": "course8",
-      "itinery": [
-        {
-          "id": "15",
-          "category": "Literature",
-          "question": "Who wrote 'Moby Dick'?",
-          "options": ["Melville", "Twain", "Hawthorne", "Thoreau"],
-          "correctAns": "Melville"
-        },
-        {
-          "id": "16",
-          "category": "Science",
-          "question": "What is the speed of light?",
-          "options": [
-            "299,792,458 m/s",
-            "300,000,000 m/s",
-            "150,000,000 m/s",
-            "299,792,458 km/s"
-          ],
-          "correctAns": "299,792,458 m/s"
-        }
-      ]
-    },
-    {
-      "id": "9",
-      "itinery": [
-        {
-          "id": "1",
-          "category": "mcq",
-          "question": "2*3",
-          "options": {
-            "optionA": "1",
-            "optionB": "2",
-            "optionC": "3",
-            "optionD": "6"
-          },
-          "correctAns": "6"
-        }
-      ],
-      "aName": "Maths",
-      "aDes": "Maths Test for algebra",
-      "aImgSrc": "",
-      "aPrice": "50",
-      "marks": "100",
-      "time": 60,
-      "course_id": "12345"
     }
   ],
   "purchases": [
@@ -400,6 +325,16 @@
         {
           "assessmentId": "1",
           "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "userId": null,
+      "items": [
+        {
+          "assessmentId": "2",
+          "quantity": 1
         }
       ]
     }
