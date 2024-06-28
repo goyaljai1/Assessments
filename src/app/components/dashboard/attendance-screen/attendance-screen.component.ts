@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Purchase, PurchaseItem } from '../../../models/cart';
 import { DashboardService } from '../../../services/dashboard.service';
 import { LocalStorageService } from '../../../services/local-storage-service.service';
-
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-attendance-screen',
   templateUrl: './attendance-screen.component.html',

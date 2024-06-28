@@ -1,167 +1,180 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Itinery, Product } from '../../../models/add-assessment';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ProductService } from '../../../services/add-assessment.service';
-import { ActivatedRoute } from '@angular/router';
+import { Product, Itinery } from '../../../models/add-assessment';
+import { LocalStorageService } from '../../../services/local-storage-service.service';
 
 @Component({
   selector: 'app-update-assessment',
   templateUrl: './update-assessment.component.html',
-  styleUrls: ['./update-assessment.component.scss'],
+  styleUrls: ['./update-assessment.component.scss']
 })
 export class UpdateAssessmentComponent implements OnInit {
-  isLinear = false;
-  firstFormGroup: FormGroup;
-  itineryForm: FormGroup;
-  arrProducts: Product[] = [];
-  selectedProduct: Product | null = null;
-  selectedItinery: FormGroup | null = null;
+  assessmentSelectionForm: FormGroup;
+  assessmentForm: FormGroup;
+  questionsForm: FormGroup;
+  assessments: Product[] = [];
+  selectedAssessment: Product | null = null;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private productService: ProductService,
-    private route: ActivatedRoute
+    private localStorageService: LocalStorageService,
+    private fb: FormBuilder,
+    private productService: ProductService
   ) {
-    this.firstFormGroup = this.formBuilder.group({
-      assessmentIdCtrl: ['', Validators.required],
-      aNameCtrl: ['', Validators.required],
-      marksCtrl: ['', Validators.required],
-      timeCtrl: ['', Validators.required],
-      cIdCtrl: ['', Validators.required],
-      priceCtrl: ['', Validators.required],
-      aDesCtrl: ['', Validators.required],
-      imgSrcCtrl: ['', Validators.required],
+    this.assessmentSelectionForm = this.fb.group({
+      selectedAssessmentId: ['', Validators.required]
     });
 
-    this.itineryForm = this.formBuilder.group({
-      itineries: this.formBuilder.array([]),
+    this.assessmentForm = this.fb.group({
+      assessmentName: ['', Validators.required],
+      assessmentDescription: ['', Validators.required],
+      assessmentImage: ['', Validators.required],
+      price: ['', Validators.required],
+      time: ['', Validators.required]
+    });
+
+    this.questionsForm = this.fb.group({
+      questions: this.fb.array([])
     });
   }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((products) => {
-      this.arrProducts = products;
-    });
-
-    const assessmentId = this.route.snapshot.params['id'];
-    if (assessmentId) {
-      this.productService.getProductById(assessmentId).subscribe((product) => {
-        this.selectedProduct = product;
-        this.updateFormGroup(this.selectedProduct);
-      });
-    }
+    this.loadAssessments();
   }
 
-  updateFormGroup(product: Product): void {
-    this.firstFormGroup.patchValue({
-      assessmentIdCtrl: product.id,
-      aNameCtrl: product.aName,
-      marksCtrl: product.marks,
-      timeCtrl: product.time,
-      cIdCtrl: product.course_id,
-      priceCtrl: product.aPrice,
-      aDesCtrl: product.aDes,
-      imgSrcCtrl: product.aImgSrc,
-    });
-
-    this.setItineries(product.itinery);
-  }
-
-  setItineries(itineries: Itinery[]): void {
-    const itineryFormArray = this.itineryForm.get('itineries') as FormArray;
-    itineryFormArray.clear();
-    itineries.forEach((itinery) => {
-      itineryFormArray.push(this.createItineryFormGroup(itinery));
+  loadAssessments(): void {
+    this.productService.getProducts().subscribe((assessments: Product[]) => {
+      this.assessments = assessments;
     });
   }
 
-  createItineryFormGroup(itinery: Itinery): FormGroup {
-    return this.formBuilder.group({
-      id: [itinery.id || ''],
-      category: [itinery.category, Validators.required],
-      question: [itinery.question, Validators.required],
-      optionA: [itinery.options.optionA],
-      optionB: [itinery.options.optionB],
-      optionC: [itinery.options.optionC],
-      optionD: [itinery.options.optionD],
-      optionTrue: [itinery.options.optionTrue],
-      optionFalse: [itinery.options.optionFalse],
-      correctAns: [itinery.correctAns || ''],
+  createQuestion(question: any): FormGroup {
+    return this.fb.group({
+      id: [question.id, Validators.required],
+      text: [question.text, Validators.required],
+      type: [question.type, Validators.required],
+      choices: this.fb.array(
+        question.choices.map((choice: any) => this.createChoice(choice))
+      ),
+      correctAnswer: [question.correctAnswer, Validators.required]
     });
   }
 
-  itineriesArr(): FormArray {
-    return this.itineryForm.get('itineries') as FormArray;
+  createChoice(choiceText: string): FormGroup {
+    return this.fb.group({
+      choiceText: [choiceText, Validators.required]
+    });
   }
 
-  addItineryFormGroup(): void {
-    this.itineriesArr().push(
-      this.createItineryFormGroup({
-        id: '',
-        category: 'mcq',
-        question: '',
-        options: {
-          optionA: '',
-          optionB: '',
-          optionC: '',
-          optionD: '',
-          optionTrue: '',
-          optionFalse: '',
-        },
-        correctAns: '',
-      } as Itinery)
+  get questionControls() {
+    return (this.questionsForm.get('questions') as FormArray).controls;
+  }
+
+  addQuestion(): void {
+    const questionArray = this.questionsForm.get('questions') as FormArray;
+    const newQuestionId = questionArray.length + 1;
+    questionArray.push(
+      this.createQuestion({
+        id: newQuestionId,
+        text: '',
+        type: 'multiple-choice',
+        choices: ['', '', '', ''],
+        correctAnswer: ''
+      })
     );
   }
 
-  removeOrClearItinery(i: number): void {
-    const itineries = this.itineriesArr();
-    if (itineries.length > 1) {
-      itineries.removeAt(i);
-    } else {
-      itineries.reset();
-    }
+  getChoices(questionIndex: number): FormArray {
+    return (
+      (this.questionsForm.get('questions') as FormArray).at(
+        questionIndex
+      ).get('choices') as FormArray
+    );
   }
 
-  saveFirstStepData(): void {
-    if (this.selectedProduct) {
-      this.selectedProduct.aName = this.firstFormGroup.value.aNameCtrl;
-      this.selectedProduct.marks = this.firstFormGroup.value.marksCtrl;
-      this.selectedProduct.time = this.firstFormGroup.value.timeCtrl;
-      this.selectedProduct.course_id = this.firstFormGroup.value.cIdCtrl;
-      this.selectedProduct.aPrice = this.firstFormGroup.value.priceCtrl;
-      this.selectedProduct.aDes = this.firstFormGroup.value.aDesCtrl;
-      this.selectedProduct.aImgSrc = this.firstFormGroup.value.imgSrcCtrl;
+  onQuestionTypeChange(questionIndex: number): void {
+    const questionArray = this.questionsForm.get('questions') as FormArray;
+    const question = questionArray.at(questionIndex) as FormGroup;
 
-      this.productService.updateProduct(this.selectedProduct).subscribe(() => {
-        console.log('First step data saved successfully');
-      });
+    const choicesArray = question.get('choices') as FormArray;
+    while (choicesArray.length !== 0) {
+      choicesArray.removeAt(0);
     }
-  }
 
-  submitAssessment(): void {
-    if (this.selectedProduct) {
-      this.selectedProduct.itinery = this.itineryForm.value.itineries;
-      this.productService.updateProduct(this.selectedProduct).subscribe(() => {
-        console.log('Assessment updated successfully');
-      });
+    if (question.get('type')?.value === 'multiple-choice') {
+      for (let i = 0; i < 4; i++) {
+        choicesArray.push(this.createChoice(''));
+      }
+    } else if (question.get('type')?.value === 'true-false') {
+      choicesArray.push(this.fb.group({ choiceText: 'true' }));
+      choicesArray.push(this.fb.group({ choiceText: 'false' }));
     }
   }
 
   onAssessmentChange(event: any): void {
     const selectedAssessmentId = event.value;
-    this.selectedProduct = this.arrProducts.find(
-      (product) => product.id === selectedAssessmentId
-    ) || null;  // Use null as fallback
+    this.selectedAssessment =
+      this.assessments.find(
+        (assessment) => assessment.id === selectedAssessmentId
+      ) || null;
 
-    if (this.selectedProduct) {
-      this.updateFormGroup(this.selectedProduct);
+    if (this.selectedAssessment) {
+      this.assessmentForm.patchValue({
+        assessmentName: this.selectedAssessment.aName,
+        assessmentDescription: this.selectedAssessment.aDes,
+        assessmentImage: this.selectedAssessment.aImgSrc,
+        price: this.selectedAssessment.aPrice,
+        time: this.selectedAssessment.time
+      });
+
+      const questionArray = this.questionsForm.get('questions') as FormArray;
+      questionArray.clear();
+
+      this.selectedAssessment.itinery.forEach((question: any) => {
+        questionArray.push(this.createQuestion(question));
+      });
     }
   }
 
-  onItineryChange(event: any): void {
-    const selectedItineryId = event.value;
-    this.selectedItinery = this.itineriesArr().controls.find(
-      (ctrl) => ctrl.value.id === selectedItineryId
-    ) as FormGroup;
+  updateAssessment(): void {
+    if (!this.selectedAssessment) return;
+
+    const updatedAssessmentData = this.assessmentForm.value;
+    const questionsData = this.questionsForm.value.questions.map(
+      (question: any, index: number) => ({
+        ...question,
+        id: index + 1,
+        choices:
+          question.type === 'true-false'
+            ? ['true', 'false']
+            : question.choices.map((choice: any) => choice.choiceText)
+      })
+    );
+
+    const updatedAssessment: Product = {
+      ...this.selectedAssessment,
+      aName: updatedAssessmentData.assessmentName,
+      aDes: updatedAssessmentData.assessmentDescription,
+      aImgSrc: updatedAssessmentData.assessmentImage,
+      aPrice: updatedAssessmentData.price,
+      time: updatedAssessmentData.time,
+      itinery: questionsData,
+      subscribe: function (arg0: (assessment: any) => void): void {
+        throw new Error('Function not implemented.');
+      }
+    };
+
+    // Assuming updateAssessmentById() returns an Observable
+    this.productService
+      .updateAssessmentById(updatedAssessment.id, updatedAssessment)
+      .subscribe(
+        (response) => {
+          console.log('Assessment updated successfully:', response);
+          this.loadAssessments(); // Reload assessments to get the latest list
+        },
+        (error) => {
+          console.error('Error updating assessment:', error);
+        }
+      );
   }
 }

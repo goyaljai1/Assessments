@@ -1,0 +1,22 @@
+<div class="container">
+    <h2>Assessment Scores</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Assessment Name</th>
+          <th>Total Marks</th>
+          <th>User Name</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let score of assessmentScores">
+          <td>{{ score.assessmentName }}</td>
+          <td>{{ score.totalMarks }}</td>
+          <td>{{ score.userName }}</td>
+          <td>{{ score.score }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

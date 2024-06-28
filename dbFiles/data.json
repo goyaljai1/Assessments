@@ -125,47 +125,21 @@
       "id": "1",
       "aName": "Product One",
       "aDes": "Description for product one.",
-      "aImgSrc": "",
-      "aPrice": 29.99,
+      "aImgSrc": "avc",
+      "aPrice": 100,
       "marks": 85,
-      "time": 60,
+      "time": "30000",
       "course_id": "course1",
       "itinery": [
         {
-          "id": "1",
-          "category": "Math",
-          "question": "What is 2+2?",
-          "options": [
-            "2",
-            "3",
-            "4",
-            "5"
+          "id": 1,
+          "text": "abcdefghijkl",
+          "type": "true-false",
+          "choices": [
+            "true",
+            "false"
           ],
-          "correctAns": "4"
-        },
-        {
-          "id": "2",
-          "category": "Science",
-          "question": "What is H2O?",
-          "options": [
-            "Oxygen",
-            "Hydrogen",
-            "Water",
-            "Carbon Dioxide"
-          ],
-          "correctAns": "Water"
-        },
-        {
-          "id": "3",
-          "category": "Science",
-          "question": "What is C02?",
-          "options": [
-            "Oxygen",
-            "Hydrogen",
-            "Water",
-            "Carbon Dioxide"
-          ],
-          "correctAns": "Carbon Dioxide"
+          "correctAnswer": "true"
         }
       ]
     },
@@ -437,7 +411,7 @@
           "correctAns": "6"
         }
       ],
-      "aName": "Maths ",
+      "aName": "Maths",
       "aDes": "Maths Test for algebra",
       "aImgSrc": "",
       "aPrice": "50",
@@ -590,6 +564,19 @@
       "marksArray": [
         0,
         45
+      ]
+    },
+    {
+      "id": "7",
+      "assessmentId": "1",
+      "userId": "1",
+      "score": 84,
+      "totalMarks": 85,
+      "assessmentName": "Product One",
+      "marksArray": [
+        28,
+        28,
+        28
       ]
     }
   ]

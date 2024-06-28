@@ -10,8 +10,8 @@ import { LocalStorageService } from '../../services/local-storage-service.servic
   styleUrls: ['./view-assessment-details.component.scss'],
 })
 export class ViewAssessmentDetailsComponent implements OnInit {
-  assessment: Product = new Product('', '', '', '', 0, 0, '', '', []);
-
+  assessment: Product = new Product('', '', '', '', 0, 0, 0, '', []);
+  assessments: Product[] = [];
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,private router: Router ,private cartService: CartService,private localStorageService: LocalStorageService
@@ -21,9 +21,28 @@ export class ViewAssessmentDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       const assessmentId = params['id'];
       this.loadAssessmentDetails(assessmentId);
+      const query = params['query'];
+      if (query) {
+        this.searchAssessment(query);
+      }
     });
   }
-
+  searchAssessment(query: string): void {
+    this.productService.getProducts().subscribe(
+      (assessments: Product[]) => {
+        this.assessments = assessments;
+        const assessment = assessments.find(a => a.id === query || a.aName.toLowerCase().includes(query.toLowerCase()));
+        if (assessment) {
+          this.assessment = assessment;
+        } else {
+          console.error('Assessment not found');
+        }
+      },
+      (error: any) => {
+        console.error('Error fetching assessments:', error);
+      }
+    );
+  }
   loadAssessmentDetails(id: string): void {
     this.productService.getProductById(id).subscribe(
       (assessment: Product) => {
@@ -44,4 +63,5 @@ export class ViewAssessmentDetailsComponent implements OnInit {
     this.cartService.addToCart(product);
     alert(`Assessment ${product.aName} added to cart successfully!`);
   }
+  
 }

@@ -7,7 +7,7 @@ import { ProductService } from '../../services/add-assessment.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AssessmentScoreService } from '../../services/assessment-score.service';
 import { AssessmentScore } from '../../models/assessment-score';
-
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-test-screen',
   templateUrl: './test-screen.component.html',

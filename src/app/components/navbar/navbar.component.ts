@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProductService } from '../../services/add-assessment.service'; // Adjust import as per your service path
+import { Product } from '../../models/add-assessment'; // Adjust import as per your model path
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { LocalStorageService } from '../../services/local-storage-service.service';
@@ -18,12 +21,16 @@ export class NavbarComponent implements OnInit {
   userArr: User[] = [];
   isLoggedIn: boolean = false;
   totalItems: number = 0;
+  searchQuery: string = '';
+  assessments: Product[] = []; // Assuming this will hold fetched assessments
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private productService: ProductService, // Adjust service import as per your actual service
     private localStorageService: LocalStorageService,
-    private checkoutService: CheckoutServiceService
+    private checkoutService: CheckoutServiceService,
+    private router: Router
   ) {
     this.myForm = this.fb.group({
       id: [0, Validators.required],
@@ -173,5 +180,29 @@ export class NavbarComponent implements OnInit {
 
     const maxId = Math.max(...users.map((user) => parseInt(user.id)));
     return String(maxId + 1);
+  }
+
+  onSearch(): void {
+    // Redirect to view-assessment-details page with the search query
+    if (this.searchQuery.trim()) {
+      this.productService.getProducts().subscribe(
+        (assessments: Product[]) => {
+          this.assessments = assessments;
+          const foundAssessment = assessments.find(
+            assessment => assessment.aName.toLowerCase() === this.searchQuery.toLowerCase()
+          );
+      
+          if (foundAssessment) {
+            this.router.navigate(['/view-assessment-details', foundAssessment.id]);
+          } else {
+            console.log(`Assessment '${this.searchQuery}' not found.`);
+            // Handle the case where the assessment is not found (e.g., show an alert)
+          }
+        },
+        (error: any) => {
+          console.error('Error fetching assessments:', error);
+        }
+      );
+    }
   }
 }

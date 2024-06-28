@@ -36,9 +36,6 @@ export class Product {
 }
 
 export class Itinery {
-get(arg0: string) {
-throw new Error('Method not implemented.');
-}
   id: string;
   category: string;
   question: string;

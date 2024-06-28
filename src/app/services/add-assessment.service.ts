@@ -40,14 +40,14 @@ export class ProductService {
     return this.httpClient.get<Product>(`${this.baseUrl}/assessment/${id}`)
       .pipe(catchError(this.httpError));
   }
-  updateProduct(p: Product): Observable<Product[]> {
-    return this.httpClient
-      .put<Product[]>(
-        this.baseUrl + '/assessment/' + p.id,
-        JSON.stringify(p),
-        this.httpHeader
-      )
-      .pipe(catchError(this.httpError));
+  updateAssessmentById(id: string, assessment: Product): Observable<Product> {
+    return this.httpClient.put<Product>(
+      `${this.baseUrl}/assessment/${id}`,
+      JSON.stringify(assessment),
+      this.httpHeader
+    ).pipe(
+      catchError(this.httpError)
+    );
   }
   private httpError(error: HttpErrorResponse) {
     let errorMessage = '';

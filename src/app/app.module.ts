@@ -47,6 +47,9 @@ import { FormArray } from '@angular/forms';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SearchPipe } from './pipe/search.pipe';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { RouterModule } from '@angular/router';
+import { ViewAssessmentScoreComponent } from './components/AssessmentScore/view-assessment-score/view-assessment-score.component';
+import { UpdateAssessmentScoreComponent } from './components/AssessmentScore/update-assessment-score/update-assessment-score.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +81,8 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
     ResultScreenComponent,
     PageNotFoundComponent,
     SearchPipe,
+    ViewAssessmentScoreComponent,
+    UpdateAssessmentScoreComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,6 +101,7 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
     MatRadioModule,
     HttpClientModule,
     MatBadgeModule,
+    RouterModule,
     CanvasJSAngularChartsModule
   ],
   providers: [provideAnimationsAsync()],
