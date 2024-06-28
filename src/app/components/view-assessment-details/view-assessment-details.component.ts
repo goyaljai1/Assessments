@@ -44,5 +44,4 @@ export class ViewAssessmentDetailsComponent implements OnInit {
     this.cartService.addToCart(product);
     alert(`Assessment ${product.aName} added to cart successfully!`);
   }
-  
 }
