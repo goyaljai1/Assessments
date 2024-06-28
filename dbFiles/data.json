@@ -88,6 +88,24 @@
         "country": "",
         "pincode": ""
       }
+    },
+    {
+      "id": "6",
+      "fName": "samay",
+      "lName": "raina",
+      "email": "samay@example.com",
+      "mobile": "100",
+      "dob": "2024-06-21",
+      "role": "trainee",
+      "password": "1024",
+      "address": {
+        "houseNo": "12",
+        "street": "St",
+        "area": "Ar",
+        "state": "St",
+        "country": "Co",
+        "pincode": "10010"
+      }
     }
   ],
   "courses": [
@@ -456,20 +474,26 @@
           "quantity": 3
         },
         {
+          "assessmentId": "7",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "userId": "6",
+      "items": [
+        {
+          "assessmentId": "2",
+          "quantity": 1
+        },
+        {
           "assessmentId": "3",
           "quantity": 1
         },
         {
-          "assessmentId": "6",
-          "quantity": 1
-        },
-        {
-          "assessmentId": "8",
-          "quantity": 1
-        },
-        {
           "assessmentId": "1",
-          "quantity": 1
+          "quantity": 2
         }
       ]
     }
@@ -499,98 +523,27 @@
   "assessment-score": [
     {
       "id": "1",
-      "assessmentId": "1",
+      "assessmentId": "7",
       "userId": "1",
-      "score": 56,
-      "totalMarks": 85,
-      "assessmentName": "Product One",
+      "score": 92,
+      "totalMarks": 92,
+      "assessmentName": "Product Seven",
       "marksArray": [
-        28,
-        0,
-        28
+        46,
+        46
       ]
-    },
+    }
+  ],
+  "transformedassessment": [],
+  "attendances": [
     {
-      "id": "2",
-      "assessmentId": "1",
+      "id": "1",
+      "assessmentName": "Product Seven",
+      "date": "2024-06-28T02:03:44.331Z",
+      "assessmentId": "7",
       "userId": "1",
-      "score": 56,
-      "totalMarks": 85,
-      "assessmentName": "Product One",
-      "marksArray": [
-        28,
-        28,
-        0
-      ]
-    },
-    {
-      "id": "3",
-      "assessmentId": "1",
-      "userId": "1",
-      "score": 112,
-      "totalMarks": 85,
-      "assessmentName": "Product One",
-      "marksArray": [
-        28,
-        28,
-        0,
-        28,
-        28,
-        0
-      ]
-    },
-    {
-      "id": "4",
-      "assessmentId": "1",
-      "userId": "1",
-      "score": 168,
-      "totalMarks": 85,
-      "assessmentName": "Product One",
-      "marksArray": [
-        28,
-        28,
-        0,
-        28,
-        28,
-        0,
-        28,
-        28,
-        0
-      ]
-    },
-    {
-      "id": "5",
-      "assessmentId": "1",
-      "userId": "1",
-      "score": 224,
-      "totalMarks": 85,
-      "assessmentName": "Product One",
-      "marksArray": [
-        28,
-        28,
-        0,
-        28,
-        28,
-        0,
-        28,
-        28,
-        0,
-        28,
-        28,
-        0
-      ]
-    },
-    {
-      "id": "6",
-      "assessmentId": "2",
-      "userId": "1",
-      "score": 45,
-      "totalMarks": 90,
-      "assessmentName": "Product Two",
-      "marksArray": [
-        0,
-        45
-      ]
+      "attemptId": "2-1",
+      "status": "Attempted"
     }
   ]
 }

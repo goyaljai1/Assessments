@@ -67,27 +67,29 @@
                       <th>Assessment Name</th>
                       <th>Marks</th>
                       <th>Time</th>
+                      <th>Attempt Number</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let assessment of arrAssessment">
-                      <td>{{ assessment.aName }}</td>
-                      <td>{{ assessment.marks }}</td>
-                      <td>{{ assessment.time }} Minutes</td>
+                    <tr *ngFor="let instance of transformedAssessments">
+                      <td>{{ instance.assessment.aName }}</td>
+                      <td>{{ instance.assessment.marks }}</td>
+                      <td>{{ instance.assessment.time }} Minutes</td>
+                      <td>{{ instance.attemptNumber }}</td>
                       <td>
                         <button
                           type="button"
                           class="btn"
                           [ngClass]="{
-                            'btn-primary': !isAttempted(assessment.id),
-                            'btn-secondary': isAttempted(assessment.id)
+                            'btn-primary': !isAttempted(instance.instanceId),
+                            'btn-secondary': isAttempted(instance.instanceId)
                           }"
-                          [disabled]="isAttempted(assessment.id)"
-                          (click)="attemptAssessment(assessment.id)"
+                          [disabled]="isAttempted(instance.instanceId)"
+                          (click)="attemptAssessment(instance.instanceId)"
                         >
                           {{
-                            isAttempted(assessment.id)
+                            isAttempted(instance.instanceId)
                               ? "Already Attempted"
                               : "Attempt"
                           }}
@@ -95,12 +97,12 @@
                         <button
                           type="button"
                           class="btn btn-success"
-                          *ngIf="isAttempted(assessment.id)"
+                          *ngIf="isAttempted(instance.instanceId)"
                           style="margin-left: 10px"
                         >
                           <a class="nav-link" [routerLink]="['/resultScreen']">
-                            See Result</a
-                          >
+                            See Result
+                          </a>
                         </button>
                       </td>
                     </tr>

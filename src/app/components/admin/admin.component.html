@@ -89,6 +89,20 @@
             Report
           </button>
         </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="attendance-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#attendance-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="attendance-tab-pane"
+            aria-selected="false"
+          >
+            Attendance
+          </button>
+        </li>
       </ul>
       <div class="tab-content">
         <div
@@ -521,7 +535,9 @@
           role="tabpanel"
           aria-labelledby="report-tab"
           tabindex="0"
-        ></div>
+        >
+          <app-report></app-report>
+        </div>
         <div
           class="tab-pane fade"
           id="course-category-tab-pane"
@@ -688,6 +704,15 @@
               ...
             </div>
           </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="attendance-tab-pane"
+          role="tabpanel"
+          aria-labelledby="attendance-tab"
+          tabindex="0"
+        >
+          <app-attendance></app-attendance>
         </div>
       </div>
     </div>

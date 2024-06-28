@@ -46,6 +46,8 @@ import { ResultScreenComponent } from './components/dashboard/result-screen/resu
 import { AttendanceScreenComponent } from './components/dashboard/attendance-screen/attendance-screen.component';
 import { AssessmentPlotComponent } from './components/assessment-plot/assessment-plot.component';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { ReportComponent } from './components/admin/report/report.component';
+import { AttendanceComponent } from './components/admin/attendance/attendance.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,8 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
     ResultScreenComponent,
     AttendanceScreenComponent,
     AssessmentPlotComponent,
+    ReportComponent,
+    AttendanceComponent,
   ],
   imports: [
     BrowserModule,

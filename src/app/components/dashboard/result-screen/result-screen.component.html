@@ -68,6 +68,7 @@
               <th scope="col">Attempt Id</th>
               <th scope="col">Total Marks</th>
               <th scope="col">Marks Obtained</th>
+              <th scope="col">Result</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -77,6 +78,22 @@
               <td>{{ assessment.id }}</td>
               <td>{{ assessment.totalMarks }}</td>
               <td>{{ assessment.score }}</td>
+              <td>
+                <span
+                  [ngClass]="{
+                    'text-success':
+                      assessment.score >= (assessment.totalMarks ?? 1) * 0.5,
+                    'text-danger':
+                      assessment.score < (assessment.totalMarks ?? 1) * 0.5
+                  }"
+                >
+                  {{
+                    assessment.score >= (assessment.totalMarks ?? 1) * 0.5
+                      ? "Pass"
+                      : "Fail"
+                  }}
+                </span>
+              </td>
               <td>
                 <button
                   class="btn btn-primary"
@@ -88,6 +105,7 @@
             </tr>
           </tbody>
         </table>
+
         <div class="col-md-12">
           <div class="card mb-4 shadow-sm" *ngIf="submitted">
             <div class="card-header">

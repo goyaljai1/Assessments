@@ -66,6 +66,7 @@ export class NavbarComponent implements OnInit {
 
       this.localStorageService.setItem('role', loggedInUser.role);
       this.localStorageService.setItem('name', loggedInUser.fName);
+      this.localStorageService.setItem('userId', loggedInUser.id);
       let role = this.localStorageService.getItem('role');
       console.log(role);
       if (role === 'Admin') {
@@ -80,6 +81,7 @@ export class NavbarComponent implements OnInit {
 
   onLogout(): void {
     this.localStorageService.removeItem('role');
+    localStorage.clear();
     this.isLoggedIn = false;
     console.log('Logout successful!');
   }

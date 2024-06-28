@@ -1,22 +1,16 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PurchaseItem } from '../../../models/cart';
-import { LocalStorageService } from '../../../services/local-storage-service.service';
 import { AssessmentScore } from '../../../models/assessment-score';
+import { LocalStorageService } from '../../../services/local-storage-service.service';
 import { AssessmentScoreService } from '../../../services/assessment-score.service';
-import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import { fontFamily } from 'html2canvas/dist/types/css/property-descriptors/font-family';
-interface DataPoint {
-  label: string;
-  y: number;
-  indexLabel?: string;
-}
+import html2canvas from 'html2canvas';
 @Component({
-  selector: 'app-result-screen',
-  templateUrl: './result-screen.component.html',
-  styleUrl: './result-screen.component.scss',
+  selector: 'app-report',
+  templateUrl: './report.component.html',
+  styleUrl: './report.component.scss',
 })
-export class ResultScreenComponent implements OnInit {
+export class ReportComponent implements OnInit {
   userId: any; // Replace with actual logic to get current logged-in user ID
   assessments: PurchaseItem[] = [];
   userName: string = 'name';
@@ -35,11 +29,8 @@ export class ResultScreenComponent implements OnInit {
     private cdr: ChangeDetectorRef
   ) {
     this.assessmentscoreservice.getAssessmentScores().subscribe((data) => {
-      this.arrAssessmentScore = data.filter(
-        (score) => score.userId === this.userId
-      );
+      this.arrAssessmentScore = data;
       console.log(this.arrAssessmentScore);
-      this.cdr.detectChanges();
     });
   }
   private getUserName(): void {

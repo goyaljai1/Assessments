@@ -7,6 +7,8 @@ import { ProductService } from '../../services/add-assessment.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AssessmentScoreService } from '../../services/assessment-score.service';
 import { AssessmentScore } from '../../models/assessment-score';
+import { AttendanceService } from '../../services/attendance.service';
+import { Attendance } from '../../models/attendance';
 
 @Component({
   selector: 'app-test-screen',
@@ -14,12 +16,18 @@ import { AssessmentScore } from '../../models/assessment-score';
   styleUrl: './test-screen.component.scss',
 })
 export class TestScreenComponent implements OnInit {
-  userId: string = '1'; // Replace with actual logic to get current logged-in user ID
+  userId: any; // Replace with actual logic to get current logged-in user ID
   assessments: PurchaseItem[] = [];
   userName: string = 'name';
   arrAssessment: Product[] = [];
   selectedAssessment: Product | null = null;
   itemForm: FormGroup[] = [];
+  transformedAssessments: {
+    instanceId: string;
+    attemptNumber: number;
+    assessment: Product;
+  }[] = [];
+
   attemptedAssessments: Set<string> = new Set<string>();
   marks: number = 0;
   display: any;
@@ -27,7 +35,8 @@ export class TestScreenComponent implements OnInit {
   currentAssessmentId: string = '';
   currentAssessmentMarks: number = 0;
   currentAssessmentName: string = '';
-
+  allPurchases: any;
+  arrAttendance: Attendance[] = [];
   submitted: boolean = false;
   showTimer: boolean = true;
   private chart: any;
@@ -36,7 +45,8 @@ export class TestScreenComponent implements OnInit {
     private localStorageService: LocalStorageService,
     private productService: ProductService,
     private _formBuilder: FormBuilder,
-    private assessmentscoreservice: AssessmentScoreService
+    private assessmentscoreservice: AssessmentScoreService,
+    private attendanceservice: AttendanceService
   ) {}
 
   private getUserName(): void {
@@ -49,9 +59,13 @@ export class TestScreenComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userId = this.localStorageService.getItem('userId');
     this.getUserName();
     this.loadUserAssessments();
     this.loadAttemptedAssessments();
+
+    // this.filterAssessments();
+    // console.log('hi');
   }
   loadAttemptedAssessments(): void {
     const attempted = this.localStorageService.getItem('attemptedAssessments');
@@ -70,12 +84,15 @@ export class TestScreenComponent implements OnInit {
   }
 
   loadUserAssessments(): void {
+    console.log(
+      this.assessmentService.getUserAssessments(this.userId).subscribe()
+    );
     this.assessmentService.getUserAssessments(this.userId).subscribe(
       (purchases: Purchase[]) => {
-        console.log('purchases: ', purchases);
+        console.log(purchases);
         if (purchases.length > 0) {
           const purchase = purchases[0];
-          console.log(purchase);
+
           if (purchase && purchase.items) {
             this.assessments = purchase.items;
             this.filterAssessments();
@@ -93,21 +110,42 @@ export class TestScreenComponent implements OnInit {
       this.arrAssessment = data.filter((product) =>
         this.assessments.some((a) => a.assessmentId === product.id)
       );
-      console.log('Filtered Assessments: ', this.arrAssessment);
+      this.transformAssessments();
     });
   }
 
-  attemptAssessment(assessmentId: string): void {
-    console.log('Attempting assessment:', assessmentId);
-    this.selectedAssessment =
-      this.arrAssessment.find((product) => product.id === assessmentId) || null;
-    if (this.selectedAssessment) {
+  transformAssessments(): void {
+    this.transformedAssessments = [];
+    for (const item of this.assessments) {
+      const assessment = this.arrAssessment.find(
+        (a) => a.id === item.assessmentId
+      );
+      if (assessment) {
+        for (let i = 1; i <= item.quantity; i++) {
+          const instanceId = `${assessment.id}-${i}`; // Unique instance ID
+          this.transformedAssessments.push({
+            instanceId,
+            assessment: { ...assessment },
+            attemptNumber: i, // Assigning attempt number
+          });
+        }
+      }
+    }
+  }
+
+  attemptAssessment(instanceId: string): void {
+    console.log('Attempting assessment:', instanceId);
+    const selectedInstance = this.transformedAssessments.find(
+      (instance) => instance.instanceId === instanceId
+    );
+    if (selectedInstance) {
+      this.selectedAssessment = selectedInstance.assessment;
       this.itemForm = this.selectedAssessment.itinery.map(() =>
         this._formBuilder.group({
           selectedOption: [''],
         })
       );
-      this.attemptedAssessments.add(assessmentId);
+      this.attemptedAssessments.add(instanceId);
       this.saveAttemptedAssessments();
     }
   }
@@ -153,6 +191,32 @@ export class TestScreenComponent implements OnInit {
       this.currentAssessmentId = this.selectedAssessment.id;
       this.updateAssessmentScore();
       this.goBack();
+      this.attendanceservice.getAttendances().subscribe(
+        (assessmentScores: Attendance[]) => {
+          const newAttendanceId =
+            this.generateUniqueIdAttendance(assessmentScores);
+          const tempAttendance: Attendance = {
+            id: newAttendanceId,
+            assessmentName: this.currentAssessmentName,
+            date: new Date().toISOString(),
+            assessmentId: this.currentAssessmentId,
+            userId: this.userId,
+            attemptId: `${this.transformedAssessments[0].instanceId}`,
+            status: 'Attempted',
+          };
+          this.attendanceservice.addAttendance(tempAttendance).subscribe(
+            (response: any) => {
+              console.log('Attendance added successfully', response);
+            },
+            (error: any) => {
+              console.error('Error adding Attendance', error);
+            }
+          );
+        },
+        (error: any) => {
+          console.error('Error fetching Assessment Scores', error);
+        }
+      );
     }
   }
 
@@ -222,6 +286,16 @@ export class TestScreenComponent implements OnInit {
     }, 1000);
   }
   generateUniqueId(assessmentscore: AssessmentScore[]): string {
+    if (assessmentscore.length === 0) {
+      return '1';
+    }
+
+    const maxId = Math.max(
+      ...assessmentscore.map((assessment) => parseInt(assessment.id))
+    );
+    return String(maxId + 1);
+  }
+  generateUniqueIdAttendance(assessmentscore: Attendance[]): string {
     if (assessmentscore.length === 0) {
       return '1';
     }

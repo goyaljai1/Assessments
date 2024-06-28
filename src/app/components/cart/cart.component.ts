@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
   totalAmount: number = 0;
   totalQuantity: number = 0;
-  userId: string = '1'; //Need to replace this code with actual logic!
+  userId: any; //Need to replace this code with actual logic!
   purchasesUrl: string = 'http://localhost:3000/purchases';
 
   constructor(
@@ -34,6 +34,7 @@ export class CartComponent implements OnInit {
     this.checkLogin();
     this.cartItems = this.cartService.getCartItems();
     this.calculateTotals();
+    this.userId = this.localStorageService.getItem('userId');
   }
 
   checkLogin() {

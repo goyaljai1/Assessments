@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <h4>List of Attendance</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">AttendanceD</th>
+        <th scope="col">Assessment Name</th>
+        <th scope="col">User Id</th>
+        <th scope="col">Attempt Id</th>
+        <th></th>
+        <th scope="col">Date</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let attendance of arrAttendance">
+        <td>{{ attendance.id }}</td>
+        <td>{{ attendance.assessmentName }}</td>
+        <td>{{ attendance.userId }}</td>
+        <td>{{ attendance.attemptId }}</td>
+        <td>{{ attendance.date }}</td>
+        <td>
+          <p
+            class="font-weight-bold"
+            style="
+              font-size: 1.05rem;
+              padding: 2px 5px;
+              border-radius: 4px;
+              background-color: #f8f9fa;
+              margin: 0;
+              display: inline-block;
+            "
+          >
+            {{ attendance.status }}
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

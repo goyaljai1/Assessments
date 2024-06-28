@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Purchase, PurchaseItem } from '../../../models/cart';
 import { DashboardService } from '../../../services/dashboard.service';
 import { LocalStorageService } from '../../../services/local-storage-service.service';
+import { AssessmentScore } from '../../../models/assessment-score';
+import { AssessmentScoreService } from '../../../services/assessment-score.service';
+import { ProductService } from '../../../services/add-assessment.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Product } from '../../../models/add-assessment';
+import { AttendanceService } from '../../../services/attendance.service';
+import { Attendance } from '../../../models/attendance';
 
 @Component({
   selector: 'app-attendance-screen',
@@ -9,44 +16,25 @@ import { LocalStorageService } from '../../../services/local-storage-service.ser
   styleUrl: './attendance-screen.component.scss',
 })
 export class AttendanceScreenComponent implements OnInit {
-  userId: string = '1'; // Replace with actual logic to get current logged-in user ID
+  userId: any;
+  userName: any;
+  arrAttendanceScore: Attendance[] = [];
   assessments: PurchaseItem[] = [];
-  userName: string = 'name';
+  arrAssessment: Product[] = [];
 
   constructor(
-    private assessmentService: DashboardService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private attendanceservice: AttendanceService
   ) {}
-  private getUserName(): void {
-    const name = this.localStorageService.getItem('name');
-    if (name) {
-      this.userName = name;
-    } else {
-      this.userName = '';
-    }
-  }
+
   ngOnInit(): void {
-    this.getUserName();
-    this.loadUserAssessments();
-  }
-  seeAssessments() {
-    console.log('Hello');
-  }
-  loadUserAssessments(): void {
-    this.assessmentService.getUserAssessments(this.userId).subscribe(
-      (purchases: Purchase[]) => {
-        console.log('purchases: ', purchases);
-        if (purchases.length > 0) {
-          const purchase = purchases[0];
-          console.log(purchase);
-          if (purchase && purchase.items) {
-            this.assessments = purchase.items;
-          }
-        }
-      },
-      (error) => {
-        console.error('Error fetching assessments:', error);
-      }
-    );
+    this.userName = this.localStorageService.getItem('name');
+    this.userId = this.localStorageService.getItem('userId');
+    this.attendanceservice.getAttendances().subscribe((data) => {
+      this.arrAttendanceScore = data.filter(
+        (attendance) => attendance.userId === this.userId
+      );
+      console.log(this.arrAttendanceScore);
+    });
   }
 }
