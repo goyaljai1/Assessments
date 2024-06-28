@@ -25,7 +25,7 @@
       "email": "jack.doe@example.com",
       "mobile": 1234567890,
       "dob": "1990-01-01",
-      "role": "Admin",
+      "role": "admin",
       "password": "pass123",
       "address": {
         "street": "18th Cross",
@@ -42,7 +42,7 @@
       "email": "this@gmail",
       "mobile": "123",
       "dob": "2024-06-12",
-      "role": "user",
+      "role": "trainee",
       "password": "1234",
       "address": {
         "houseNo": "",
@@ -60,7 +60,7 @@
       "email": "jai@",
       "mobile": "10223",
       "dob": "2024-06-13",
-      "role": "user",
+      "role": "trainee",
       "password": "",
       "address": {
         "houseNo": "",
@@ -143,47 +143,18 @@
       "id": "1",
       "aName": "Product One",
       "aDes": "Description for product one.",
-      "aImgSrc": "",
-      "aPrice": 29.99,
+      "aImgSrc": "avc",
+      "aPrice": 100,
       "marks": 85,
-      "time": 60,
+      "time": "30000",
       "course_id": "course1",
       "itinery": [
         {
-          "id": "1",
-          "category": "Math",
-          "question": "What is 2+2?",
-          "options": [
-            "2",
-            "3",
-            "4",
-            "5"
-          ],
-          "correctAns": "4"
-        },
-        {
-          "id": "2",
-          "category": "Science",
-          "question": "What is H2O?",
-          "options": [
-            "Oxygen",
-            "Hydrogen",
-            "Water",
-            "Carbon Dioxide"
-          ],
-          "correctAns": "Water"
-        },
-        {
-          "id": "3",
-          "category": "Science",
-          "question": "What is C02?",
-          "options": [
-            "Oxygen",
-            "Hydrogen",
-            "Water",
-            "Carbon Dioxide"
-          ],
-          "correctAns": "Carbon Dioxide"
+          "id": 1,
+          "text": "abcdefghijkl",
+          "type": "true-false",
+          "choices": ["true", "false"],
+          "correctAnswer": "true"
         }
       ]
     },
@@ -201,24 +172,14 @@
           "id": "3",
           "category": "History",
           "question": "Who was the first President of the USA?",
-          "options": [
-            "Washington",
-            "Lincoln",
-            "Jefferson",
-            "Adams"
-          ],
+          "options": ["Washington", "Lincoln", "Jefferson", "Adams"],
           "correctAns": "Washington"
         },
         {
           "id": "4",
           "category": "Geography",
           "question": "What is the capital of France?",
-          "options": [
-            "Berlin",
-            "Madrid",
-            "Paris",
-            "Rome"
-          ],
+          "options": ["Berlin", "Madrid", "Paris", "Rome"],
           "correctAns": "Paris"
         }
       ]
@@ -237,24 +198,14 @@
           "id": "5",
           "category": "Literature",
           "question": "Who wrote 'Hamlet'?",
-          "options": [
-            "Shakespeare",
-            "Hemingway",
-            "Dickens",
-            "Austen"
-          ],
+          "options": ["Shakespeare", "Hemingway", "Dickens", "Austen"],
           "correctAns": "Shakespeare"
         },
         {
           "id": "6",
           "category": "Math",
           "question": "What is the square root of 16?",
-          "options": [
-            "2",
-            "3",
-            "4",
-            "5"
-          ],
+          "options": ["2", "3", "4", "5"],
           "correctAns": "4"
         }
       ]
@@ -273,24 +224,14 @@
           "id": "7",
           "category": "Science",
           "question": "What is the chemical symbol for gold?",
-          "options": [
-            "Au",
-            "Ag",
-            "Pt",
-            "Pb"
-          ],
+          "options": ["Au", "Ag", "Pt", "Pb"],
           "correctAns": "Au"
         },
         {
           "id": "8",
           "category": "History",
           "question": "What year did the Titanic sink?",
-          "options": [
-            "1910",
-            "1912",
-            "1914",
-            "1916"
-          ],
+          "options": ["1910", "1912", "1914", "1916"],
           "correctAns": "1912"
         }
       ]
@@ -309,24 +250,14 @@
           "id": "9",
           "category": "Geography",
           "question": "Which is the largest ocean on Earth?",
-          "options": [
-            "Atlantic",
-            "Indian",
-            "Arctic",
-            "Pacific"
-          ],
+          "options": ["Atlantic", "Indian", "Arctic", "Pacific"],
           "correctAns": "Pacific"
         },
         {
           "id": "10",
           "category": "Literature",
           "question": "Who wrote 'Pride and Prejudice'?",
-          "options": [
-            "Austen",
-            "Bronte",
-            "Eliot",
-            "Woolf"
-          ],
+          "options": ["Austen", "Bronte", "Eliot", "Woolf"],
           "correctAns": "Austen"
         }
       ]
@@ -345,24 +276,14 @@
           "id": "11",
           "category": "Math",
           "question": "What is 3*3?",
-          "options": [
-            "6",
-            "9",
-            "12",
-            "15"
-          ],
+          "options": ["6", "9", "12", "15"],
           "correctAns": "9"
         },
         {
           "id": "12",
           "category": "Science",
           "question": "What planet is known as the Red Planet?",
-          "options": [
-            "Earth",
-            "Mars",
-            "Jupiter",
-            "Venus"
-          ],
+          "options": ["Earth", "Mars", "Jupiter", "Venus"],
           "correctAns": "Mars"
         }
       ]
@@ -381,24 +302,14 @@
           "id": "13",
           "category": "History",
           "question": "Who discovered America?",
-          "options": [
-            "Columbus",
-            "Magellan",
-            "Vespucci",
-            "Cook"
-          ],
+          "options": ["Columbus", "Magellan", "Vespucci", "Cook"],
           "correctAns": "Columbus"
         },
         {
           "id": "14",
           "category": "Geography",
           "question": "What is the largest desert in the world?",
-          "options": [
-            "Sahara",
-            "Gobi",
-            "Kalahari",
-            "Arctic"
-          ],
+          "options": ["Sahara", "Gobi", "Kalahari", "Arctic"],
           "correctAns": "Sahara"
         }
       ]
@@ -417,12 +328,7 @@
           "id": "15",
           "category": "Literature",
           "question": "Who wrote 'Moby Dick'?",
-          "options": [
-            "Melville",
-            "Twain",
-            "Hawthorne",
-            "Thoreau"
-          ],
+          "options": ["Melville", "Twain", "Hawthorne", "Thoreau"],
           "correctAns": "Melville"
         },
         {
@@ -455,7 +361,7 @@
           "correctAns": "6"
         }
       ],
-      "aName": "Maths ",
+      "aName": "Maths",
       "aDes": "Maths Test for algebra",
       "aImgSrc": "",
       "aPrice": "50",
@@ -528,10 +434,7 @@
       "score": 92,
       "totalMarks": 92,
       "assessmentName": "Product Seven",
-      "marksArray": [
-        46,
-        46
-      ]
+      "marksArray": [46, 46]
     }
   ],
   "transformedassessment": [],

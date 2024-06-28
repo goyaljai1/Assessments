@@ -43,12 +43,18 @@ import { ViewCategoryComponent } from './components/category/view-category/view-
 import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
 import { UpdateAssessmentComponent } from './components/assessment/update-assessment/update-assessment.component';
 import { ResultScreenComponent } from './components/dashboard/result-screen/result-screen.component';
-import { AttendanceScreenComponent } from './components/dashboard/attendance-screen/attendance-screen.component';
-import { AssessmentPlotComponent } from './components/assessment-plot/assessment-plot.component';
+import { FormArray } from '@angular/forms';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SearchPipe } from './pipe/search.pipe';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { ReportComponent } from './components/admin/report/report.component';
 import { AttendanceComponent } from './components/admin/attendance/attendance.component';
 
+import { RouterModule } from '@angular/router';
+import { ViewAssessmentScoreComponent } from './components/AssessmentScore/view-assessment-score/view-assessment-score.component';
+import { UpdateAssessmentScoreComponent } from './components/AssessmentScore/update-assessment-score/update-assessment-score.component';
+import { AttendanceScreenComponent } from './components/dashboard/attendance-screen/attendance-screen.component';
+import { AssessmentPlotComponent } from './components/assessment-plot/assessment-plot.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +88,10 @@ import { AttendanceComponent } from './components/admin/attendance/attendance.co
     AssessmentPlotComponent,
     ReportComponent,
     AttendanceComponent,
+    PageNotFoundComponent,
+    SearchPipe,
+    ViewAssessmentScoreComponent,
+    UpdateAssessmentScoreComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +110,7 @@ import { AttendanceComponent } from './components/admin/attendance/attendance.co
     MatRadioModule,
     HttpClientModule,
     MatBadgeModule,
+    RouterModule,
     CanvasJSAngularChartsModule,
   ],
   providers: [provideAnimationsAsync()],

@@ -18,7 +18,7 @@ export class ProductService {
       'Content-Type': 'application/json',
     }),
   };
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,private http: HttpClient) {
     this, (this.arrProducts = []);
   }
 
@@ -36,24 +36,18 @@ export class ProductService {
       )
       .pipe(catchError(this.httpError));
   }
-  getProductById(id: string): Product {
-    for (let i = 0; i < this.arrProducts.length; i++) {
-      if (id == this.arrProducts[i].id) {
-        return this.arrProducts[i];
-      }
-    }
-
-    return new Product('', '', '', '', 0, 0, 0, '', []);
-  }
-
-  updateProduct(p: Product): Observable<Product[]> {
-    return this.httpClient
-      .put<Product[]>(
-        this.baseUrl + '/users/' + p.id,
-        JSON.stringify(p),
-        this.httpHeader
-      )
+  getProductById(id: string): Observable<Product> {
+    return this.httpClient.get<Product>(`${this.baseUrl}/assessment/${id}`)
       .pipe(catchError(this.httpError));
+  }
+  updateAssessmentById(id: string, assessment: Product): Observable<Product> {
+    return this.httpClient.put<Product>(
+      `${this.baseUrl}/assessment/${id}`,
+      JSON.stringify(assessment),
+      this.httpHeader
+    ).pipe(
+      catchError(this.httpError)
+    );
   }
   private httpError(error: HttpErrorResponse) {
     let errorMessage = '';

@@ -6,6 +6,8 @@ import { AssessmentScoreService } from '../../../services/assessment-score.servi
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { fontFamily } from 'html2canvas/dist/types/css/property-descriptors/font-family';
+import { RouterModule } from '@angular/router';
+
 interface DataPoint {
   label: string;
   y: number;

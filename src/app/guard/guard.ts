@@ -11,7 +11,7 @@ import { LocalStorageService } from '../services/local-storage-service.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AdminGaurd implements CanActivate {
+export class Guard implements CanActivate {
   constructor(
     private localStorageService: LocalStorageService,
     private router: Router
@@ -27,7 +27,7 @@ export class AdminGaurd implements CanActivate {
     | UrlTree {
     let role = this.localStorageService.getItem('role');
 
-    if (role === 'admin' || role === 'faculty') {
+    if (role === 'admin') {
       return true;
     }
     console.log('Sorry, no access for role ' + role);

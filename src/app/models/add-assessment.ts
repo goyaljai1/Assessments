@@ -1,4 +1,7 @@
 export class Product {
+  subscribe(arg0: (assessment: any) => void) {
+    throw new Error('Method not implemented.');
+  }
   id: string;
   aName: string;
   aDes: string;

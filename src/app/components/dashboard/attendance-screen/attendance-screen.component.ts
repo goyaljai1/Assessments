@@ -10,6 +10,7 @@ import { Product } from '../../../models/add-assessment';
 import { AttendanceService } from '../../../services/attendance.service';
 import { Attendance } from '../../../models/attendance';
 
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-attendance-screen',
   templateUrl: './attendance-screen.component.html',

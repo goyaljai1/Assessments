@@ -125,7 +125,12 @@ export class TestScreenComponent implements OnInit {
           const instanceId = `${assessment.id}-${i}`; // Unique instance ID
           this.transformedAssessments.push({
             instanceId,
-            assessment: { ...assessment },
+            assessment: {
+              ...assessment,
+              subscribe: function (arg0: (assessment: any) => void): void {
+                throw new Error('Function not implemented.');
+              },
+            },
             attemptNumber: i, // Assigning attempt number
           });
         }
