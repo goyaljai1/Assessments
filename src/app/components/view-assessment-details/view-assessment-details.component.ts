@@ -10,11 +10,14 @@ import { LocalStorageService } from '../../services/local-storage-service.servic
   styleUrls: ['./view-assessment-details.component.scss'],
 })
 export class ViewAssessmentDetailsComponent implements OnInit {
-  assessment: Product = new Product('', '', '', '', 0, 0, 0, '', []);
+  assessment: Product = new Product('', '', '', '', 0, '', 0, 0, '', []);
   assessments: Product[] = [];
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productService: ProductService,private router: Router ,private cartService: CartService,private localStorageService: LocalStorageService
+    private productService: ProductService,
+    private router: Router,
+    private cartService: CartService,
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +34,11 @@ export class ViewAssessmentDetailsComponent implements OnInit {
     this.productService.getProducts().subscribe(
       (assessments: Product[]) => {
         this.assessments = assessments;
-        const assessment = assessments.find(a => a.id === query || a.aName.toLowerCase().includes(query.toLowerCase()));
+        const assessment = assessments.find(
+          (a) =>
+            a.id === query ||
+            a.aName.toLowerCase().includes(query.toLowerCase())
+        );
         if (assessment) {
           this.assessment = assessment;
         } else {
@@ -63,5 +70,4 @@ export class ViewAssessmentDetailsComponent implements OnInit {
     this.cartService.addToCart(product);
     alert(`Assessment ${product.aName} added to cart successfully!`);
   }
-  
 }

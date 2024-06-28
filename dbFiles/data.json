@@ -238,7 +238,7 @@
     },
     {
       "id": "4",
-      "aName": "JavaScript Fundamentals Assessment",
+      "aName": "JavaScript Fundamentals",
       "aDes": "Assessment for JavaScript fundamentals course.",
       "aImgSrc": "assets/images/angular.png",
       "aPrice": 39.99,
@@ -275,7 +275,7 @@
     },
     {
       "id": "5",
-      "aName": "Web Development with React Assessment",
+      "aName": "Web Development",
       "aDes": "Assessment for web development with React course.",
       "aImgSrc": "assets/images/angular.png",
       "aPrice": 59.99,
@@ -325,24 +325,14 @@
           "id": 11,
           "category": "Science",
           "question": "What planet is known as the Red Planet?",
-          "options": [
-            "Mars",
-            "Venus",
-            "Jupiter",
-            "Saturn"
-          ],
+          "options": ["Mars", "Venus", "Jupiter", "Saturn"],
           "correctAns": "Mars"
         },
         {
           "id": 12,
           "category": "Math",
           "question": "What is the value of Pi (π) to two decimal places?",
-          "options": [
-            "3.14",
-            "3.15",
-            "3.16",
-            "3.17"
-          ],
+          "options": ["3.14", "3.15", "3.16", "3.17"],
           "correctAns": "3.14"
         }
       ]

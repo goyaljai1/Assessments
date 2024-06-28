@@ -14,9 +14,9 @@ import { TestScreenComponent } from './components/test-screen/test-screen.compon
 import { ResultScreenComponent } from './components/dashboard/result-screen/result-screen.component';
 import { AttendanceScreenComponent } from './components/dashboard/attendance-screen/attendance-screen.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DisableAssessmentsComponent } from './components/dashboard/disable-assessments/disable-assessments.component';
 
 const routes: Routes = [
- 
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'about-us', component: AboutUsComponent },
@@ -29,16 +29,17 @@ const routes: Routes = [
   { path: 'testScreen', component: TestScreenComponent },
   { path: 'resultScreen', component: ResultScreenComponent },
   { path: 'attendanceScreen', component: AttendanceScreenComponent },
+  { path: 'diabledAssessment', component: DisableAssessmentsComponent },
   {
     path: 'view-assessment',
-    component: AssessmentComponent
+    component: AssessmentComponent,
   },
   {
     path: 'view-assessment-details/:id',
-    component: ViewAssessmentDetailsComponent
+    component: ViewAssessmentDetailsComponent,
   },
-  {path: '404', component: PageNotFoundComponent},
-  {path: '**', redirectTo: '/404'},
+  { path: '404', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({

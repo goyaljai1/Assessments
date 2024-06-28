@@ -10,6 +10,7 @@ export class Product {
   marks: number;
   time: number;
   course_id: string;
+  faculty_id: string;
   itinery: Itinery[] = [];
 
   constructor(
@@ -18,6 +19,7 @@ export class Product {
     aDes: string,
     aImgSrc: string,
     aPrice: number,
+    faculty_id: string,
     marks: number,
     time: number,
     course_id: string,
@@ -32,6 +34,7 @@ export class Product {
     this.time = time;
     this.course_id = course_id;
     this.itinery = itin;
+    this.faculty_id = faculty_id;
   }
 }
 
