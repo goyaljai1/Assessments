@@ -1,0 +1,238 @@
+[{
+  "_id": {
+    "$oid": "66827debd1e5af5a8b2e0c77"
+  },
+  "id": "1",
+  "fName": "John",
+  "lName": "Doe",
+  "email": "john.doe@example.com",
+  "mobile": 1234567890,
+  "dob": "1990-01-01",
+  "role": "admin",
+  "password": "pass123",
+  "address": {
+    "houseNo": "1",
+    "street": "First Avenue",
+    "area": "Downtown",
+    "state": "California",
+    "country": "USA",
+    "pincode": "90210"
+  }
+},
+{
+  "_id": {
+    "$oid": "66827debd1e5af5a8b2e0c78"
+  },
+  "id": "2",
+  "fName": "Jack",
+  "lName": "Smith",
+  "email": "jack.smith@example.com",
+  "mobile": {
+    "$numberLong": "9876543210"
+  },
+  "dob": "1985-05-15",
+  "role": "admin",
+  "password": "admin123",
+  "address": {
+    "street": "18th Cross",
+    "city": "Springfield",
+    "state": "Illinois",
+    "zipCode": "62704",
+    "country": "USA"
+  }
+},
+{
+  "_id": {
+    "$oid": "66827debd1e5af5a8b2e0c79"
+  },
+  "id": "3",
+  "fName": "Peter",
+  "lName": "Parker",
+  "email": "peter.parker@example.com",
+  "mobile": 1231231234,
+  "dob": "2000-08-10",
+  "role": "trainee",
+  "password": "spidey123",
+  "address": {
+    "houseNo": "20",
+    "street": "Queens Blvd",
+    "area": "Queens",
+    "state": "New York",
+    "country": "USA",
+    "pincode": "11375"
+  }
+},
+{
+  "_id": {
+    "$oid": "66827debd1e5af5a8b2e0c7a"
+  },
+  "id": "4",
+  "fName": "Jai",
+  "lName": "Goyal",
+  "email": "jai.goyal@example.com",
+  "mobile": {
+    "$numberLong": "5555555555"
+  },
+  "dob": "1992-12-12",
+  "role": "trainee",
+  "password": "trainee123",
+  "address": {
+    "houseNo": "30",
+    "street": "MG Road",
+    "area": "Sector 15",
+    "state": "Haryana",
+    "country": "India",
+    "pincode": "122001"
+  }
+},
+{
+  "_id": {
+    "$oid": "66827debd1e5af5a8b2e0c7b"
+  },
+  "id": "5",
+  "fName": "Rick",
+  "lName": "Sanchez",
+  "email": "rick.sanchez@example.com",
+  "mobile": {
+    "$numberLong": "9090909090"
+  },
+  "dob": "1950-12-02",
+  "role": "faculty",
+  "password": "wubalubadubdub",
+  "address": {
+    "houseNo": "42",
+    "street": "Baker Street",
+    "area": "Marylebone",
+    "state": "London",
+    "country": "UK",
+    "pincode": "NW1 6XE"
+  }
+},
+{
+  "_id": {
+    "$oid": "66827debd1e5af5a8b2e0c7c"
+  },
+  "id": "6",
+  "fName": "Samay",
+  "lName": "Raina",
+  "email": "samay.raina@example.com",
+  "mobile": {
+    "$numberLong": "7777777777"
+  },
+  "dob": "1995-11-11",
+  "role": "trainee",
+  "password": "checkmate123",
+  "address": {
+    "houseNo": "12",
+    "street": "High Street",
+    "area": "Central",
+    "state": "Karnataka",
+    "country": "India",
+    "pincode": "560001"
+  }
+},
+{
+  "_id": {
+    "$oid": "66827debd1e5af5a8b2e0c7d"
+  },
+  "id": "7",
+  "fName": "Miti",
+  "lName": "abc",
+  "email": "abc@gmail",
+  "mobile": "123",
+  "dob": "2024-06-27",
+  "role": "trainee",
+  "password": "123",
+  "address": {
+    "houseNo": "H",
+    "street": "St",
+    "area": "a",
+    "state": "st",
+    "country": "c",
+    "pincode": "123"
+  }
+},
+{
+  "_id": {
+    "$oid": "66827debd1e5af5a8b2e0c7e"
+  },
+  "id": "8",
+  "fName": "Miti",
+  "lName": "abc",
+  "email": "abc@gmail",
+  "mobile": "123",
+  "dob": "2024-06-20",
+  "role": "faculty",
+  "password": "123",
+  "address": {
+    "houseNo": "",
+    "street": "",
+    "area": "",
+    "state": "",
+    "country": "",
+    "pincode": ""
+  }
+},
+{
+  "_id": {
+    "$oid": "66827debd1e5af5a8b2e0c7f"
+  },
+  "id": "9",
+  "fName": "",
+  "lName": "",
+  "email": "john.doe@example.com",
+  "mobile": "",
+  "dob": "",
+  "role": "",
+  "password": "pass123",
+  "address": {
+    "houseNo": "",
+    "street": "",
+    "area": "",
+    "state": "",
+    "country": "",
+    "pincode": ""
+  }
+},
+{
+  "_id": {
+    "$oid": "66827debd1e5af5a8b2e0c80"
+  },
+  "id": "11",
+  "fName": "Teacher",
+  "lName": "1",
+  "email": "teacher@gmail.com",
+  "mobile": "100",
+  "dob": "2024-06-30",
+  "role": "faculty",
+  "password": "100",
+  "address": {
+    "houseNo": "H",
+    "street": "St",
+    "area": "Ar",
+    "state": "St",
+    "country": "Co",
+    "pincode": "1010"
+  }
+},
+{
+  "_id": {
+    "$oid": "66827debd1e5af5a8b2e0c81"
+  },
+  "id": "12",
+  "fName": "Ritik",
+  "lName": "Chahal",
+  "email": "ritik@gmail.com",
+  "mobile": "1001001",
+  "dob": "2024-07-01",
+  "role": "trainee",
+  "password": "1001",
+  "address": {
+    "houseNo": "H",
+    "street": "St",
+    "area": "Ar",
+    "state": "St",
+    "country": "Co",
+    "pincode": "10010"
+  }
+}]

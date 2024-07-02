@@ -14,8 +14,21 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="container-fluid d-flex justify-content-end">
-          <ul class="navbar-nav">
+        <div class="d-flex w-100">
+          <form class="d-flex me-auto" (ngSubmit)="onSearch()">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search Assessments"
+              aria-label="Search"
+              [(ngModel)]="searchQuery"
+              name="searchQuery"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link" aria-current="page" [routerLink]="['/home']"
                 >Home</a
@@ -41,21 +54,6 @@
               >
                 <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
               </div>
-            </li>
-            <li class="nav-item">
-              <form class="d-flex" (ngSubmit)="onSearch()">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search Assessments"
-                  aria-label="Search"
-                  [(ngModel)]="searchQuery"
-                  name="searchQuery"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
             </li>
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/cart']">Cart</a>
@@ -117,6 +115,15 @@
                         aria-describedby="emailHelp"
                         required
                       />
+                      <div
+                        *ngIf="
+                          loginForm.get('email')?.touched &&
+                          loginForm.get('email')?.invalid
+                        "
+                        class="invalid-feedback"
+                      >
+                        Please provide a valid email address.
+                      </div>
                       <div id="emailHelp" class="form-text">
                         We'll never share your email with anyone else.
                       </div>
@@ -131,16 +138,15 @@
                         formControlName="password"
                         required
                       />
-                    </div>
-                    <div class="mb-3 form-check">
-                      <input
-                        type="checkbox"
-                        class="form-check-input"
-                        formControlName="rememberMe"
-                      />
-                      <label class="form-check-label" for="exampleCheck1"
-                        >Remember me</label
+                      <div
+                        *ngIf="
+                          loginForm.get('email')?.touched &&
+                          loginForm.get('email')?.invalid
+                        "
+                        class="invalid-feedback"
                       >
+                        Please provide a password.
+                      </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                   </form>
@@ -186,10 +192,8 @@
                 </div>
                 <div class="modal-body">
                   <form
-                    [formGroup]="myForm"
-                    (ngSubmit)="onSubmit(myForm.value)"
-                    class="needs-validation"
-                    novalidate
+                    [formGroup]="registerForm"
+                    (ngSubmit)="onSubmit(registerForm)"
                   >
                     <div class="row mb-3">
                       <div class="col-md-6">
@@ -204,14 +208,13 @@
                           required
                         />
                         <div
-                          *ngIf="submitted && formControl['firstName'].errors?.['required']"
-                          class="invalid"
-                          style="
-                            background-color: lightcoral;
-                            border: 1px solid salmon;
+                          *ngIf="
+                            registerForm.get('firstName')?.touched &&
+                            registerForm.get('firstName')?.invalid
                           "
+                          class="invalid-feedback"
                         >
-                          ! First Name is required!
+                          First Name is required!
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -226,14 +229,12 @@
                           required
                         />
                         <div
-                          *ngIf="submitted && formControl['lastName'].errors?.['required']"
-                          class="invalid"
-                          style="
-                            background-color: lightcoral;
-                            border: 1px solid salmon;
+                          *ngIf="
+                            registerForm.get('lastName')?.touched &&
+                            registerForm.get('lastName')?.invalid
                           "
                         >
-                          ! Last Name is required!
+                          Last Name is required!
                         </div>
                       </div>
                     </div>
@@ -249,14 +250,13 @@
                           required
                         />
                         <div
-                          *ngIf="submitted && formControl['email'].errors?.['required']"
-                          class="invalid"
-                          style="
-                            background-color: lightcoral;
-                            border: 1px solid salmon;
+                          *ngIf="
+                            registerForm.get('email')?.touched &&
+                            registerForm.get('email')?.invalid
                           "
+                          class="invalid-feedback"
                         >
-                          ! Email is required!
+                          Email is required and must be a valid email!
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -270,6 +270,15 @@
                           class="form-control"
                           required
                         />
+                        <div
+                          *ngIf="
+                            registerForm.get('mobile')?.touched &&
+                            registerForm.get('mobile')?.invalid
+                          "
+                          class="invalid-feedback"
+                        >
+                          Mobile is required!
+                        </div>
                       </div>
                     </div>
 
@@ -285,6 +294,15 @@
                           class="form-control"
                           required
                         />
+                        <div
+                          *ngIf="
+                            registerForm.get('dob')?.touched &&
+                            registerForm.get('dob')?.invalid
+                          "
+                          class="invalid-feedback"
+                        >
+                          Date of Birth is required and cannot be in the future!
+                        </div>
                       </div>
                       <div class="col-md-6">
                         <label for="roleInput" class="form-label">Role</label>
@@ -295,6 +313,15 @@
                           class="form-control"
                           required
                         />
+                        <div
+                          *ngIf="
+                            registerForm.get('role')?.touched &&
+                            registerForm.get('role')?.invalid
+                          "
+                          class="invalid-feedback"
+                        >
+                          Role is required!
+                        </div>
                       </div>
                     </div>
 
@@ -310,6 +337,15 @@
                           class="form-control"
                           required
                         />
+                        <div
+                          *ngIf="
+                            registerForm.get('password')?.touched &&
+                            registerForm.get('password')?.invalid
+                          "
+                          class="invalid-feedback"
+                        >
+                          Password is required!
+                        </div>
                       </div>
                       <div class="col-md-6">
                         <label for="confirmPassword" class="form-label"
@@ -320,8 +356,16 @@
                           id="confirmPassword"
                           formControlName="confirmPassword"
                           class="form-control"
+                          [class.is-invalid]="(submitted && formControl['confirmPassword'].invalid) || (submitted && registerForm.errors?.['mismatch'])"
                           required
                         />
+                        <div
+                          *ngIf="submitted && (formControl['confirmPassword'].invalid || registerForm.errors?.['mismatch'])"
+                          class="invalid-feedback"
+                        >
+                          Confirm Password is required and must match the
+                          Password!
+                        </div>
                       </div>
                     </div>
 

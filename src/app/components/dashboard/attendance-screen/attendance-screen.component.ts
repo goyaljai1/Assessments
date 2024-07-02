@@ -19,9 +19,11 @@ import { RouterModule } from '@angular/router';
 export class AttendanceScreenComponent implements OnInit {
   userId: any;
   userName: any;
+  userRole: any;
   arrAttendanceScore: Attendance[] = [];
   assessments: PurchaseItem[] = [];
   arrAssessment: Product[] = [];
+  isFacultyOrAdmin: boolean = false;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -29,6 +31,9 @@ export class AttendanceScreenComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (this.userRole == 'faculty' || this.userRole == 'admin') {
+      this.isFacultyOrAdmin = true;
+    }
     this.userName = this.localStorageService.getItem('name');
     this.userId = this.localStorageService.getItem('userId');
     this.attendanceservice.getAttendances().subscribe((data) => {

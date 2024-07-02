@@ -14,4 +14,9 @@ export class DashboardService {
   getUserAssessments(userId: string): Observable<Purchase[]> {
     return this.http.get<Purchase[]>(`${this.purchasesUrl}?userId=${userId}`);
   }
+  getFacultyAssessments(facultyId: string): Observable<Purchase[]> {
+    return this.http.get<Purchase[]>(
+      `${this.purchasesUrl}?faculty_id=${facultyId}`
+    );
+  }
 }

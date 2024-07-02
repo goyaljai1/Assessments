@@ -1,6 +1,58 @@
 main {
   background-color: #cadcfc;
 }
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid {
+  border-color: #dc3545;
+}
+
+div.invalid-feedback {
+  display: none;
+}
+
+input.ng-touched.ng-invalid ~ .invalid-feedback,
+textarea.ng-touched.ng-invalid ~ .invalid-feedback {
+  display: block;
+  color: #dc3545;
+}
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid {
+  border-color: #dc3545;
+}
+
+div.invalid-feedback {
+  display: none;
+}
+
+input.ng-touched.ng-invalid ~ .invalid-feedback,
+textarea.ng-touched.ng-invalid ~ .invalid-feedback {
+  display: block;
+  color: #dc3545;
+}
+
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  display: none;
+}
+
+input.ng-touched.ng-invalid ~ .invalid-feedback,
+textarea.ng-touched.ng-invalid ~ .invalid-feedback {
+  display: block;
+  color: #dc3545;
+}
+
+// Additional styles for the invalid class
+.is-invalid {
+  border-color: #dc3545;
+}
+
+.is-invalid ~ .invalid-feedback {
+  display: block;
+}
 
 #banner {
   background-color: #00246b;

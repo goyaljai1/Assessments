@@ -6,6 +6,9 @@ main {
   margin: 10px auto;
 }
 
+.inactive {
+  background-color: lightgray;
+}
 .row {
   display: flex;
   flex-wrap: wrap;

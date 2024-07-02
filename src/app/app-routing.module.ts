@@ -25,7 +25,10 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AdminGaurd] },
   { path: 'navbar', component: NavbarComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+  },
   { path: 'testScreen', component: TestScreenComponent },
   { path: 'resultScreen', component: ResultScreenComponent },
   { path: 'attendanceScreen', component: AttendanceScreenComponent },

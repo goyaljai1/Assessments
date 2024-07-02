@@ -109,20 +109,20 @@
     },
     {
       "id": "7",
-      "fName": "aaaa",
-      "lName": "adada",
-      "email": "dada@dad",
-      "mobile": "789456622",
-      "dob": "2024-06-06",
+      "fName": "Miti",
+      "lName": "abc",
+      "email": "abc@gmail",
+      "mobile": "123",
+      "dob": "2024-06-27",
       "role": "trainee",
-      "password": "pass123",
+      "password": "123",
       "address": {
-        "houseNo": "212",
-        "street": "eq3e3",
-        "area": "dfafsf",
-        "state": "dsasfadf",
-        "country": "ddadada",
-        "pincode": "250002"
+        "houseNo": "H",
+        "street": "St",
+        "area": "a",
+        "state": "st",
+        "country": "c",
+        "pincode": "123"
       }
     },
     {
@@ -130,17 +130,71 @@
       "fName": "Miti",
       "lName": "abc",
       "email": "abc@gmail",
-      "mobile": "789456555",
-      "dob": "2024-06-08",
-      "role": "trainee",
+      "mobile": "123",
+      "dob": "2024-06-20",
+      "role": "faculty",
+      "password": "123",
+      "address": {
+        "houseNo": "",
+        "street": "",
+        "area": "",
+        "state": "",
+        "country": "",
+        "pincode": ""
+      }
+    },
+    {
+      "id": "9",
+      "fName": "",
+      "lName": "",
+      "email": "john.doe@example.com",
+      "mobile": "",
+      "dob": "",
+      "role": "",
       "password": "pass123",
       "address": {
-        "houseNo": "12",
-        "street": "31313",
-        "area": "dadad",
-        "state": "dada",
-        "country": "dadda",
-        "pincode": "1285"
+        "houseNo": "",
+        "street": "",
+        "area": "",
+        "state": "",
+        "country": "",
+        "pincode": ""
+      }
+    },
+    {
+      "id": "11",
+      "fName": "Teacher",
+      "lName": "1",
+      "email": "teacher@gmail.com",
+      "mobile": "100",
+      "dob": "2024-06-30",
+      "role": "faculty",
+      "password": "100",
+      "address": {
+        "houseNo": "H",
+        "street": "St",
+        "area": "Ar",
+        "state": "St",
+        "country": "Co",
+        "pincode": "1010"
+      }
+    },
+    {
+      "id": "12",
+      "fName": "Ritik",
+      "lName": "Chahal",
+      "email": "ritik@gmail.com",
+      "mobile": "1001001",
+      "dob": "2024-07-01",
+      "role": "trainee",
+      "password": "1001",
+      "address": {
+        "houseNo": "H",
+        "street": "St",
+        "area": "Ar",
+        "state": "St",
+        "country": "Co",
+        "pincode": "10010"
       }
     }
   ],
@@ -154,7 +208,7 @@
     {
       "id": "102",
       "cName": "Mastering Angular",
-      "categoryId": "Web Dev",
+      "categoryId": "103",
       "cDescription": "A comprehensive Angular course."
     },
     {
@@ -162,6 +216,12 @@
       "cName": "HTML Web Development",
       "categoryId": "104",
       "cDescription": "A detailed course on HTML development from basic to advanced."
+    },
+    {
+      "id": "",
+      "categoryId": "",
+      "cName": "",
+      "cDescription": ""
     }
   ],
   "course-categories": [
@@ -177,14 +237,15 @@
   "assessment": [
     {
       "id": "1",
-      "aName": "Programming Assessment",
-      "aDes": "Assessment for programming course.",
+      "aName": "Programming Basics Assessment",
+      "aDes": "Assessment for introductory programming course.",
       "aImgSrc": "assets/images/angular.png",
-      "aPrice": 200,
+      "aPrice": 100,
       "marks": 85,
       "time": "30000",
       "course_id": "1",
       "faculty_id": "1",
+      "isActive": true,
       "itinery": [
         {
           "id": 1,
@@ -208,6 +269,7 @@
       "time": 60,
       "course_id": "102",
       "faculty_id": "2",
+      "isActive": true,
       "itinery": [
         {
           "id": 3,
@@ -244,7 +306,8 @@
       "marks": 75,
       "time": 60,
       "course_id": "103",
-      "faculty_id": "3",
+      "faculty_id": "5",
+      "isActive": true,
       "itinery": [
         {
           "id": 5,
@@ -282,6 +345,7 @@
       "time": 60,
       "course_id": "104",
       "faculty_id": "4",
+      "isActive": true,
       "itinery": [
         {
           "id": 7,
@@ -319,6 +383,7 @@
       "time": 60,
       "course_id": "105",
       "faculty_id": "5",
+      "isActive": false,
       "itinery": [
         {
           "id": 9,
@@ -351,61 +416,82 @@
       "aName": "Node.js Mastery Assessment",
       "aDes": "Assessment for Node.js mastery course.",
       "aImgSrc": "assets/images/angular.png",
-      "aPrice": 49.99,
+      "aPrice": 100,
       "marks": 88,
       "time": 60,
       "course_id": "106",
       "faculty_id": "6",
+      "isActive": true,
       "itinery": [
         {
-          "id": 11,
-          "category": "Science",
-          "question": "What planet is known as the Red Planet?",
-          "options": [
-            "Mars",
-            "Venus",
-            "Jupiter",
-            "Saturn"
+          "id": 1,
+          "text": "2+2",
+          "type": "multiple-choice",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
           ],
-          "correctAns": "Mars"
+          "correctAnswer": "4"
         },
         {
-          "id": 12,
-          "category": "Math",
-          "question": "What is the value of Pi (π) to two decimal places?",
-          "options": [
-            "3.14",
-            "3.15",
-            "3.16",
-            "3.17"
+          "id": 2,
+          "text": "3*3 = 9?",
+          "type": "true-false",
+          "choices": [
+            "true",
+            "false"
           ],
-          "correctAns": "3.14"
+          "correctAnswer": "true"
         }
       ]
+    },
+    {
+      "id": "7",
+      "itinery": [
+        {
+          "id": "1",
+          "category": "mcq",
+          "question": "1+1",
+          "options": {
+            "optionA": "2",
+            "optionB": "3",
+            "optionC": "4",
+            "optionD": "5"
+          },
+          "correctAns": "4"
+        },
+        {
+          "id": "2",
+          "category": "truefalse",
+          "question": "3+3 = 4",
+          "options": {
+            "optionTrue": "True",
+            "optionFalse": "False"
+          },
+          "correctAns": ""
+        }
+      ],
+      "aName": "Vue.Js",
+      "aDes": "New assessment on Vue.Js",
+      "aImgSrc": "..",
+      "aPrice": "1000",
+      "marks": "10",
+      "time": "10",
+      "course_id": "101",
+      "faculty_id": "11",
+      "isActive": false
     }
   ],
   "purchases": [
     {
       "id": "1",
-      "userId": "1",
-      "items": [
-        {
-          "assessmentId": "2",
-          "quantity": 3
-        },
-        {
-          "assessmentId": "7",
-          "quantity": 2
-        }
-      ]
-    },
-    {
-      "id": "2",
       "userId": "6",
       "items": [
         {
           "assessmentId": "2",
-          "quantity": 1
+          "quantity": 2
         },
         {
           "assessmentId": "3",
@@ -413,26 +499,38 @@
         },
         {
           "assessmentId": "1",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "userId": "7",
+      "items": [
+        {
+          "assessmentId": "2",
           "quantity": 2
+        },
+        {
+          "assessmentId": "3",
+          "quantity": 4
+        },
+        {
+          "assessmentId": "5",
+          "quantity": 3
         }
       ]
     },
     {
       "id": "3",
-      "userId": null,
+      "userId": "1",
       "items": [
         {
           "assessmentId": "2",
-          "quantity": 1
-        }
-      ]
-    },
-    {
-      "id": "4",
-      "userId": "8",
-      "items": [
+          "quantity": 4
+        },
         {
-          "assessmentId": "2",
+          "assessmentId": "3",
           "quantity": 2
         }
       ]
@@ -472,6 +570,66 @@
         46,
         46
       ]
+    },
+    {
+      "id": "2",
+      "assessmentId": "2",
+      "userId": "7",
+      "score": 45,
+      "totalMarks": 90,
+      "assessmentName": "Advanced Angular Assessment",
+      "marksArray": [
+        0,
+        45
+      ]
+    },
+    {
+      "id": "3",
+      "assessmentId": "3",
+      "userId": "7",
+      "score": 37,
+      "totalMarks": 75,
+      "assessmentName": "HTML Development Assessment",
+      "marksArray": [
+        0,
+        37
+      ]
+    },
+    {
+      "id": "4",
+      "assessmentId": "2",
+      "userId": "7",
+      "score": 45,
+      "totalMarks": 90,
+      "assessmentName": "Advanced Angular Assessment",
+      "marksArray": [
+        0,
+        45
+      ]
+    },
+    {
+      "id": "5",
+      "assessmentId": "2",
+      "userId": "1",
+      "score": 0,
+      "totalMarks": 90,
+      "assessmentName": "Advanced Angular Assessment",
+      "marksArray": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "6",
+      "assessmentId": "2",
+      "userId": "1",
+      "score": 45,
+      "totalMarks": 90,
+      "assessmentName": "Advanced Angular Assessment",
+      "marksArray": [
+        0,
+        45
+      ]
     }
   ],
   "transformedassessment": [],
@@ -481,6 +639,51 @@
       "assessmentName": "Product Seven",
       "date": "2024-06-28T02:03:44.331Z",
       "assessmentId": "7",
+      "userId": "1",
+      "attemptId": "2-1",
+      "status": "Attempted"
+    },
+    {
+      "id": "2",
+      "assessmentName": "Advanced Angular Assessment",
+      "date": "2024-06-28T07:53:15.530Z",
+      "assessmentId": "2",
+      "userId": "7",
+      "attemptId": "2-1",
+      "status": "Attempted"
+    },
+    {
+      "id": "3",
+      "assessmentName": "HTML Development Assessment",
+      "date": "2024-06-28T07:54:30.953Z",
+      "assessmentId": "3",
+      "userId": "7",
+      "attemptId": "2-1",
+      "status": "Attempted"
+    },
+    {
+      "id": "4",
+      "assessmentName": "Advanced Angular Assessment",
+      "date": "2024-06-28T08:10:54.164Z",
+      "assessmentId": "2",
+      "userId": "7",
+      "attemptId": "2-1",
+      "status": "Attempted"
+    },
+    {
+      "id": "5",
+      "assessmentName": "Advanced Angular Assessment",
+      "date": "2024-06-28T08:27:29.539Z",
+      "assessmentId": "2",
+      "userId": "1",
+      "attemptId": "2-1",
+      "status": "Attempted"
+    },
+    {
+      "id": "6",
+      "assessmentName": "Advanced Angular Assessment",
+      "date": "2024-06-30T12:27:46.826Z",
+      "assessmentId": "2",
       "userId": "1",
       "attemptId": "2-1",
       "status": "Attempted"

@@ -4,7 +4,7 @@
       <h2>We would like to hear from you!</h2>
     </div>
     <div class="container mt-5">
-      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+      <form [formGroup]="exampleForm" (ngSubmit)="onSubmit()" novalidate>
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
           <input
@@ -15,7 +15,13 @@
             required
             [class.is-invalid]="name?.invalid && (name?.dirty || name?.touched)"
           />
-          <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="invalid-feedback">
+          <div
+            *ngIf="
+              exampleForm.get('name')?.touched &&
+              exampleForm.get('name')?.invalid
+            "
+            class="invalid-feedback"
+          >
             Please provide a name.
           </div>
         </div>
@@ -30,7 +36,13 @@
             required
             [class.is-invalid]="email?.invalid && (email?.dirty || email?.touched)"
           />
-          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="invalid-feedback">
+          <div
+            *ngIf="
+              exampleForm.get('email')?.touched &&
+              exampleForm.get('email')?.invalid
+            "
+            class="invalid-feedback"
+          >
             Please provide a valid email address.
           </div>
         </div>
@@ -39,12 +51,19 @@
           <textarea
             class="form-control"
             id="message"
+            formControlName="message"
             rows="3"
             formControlName="message"
             required
             [class.is-invalid]="message?.invalid && (message?.dirty || message?.touched)"
           ></textarea>
-          <div *ngIf="message?.invalid && (message?.dirty || message?.touched)" class="invalid-feedback">
+          <div
+            *ngIf="
+              exampleForm.get('message')?.touched &&
+              exampleForm.get('message')?.invalid
+            "
+            class="invalid-feedback"
+          >
             Please provide some text.
           </div>
         </div>

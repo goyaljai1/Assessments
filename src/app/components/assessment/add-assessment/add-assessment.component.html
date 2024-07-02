@@ -49,7 +49,8 @@
         <mat-label>Faculty Id</mat-label>
         <input
           matInput
-          placeholder="Faculty Id"
+          *ngIf="userRole == 'faculty'"
+          placeholder="{{ userId }}"
           formControlName="facultyIdCtrl"
           required
         />
@@ -251,49 +252,3 @@
 </mat-stepper>
 
 <hr />
-<div *ngFor="let prod of arrProducts">
-  <!--Not required for single product-->
-  <mat-accordion>
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title> </mat-panel-title>
-        <mat-panel-description>
-          <div style="font-size: larger; font-weight: bolder">
-            Questions for: {{ prod.course_id }} {{ prod.aName }}
-          </div>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>Details:</p>
-      <br />
-      <p>Total Marks: {{ prod.marks }} Total Time: {{ prod.time }}</p>
-    </mat-expansion-panel>
-    <mat-expansion-panel
-      *ngFor="let itinIndividual of prod.itinery; let i = index"
-      (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false"
-    >
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Question: {{ itinIndividual.question }}
-        </mat-panel-title>
-
-        <mat-panel-description>
-          <div *ngIf="itinIndividual.category === 'mcq'">
-            <div>
-              Options A: {{ itinIndividual.options.optionA }} B:
-              {{ itinIndividual.options.optionB }}
-            </div>
-            <div>
-              Options C: {{ itinIndividual.options.optionC }} D:
-              {{ itinIndividual.options.optionD }}
-            </div>
-          </div>
-          <div *ngIf="itinIndividual.category === 'truefalse'">
-            <div>Option True: {{ itinIndividual.options.optionTrue }}</div>
-            <div>Option False: {{ itinIndividual.options.optionFalse }}</div>
-          </div>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>

@@ -1,6 +1,6 @@
 <main>
   <div class="container text-center" id="home_text">
-    <h2>Available Assessments</h2>
+    <h2>Featured Assessments</h2>
   </div>
 
   <div id="content_cards" class="row justify-content-around">
@@ -8,7 +8,7 @@
       class="col-12 col-md-4 home_card"
       *ngFor="let assessment of lastThreeProducts"
     >
-      <div class="card mb-3">
+      <div class="card mb-3" [ngClass]="{ inactive: !assessment.isActive }">
         <img
           [src]="assessment.aImgSrc"
           class="card-img-top"
@@ -22,17 +22,29 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            Price: {{ assessment.aPrice | currency }}
+            Price: {{ assessment.aPrice | currency : "INR" }}
           </li>
           <li class="list-group-item">Marks: {{ assessment.marks }}</li>
-          <li class="list-group-item">Date: {{ assessment.time | date }}</li>
+          <li class="list-group-item">Time: {{ assessment.time }} Minutes</li>
         </ul>
         <div class="card-body">
           <button
-            class="btn btn-primary"
+            class="btn btn-primary d-flex align-items-center"
             (click)="displayDetails(assessment.id)"
           >
             View More
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-caret-right-fill ms-2"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+              />
+            </svg>
           </button>
         </div>
       </div>

@@ -97,6 +97,7 @@ export class CartComponent implements OnInit {
         console.log(existingPurchase);
 
         if (existingPurchase) {
+          console.log('Hello');
           existingPurchase.items.forEach((existingItem: PurchaseItem) => {
             const cartItem = this.cartItems.find(
               (item) => item.item.id === existingItem.assessmentId
@@ -116,6 +117,7 @@ export class CartComponent implements OnInit {
                 assessmentId: cartItem.item.id,
                 quantity: cartItem.quantity,
               });
+              console.log(existingPurchase);
             }
           });
 
@@ -123,6 +125,7 @@ export class CartComponent implements OnInit {
             const response = await this.checkoutService
               .updatePurchase(existingPurchase)
               .toPromise();
+            console.log(response);
             console.log('Purchase details updated successfully:', response);
             this.cartService.clearCart();
             this.cartItems = this.cartService.getCartItems();

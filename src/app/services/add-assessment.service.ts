@@ -18,7 +18,7 @@ export class ProductService {
       'Content-Type': 'application/json',
     }),
   };
-  constructor(private httpClient: HttpClient,private http: HttpClient) {
+  constructor(private httpClient: HttpClient, private http: HttpClient) {
     this, (this.arrProducts = []);
   }
 
@@ -37,17 +37,20 @@ export class ProductService {
       .pipe(catchError(this.httpError));
   }
   getProductById(id: string): Observable<Product> {
-    return this.httpClient.get<Product>(`${this.baseUrl}/assessment/${id}`)
+    return this.httpClient
+      .get<Product>(`${this.baseUrl}/assessment/${id}`)
       .pipe(catchError(this.httpError));
   }
   updateAssessmentById(id: string, assessment: Product): Observable<Product> {
-    return this.httpClient.put<Product>(
-      `${this.baseUrl}/assessment/${id}`,
-      JSON.stringify(assessment),
-      this.httpHeader
-    ).pipe(
-      catchError(this.httpError)
-    );
+    console.log('Assessment called successfully');
+    console.log(assessment);
+    return this.httpClient
+      .put<Product>(
+        `${this.baseUrl}/assessment/${id}`,
+        assessment,
+        this.httpHeader
+      )
+      .pipe(catchError(this.httpError));
   }
   private httpError(error: HttpErrorResponse) {
     let errorMessage = '';

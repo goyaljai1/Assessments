@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/add-assessment.service'; // Adjust import as per your service path
 import { Product } from '../../models/add-assessment'; // Adjust import as per your model path
@@ -15,7 +20,7 @@ import { CheckoutServiceService } from '../../services/checkout-service.service'
 })
 export class NavbarComponent implements OnInit {
   hidden = false;
-  myForm: FormGroup;
+  registerForm: FormGroup;
   loginForm: FormGroup;
   submitted: boolean = false;
   userArr: User[] = [];
@@ -32,30 +37,31 @@ export class NavbarComponent implements OnInit {
     private checkoutService: CheckoutServiceService,
     private router: Router
   ) {
-    this.myForm = this.fb.group({
-      id: [0, Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
-      mobile: ['', Validators.required],
-      dob: ['', Validators.required],
-      role: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-      address: this.fb.group({
-        houseNo: ['', Validators.required],
-        street: ['', Validators.required],
-        area: ['', Validators.required],
-        state: ['', Validators.required],
-        country: [''],
-        pincode: [''],
-      }),
-    });
+    this.registerForm = this.fb.group(
+      {
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        mobile: ['', Validators.required],
+        dob: ['', [Validators.required, this.dateOfBirthValidator]],
+        role: ['', Validators.required],
+        password: ['', Validators.required],
+        confirmPassword: ['', Validators.required],
+        address: this.fb.group({
+          houseNo: ['', Validators.required],
+          street: ['', Validators.required],
+          area: ['', Validators.required],
+          state: ['', Validators.required],
+          country: ['', Validators.required],
+          pincode: ['', Validators.required],
+        }),
+      },
+      { validators: this.passwordMatchValidator }
+    );
 
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      rememberMe: [false],
     });
   }
 
@@ -77,7 +83,7 @@ export class NavbarComponent implements OnInit {
   }
 
   get formControl() {
-    return this.myForm.controls;
+    return this.registerForm.controls;
   }
 
   get loginFormControl() {
@@ -91,76 +97,84 @@ export class NavbarComponent implements OnInit {
 
   onSubmit(frmValue: any): void {
     this.submitted = true;
+    if (this.registerForm.valid) {
+      console.log(frmValue);
+      console.log(frmValue.value.address.area);
+      this.userService.getUsers().subscribe(
+        (users: User[]) => {
+          const newUserId = this.generateUniqueId(users);
+          const tempUser: User = {
+            id: newUserId,
+            fName: frmValue.value.firstName,
+            lName: frmValue.value.lastName,
+            email: frmValue.value.email,
+            mobile: frmValue.value.mobile,
+            dob: frmValue.value.dob,
+            role: frmValue.value.role,
+            password: frmValue.value.password,
+            address: {
+              houseNo: frmValue.value.address.houseNo,
+              street: frmValue.value.address.street,
+              area: frmValue.value.address.area,
+              state: frmValue.value.address.state,
+              country: frmValue.value.address.country,
+              pincode: frmValue.value.address.pincode,
+            },
+          };
 
-    if (this.myForm.invalid) {
+          this.userService.addUser(tempUser).subscribe(
+            (response: any) => {
+              console.log('User added successfully', response);
+              // Close the modal here
+              const modal = document.getElementById('registerModal');
+              if (modal) {
+                (modal as any).modal('hide');
+              }
+            },
+            (error: any) => {
+              console.error('Error adding user', error);
+            }
+          );
+        },
+        (error: any) => {
+          console.error('Error fetching users', error);
+        }
+      );
+      console.log(this.registerForm.value);
+    } else {
+      alert('Please check the form carefully!');
       return;
     }
-
-    this.userService.getUsers().subscribe(
-      (users: User[]) => {
-        const newUserId = this.generateUniqueId(users);
-        const tempUser: User = {
-          id: newUserId,
-          fName: frmValue.firstName,
-          lName: frmValue.lastName,
-          email: frmValue.email,
-          mobile: frmValue.mobile,
-          dob: frmValue.dob,
-          role: frmValue.role,
-          password: frmValue.password,
-          address: {
-            houseNo: frmValue.address.houseNo,
-            street: frmValue.address.street,
-            area: frmValue.address.area,
-            state: frmValue.address.state,
-            country: frmValue.address.country,
-            pincode: frmValue.address.pincode,
-          },
-        };
-
-        this.userService.addUser(tempUser).subscribe(
-          (response: any) => {
-            console.log('User added successfully', response);
-            // Close the modal here
-            const modal = document.getElementById('registerModal');
-            if (modal) {
-              (modal as any).modal('hide');
-            }
-          },
-          (error: any) => {
-            console.error('Error adding user', error);
-          }
-        );
-      },
-      (error: any) => {
-        console.error('Error fetching users', error);
-      }
-    );
   }
 
   onSubmitLogin(): void {
-    const email = this.loginForm.value.email;
-    const password = this.loginForm.value.password;
-    console.log('Login Form Value:', this.loginForm.value);
+    if (this.loginForm.valid) {
+      const email = this.loginForm.value.email;
+      const password = this.loginForm.value.password;
+      console.log('Login Form Value:', this.loginForm.value);
 
-    const loggedInUser = this.userArr.find(
-      (user) => user.email === email && user.password === password
-    );
+      const loggedInUser = this.userArr.find(
+        (user) => user.email === email && user.password === password
+      );
 
-    if (loggedInUser) {
-      this.isLoggedIn = true;
-      this.localStorageService.setItem('role', loggedInUser.role);
-      this.localStorageService.setItem('name', loggedInUser.fName);
-      this.localStorageService.setItem('userId', loggedInUser.id);
-      let role = this.localStorageService.getItem('role');
-      console.log(role);
-      if (role === 'Admin') {
-        console.log('Admin login successful!');
+      if (loggedInUser) {
+        this.isLoggedIn = true;
+        this.localStorageService.setItem('role', loggedInUser.role);
+        this.localStorageService.setItem('name', loggedInUser.fName);
+        this.localStorageService.setItem('userId', loggedInUser.id);
+        let role = this.localStorageService.getItem('role');
+        console.log(role);
+        if (role === 'Admin') {
+          alert('Admin login successful!');
+        } else {
+          alert('User login successful!');
+        }
       } else {
-        console.log('User login successful!');
+        alert('Login failed. Incorrect email or password.');
       }
+      console.log(this.loginForm.value);
     } else {
-      console.log('Login failed. Incorrect email or password.');
+      this.loginForm.markAllAsTouched();
     }
   }
 
@@ -191,11 +205,15 @@ export class NavbarComponent implements OnInit {
         (assessments: Product[]) => {
           this.assessments = assessments;
           const foundAssessment = assessments.find(
-            assessment => assessment.aName.toLowerCase() === this.searchQuery.toLowerCase()
+            (assessment) =>
+              assessment.aName.toLowerCase() === this.searchQuery.toLowerCase()
           );
-      
+
           if (foundAssessment) {
-            this.router.navigate(['/view-assessment-details', foundAssessment.id]);
+            this.router.navigate([
+              '/view-assessment-details',
+              foundAssessment.id,
+            ]);
           } else {
             console.log(`Assessment '${this.searchQuery}' not found.`);
             // Handle the case where the assessment is not found (e.g., show an alert)
@@ -206,5 +224,24 @@ export class NavbarComponent implements OnInit {
         }
       );
     }
+  }
+
+  passwordMatchValidator(
+    formGroup: AbstractControl
+  ): { [key: string]: boolean } | null {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+    if (password !== confirmPassword) {
+      return { mismatch: true };
+    }
+    return null;
+  }
+
+  dateOfBirthValidator(
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
+    const dob = new Date(control.value);
+    const today = new Date();
+    return dob < today ? null : { invalidDob: true };
   }
 }

@@ -4,44 +4,27 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
-  styleUrls: ['./contact-us.component.scss']
+  styleUrl: './contact-us.component.scss',
 })
 export class ContactUsComponent implements OnInit {
-  contactForm: FormGroup;
+  exampleForm: FormGroup = this.fb.group({});
 
-  constructor(private formBuilder: FormBuilder) {
-    this.contactForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', Validators.required]
-    });
-  }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.contactForm = this.formBuilder.group({
+    this.exampleForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      message: ['', Validators.required]
+      message: ['', Validators.required],
     });
   }
 
   onSubmit(): void {
-    if (this.contactForm.invalid) {
-      return;
+    if (this.exampleForm.valid) {
+      // Handle form submission
+      console.log(this.exampleForm.value);
+    } else {
+      this.exampleForm.markAllAsTouched();
     }
-    // Handle the form submission
-    console.log(this.contactForm.value);
-  }
-
-  get name() {
-    return this.contactForm.get('name');
-  }
-
-  get email() {
-    return this.contactForm.get('email');
-  }
-
-  get message() {
-    return this.contactForm.get('message');
   }
 }
