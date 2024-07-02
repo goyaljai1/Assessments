@@ -47,8 +47,8 @@ export class NavbarComponent implements OnInit {
         street: ['', Validators.required],
         area: ['', Validators.required],
         state: ['', Validators.required],
-        country: ['', Validators.required],
-        pincode: ['', Validators.required],
+        country: [''],
+        pincode: [''],
       }),
     });
 

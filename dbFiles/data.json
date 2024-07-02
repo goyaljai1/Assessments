@@ -106,6 +106,42 @@
         "country": "India",
         "pincode": "560001"
       }
+    },
+    {
+      "id": "7",
+      "fName": "aaaa",
+      "lName": "adada",
+      "email": "dada@dad",
+      "mobile": "789456622",
+      "dob": "2024-06-06",
+      "role": "trainee",
+      "password": "pass123",
+      "address": {
+        "houseNo": "212",
+        "street": "eq3e3",
+        "area": "dfafsf",
+        "state": "dsasfadf",
+        "country": "ddadada",
+        "pincode": "250002"
+      }
+    },
+    {
+      "id": "8",
+      "fName": "Miti",
+      "lName": "abc",
+      "email": "abc@gmail",
+      "mobile": "789456555",
+      "dob": "2024-06-08",
+      "role": "trainee",
+      "password": "pass123",
+      "address": {
+        "houseNo": "12",
+        "street": "31313",
+        "area": "dadad",
+        "state": "dada",
+        "country": "dadda",
+        "pincode": "1285"
+      }
     }
   ],
   "courses": [
@@ -138,13 +174,13 @@
       "category": "Economics"
     }
   ],
- "assessment": [
+  "assessment": [
     {
       "id": "1",
-      "aName": "Programming Basics Assessment",
-      "aDes": "Assessment for introductory programming course.",
+      "aName": "Programming Assessment",
+      "aDes": "Assessment for programming course.",
       "aImgSrc": "assets/images/angular.png",
-      "aPrice": 100,
+      "aPrice": 200,
       "marks": 85,
       "time": "30000",
       "course_id": "1",
@@ -325,14 +361,24 @@
           "id": 11,
           "category": "Science",
           "question": "What planet is known as the Red Planet?",
-          "options": ["Mars", "Venus", "Jupiter", "Saturn"],
+          "options": [
+            "Mars",
+            "Venus",
+            "Jupiter",
+            "Saturn"
+          ],
           "correctAns": "Mars"
         },
         {
           "id": 12,
           "category": "Math",
           "question": "What is the value of Pi (π) to two decimal places?",
-          "options": ["3.14", "3.15", "3.16", "3.17"],
+          "options": [
+            "3.14",
+            "3.15",
+            "3.16",
+            "3.17"
+          ],
           "correctAns": "3.14"
         }
       ]
@@ -378,6 +424,16 @@
         {
           "assessmentId": "2",
           "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "userId": "8",
+      "items": [
+        {
+          "assessmentId": "2",
+          "quantity": 2
         }
       ]
     }

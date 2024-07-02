@@ -49,7 +49,6 @@ import { SearchPipe } from './pipe/search.pipe';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { ReportComponent } from './components/admin/report/report.component';
 import { AttendanceComponent } from './components/admin/attendance/attendance.component';
-
 import { RouterModule } from '@angular/router';
 import { ViewAssessmentScoreComponent } from './components/AssessmentScore/view-assessment-score/view-assessment-score.component';
 import { UpdateAssessmentScoreComponent } from './components/AssessmentScore/update-assessment-score/update-assessment-score.component';
