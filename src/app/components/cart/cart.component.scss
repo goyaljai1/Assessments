@@ -9,6 +9,28 @@ main {
 #myTabContent {
   padding-top: 20px;
 }
+.empty-cart {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #cadcfc;
+}
+
+.empty-cart-image {
+  width: 250px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.empty-cart h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.empty-cart .btn {
+  padding: 0.5rem 1rem;
+}
 
 #home_text {
   padding-top: 20px;

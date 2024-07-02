@@ -19,7 +19,7 @@ export class CheckoutServiceService {
 
   updatePurchase(purchaseDetails: Purchase): Observable<any> {
     return this.http.put<any>(
-      `${this.purchasesUrl}/${purchaseDetails.userId}`,
+      `${this.purchasesUrl}/${purchaseDetails.id}`,
       purchaseDetails
     );
   }

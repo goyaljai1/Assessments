@@ -1,9 +1,26 @@
 <main>
   <div *ngIf="!isLoggIn" class="container-fluid">
-    <p>Login First</p>
+    <div class="empty-cart">
+      <img
+        src="assets/images/login-pls.jpg"
+        alt="Empty Cart"
+        class="empty-cart-image"
+        style="height: 400px; width: auto"
+      />
+      <h2>Please Log In to add an assessment to cart.</h2>
+    </div>
   </div>
   <div *ngIf="isLoggIn" class="container-fluid">
-    <p *ngIf="cartItems.length === 0">Empty-Cart</p>
+    <div *ngIf="cartItems.length === 0" class="empty-cart">
+      <img
+        src="assets/images/empty-shopping-cart.jpg"
+        alt="Empty Cart"
+        class="empty-cart-image"
+      />
+      <h2>Your Cart is Empty. Keep shopping to find an assessment!</h2>
+      <button class="btn btn-primary" routerLink="">Keep Shopping</button>
+    </div>
+
     <div *ngIf="cartItems.length > 0">
       <div *ngFor="let cartItem of cartItems" class="card cart-item-card">
         <div class="card-body">

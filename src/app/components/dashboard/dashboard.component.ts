@@ -12,12 +12,12 @@ import { ProductService } from '../../services/add-assessment.service';
 })
 export class DashboardComponent implements OnInit {
   userId: any; // Replace with actual logic to get current logged-in user ID
-  assessments: PurchaseItem[] = [];
   userRole: any;
+  assessments: PurchaseItem[] = [];
   userName: string = 'name';
   arrAssessment: Product[] = [];
   attemptedAssessments: string[] = [];
-  isFacultyOrAdmin: boolean = false;
+  isFaculty: boolean = false;
 
   constructor(
     private assessmentService: DashboardService,
@@ -34,16 +34,15 @@ export class DashboardComponent implements OnInit {
     }
     this.userId = this.localStorageService.getItem('userId');
     this.userRole = this.localStorageService.getItem('role');
-    if (this.userRole == 'faculty' || this.userRole == 'admin') {
-      this.isFacultyOrAdmin = true;
-    }
   }
 
   ngOnInit(): void {
     this.getUserName();
     this.loadUserAssessments();
     this.filterAssessments();
-    console.log(this.userId);
+    if (this.userRole) {
+      this.isFaculty = true;
+    }
   }
 
   seeAssessments() {

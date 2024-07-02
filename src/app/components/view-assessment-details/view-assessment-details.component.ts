@@ -10,7 +10,7 @@ import { LocalStorageService } from '../../services/local-storage-service.servic
   styleUrls: ['./view-assessment-details.component.scss'],
 })
 export class ViewAssessmentDetailsComponent implements OnInit {
-  assessment: Product = new Product('', '', '', '', 0, '', 0, 0, '', []);
+  assessment: Product = new Product('', '', '', '', 0, '', true, 0, 0, '', []);
   assessments: Product[] = [];
   constructor(
     private activatedRoute: ActivatedRoute,

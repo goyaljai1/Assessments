@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 import { Itinery, Product } from '../../../models/add-assessment';
 import { ProductService } from '../../../services/add-assessment.service';
+import { privateDecrypt } from 'crypto';
+import { LocalStorageService } from '../../../services/local-storage-service.service';
 
 @Component({
   selector: 'app-add-assessment',
@@ -18,8 +20,9 @@ export class AddAssessmentComponent implements OnInit {
   isLinear = false;
   count = 0;
   countSecondFormSubmit = 0;
-
-  product: Product = new Product('', '', '', '', 0, '', 0, 0, '', []);
+  userId: any;
+  userRole: any;
+  product: Product = new Product('', '', '', '', 0, '', true, 0, 0, '', []);
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   public itineryForm: FormGroup;
@@ -31,12 +34,16 @@ export class AddAssessmentComponent implements OnInit {
   selectedCar: number = 1;
   htmlItinery: Itinery[] = [];
 
-  tempProduct: Product = new Product('', '', '', '', 0, '', 0, 0, '', []);
+  tempProduct: Product = new Product('', '', '', '', 0, '', true, 0, 0, '', []);
 
   constructor(
     private formBuilder: FormBuilder,
-    private productService: ProductService
+    private productService: ProductService,
+    private localStorageService: LocalStorageService
   ) {
+    this.userId = this.localStorageService.getItem('userId');
+    this.userRole = this.localStorageService.getItem('role');
+    console.log(this.userId);
     this.itineryForm = this.formBuilder.group({
       itineries: this.formBuilder.array([this.createItineryFormGroup()]),
     });
@@ -46,7 +53,7 @@ export class AddAssessmentComponent implements OnInit {
       marksCtrl: ['', Validators.required],
       timeCtrl: ['', Validators.required],
       cIdCtrl: ['', Validators.required],
-      facultyIdCtrl: [''],
+      facultyIdCtrl: [],
       aDesCtrl: [''],
       priceCtrl: [''],
       imgSrcCtrl: [''],
@@ -56,7 +63,19 @@ export class AddAssessmentComponent implements OnInit {
       secondCtrl: ['', Validators.required],
     });
 
-    this.product = new Product('', '', '', '', 0, '', 0, 0, '', this.itineries);
+    this.product = new Product(
+      '',
+      '',
+      '',
+      '',
+      0,
+      '',
+      true,
+      0,
+      0,
+      '',
+      this.itineries
+    );
   }
 
   ngOnInit(): void {

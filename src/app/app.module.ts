@@ -56,6 +56,9 @@ import { UpdateAssessmentScoreComponent } from './components/AssessmentScore/upd
 import { AttendanceScreenComponent } from './components/dashboard/attendance-screen/attendance-screen.component';
 import { AssessmentPlotComponent } from './components/assessment-plot/assessment-plot.component';
 import { DisableAssessmentsComponent } from './components/dashboard/disable-assessments/disable-assessments.component';
+import { Document, Packer, Paragraph, Tab, TextRun } from 'docx';
+import { DocxComponent } from './components/docx/docx.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,6 +97,7 @@ import { DisableAssessmentsComponent } from './components/dashboard/disable-asse
     ViewAssessmentScoreComponent,
     UpdateAssessmentScoreComponent,
     DisableAssessmentsComponent,
+    DocxComponent,
   ],
   imports: [
     BrowserModule,

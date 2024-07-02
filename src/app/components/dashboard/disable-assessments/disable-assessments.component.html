@@ -48,7 +48,7 @@
                 Attendance
               </a>
             </li>
-            <li class="nav-item" *ngIf="isFacultyOrAdmin">
+            <li class="nav-item">
               <a class="nav-link active" [routerLink]="['/diabledAssessment']">
                 <span data-feather="users"></span>
                 Disable Assessments
@@ -63,12 +63,12 @@
         <div
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
         >
-          <h1 class="h2">Dashboard</h1>
+          <h1 class="h2">Edit Assessment Status</h1>
         </div>
 
         <!-- Content Cards -->
         <div class="row">
-          <div class="col-md-4" *ngFor="let assessment of arrAssessment">
+          <div class="col-md-4" *ngFor="let assessment of arrFilteredCourse">
             <div class="card mb-4 shadow-sm">
               <div class="card-header">
                 <h4 class="my-0 font-weight-normal">
@@ -77,12 +77,17 @@
               </div>
               <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4">
-                  <li>Maximum Marks: {{ assessment.marks }}</li>
+                  <li>{{ assessment.aDes }}</li>
                   <li>Total Time: {{ assessment.time }}</li>
                   <li>Total Questions: {{ assessment.itinery.length }}</li>
                 </ul>
-                <button type="button" class="btn btn-lg btn-block btn-primary">
-                  <a class="nav-link" [routerLink]="['/testScreen']">Attempt</a>
+                <button
+                  type="button"
+                  class="btn btn-lg btn-block btn-primary"
+                  (click)="setInactive(assessment.id)"
+                >
+                  <a class="nav-link" *ngIf="assessment.isActive">Inactive</a>
+                  <a class="nav-link" *ngIf="!assessment.isActive">Active</a>
                 </button>
               </div>
             </div>

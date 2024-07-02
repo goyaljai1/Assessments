@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PurchaseItem } from '../../../models/cart';
+import { Purchase, PurchaseItem } from '../../../models/cart';
 import { Product } from '../../../models/add-assessment';
 import { DashboardService } from '../../../services/dashboard.service';
 import { LocalStorageService } from '../../../services/local-storage-service.service';
@@ -10,37 +10,42 @@ import { ProductService } from '../../../services/add-assessment.service';
   templateUrl: './disable-assessments.component.html',
   styleUrl: './disable-assessments.component.scss',
 })
-export class DisableAssessmentsComponent implements OnInit {
-  userId: any; // Replace with actual logic to get current logged-in user ID
-  assessments: PurchaseItem[] = [];
-  userRole: any;
-  userName: string = 'name';
-  arrAssessment: Product[] = [];
-  attemptedAssessments: string[] = [];
-  isFacultyOrAdmin: boolean = false;
-
+export class DisableAssessmentsComponent {
+  arrCourse: Product[] = [];
+  arrFilteredCourse: Product[] = [];
+  userId: any;
+  userName: any;
   constructor(
-    private assessmentService: DashboardService,
-    private localStorageService: LocalStorageService,
-    private productService: ProductService
-  ) {}
-
-  private getUserName(): void {
-    const name = this.localStorageService.getItem('name');
-    if (name) {
-      this.userName = name;
-    } else {
-      this.userName = '';
-    }
-    this.userId = this.localStorageService.getItem('userId');
-    this.userRole = this.localStorageService.getItem('role');
-    if (this.userRole == 'faculty' || this.userRole == 'admin') {
-      this.isFacultyOrAdmin = true;
-    }
-  }
-
-  ngOnInit(): void {
-    this.getUserName();
+    private productservice: ProductService,
+    private localService: LocalStorageService
+  ) {
+    this.userName = this.localService.getItem('userName');
+    this.userId = this.localService.getItem('userId');
     console.log(this.userId);
+    this.productservice.getProducts().subscribe((data) => {
+      this.arrCourse = data;
+      this.arrFilteredCourse = this.arrCourse.filter(
+        (data) => data.faculty_id === this.userId
+      );
+      console.log(this.arrCourse);
+    });
+  }
+  setInactive(assessmentId: string): void {
+    const selectedAssessment = this.arrCourse.find(
+      (assessment) => assessment.id === assessmentId
+    );
+    if (selectedAssessment) {
+      selectedAssessment.isActive = !selectedAssessment.isActive;
+      this.productservice
+        .updateAssessmentById(assessmentId, selectedAssessment)
+        .subscribe(
+          (response) => {
+            console.log('Assessment updated successfully:', response);
+          },
+          (error) => {
+            console.error('Error updating assessment:', error);
+          }
+        );
+    }
   }
 }

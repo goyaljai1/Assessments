@@ -4,43 +4,64 @@
       <h2>We would like to hear from you!</h2>
     </div>
     <div class="container mt-5">
-      <form class="needs-validation" novalidate>
+      <form [formGroup]="exampleForm" (ngSubmit)="onSubmit()" novalidate>
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Name</label>
+          <label for="name" class="form-label">Name</label>
           <input
             type="text"
             class="form-control"
-            id="exampleFormControlInput1"
+            id="name"
+            formControlName="name"
             required
           />
-          <div class="invalid-feedback">Please provide a name.</div>
+          <div
+            *ngIf="
+              exampleForm.get('name')?.touched &&
+              exampleForm.get('name')?.invalid
+            "
+            class="invalid-feedback"
+          >
+            Please provide a name.
+          </div>
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlInput2" class="form-label"
-            >Email address</label
-          >
+          <label for="email" class="form-label">Email address</label>
           <input
             type="email"
             class="form-control"
-            id="exampleFormControlInput2"
+            id="email"
+            formControlName="email"
             placeholder="name@example.com"
             required
           />
-          <div class="invalid-feedback">
+          <div
+            *ngIf="
+              exampleForm.get('email')?.touched &&
+              exampleForm.get('email')?.invalid
+            "
+            class="invalid-feedback"
+          >
             Please provide a valid email address.
           </div>
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label"
-            >Leave us a few words</label
-          >
+          <label for="message" class="form-label">Leave us a few words</label>
           <textarea
             class="form-control"
-            id="exampleFormControlTextarea1"
+            id="message"
+            formControlName="message"
             rows="3"
             required
           ></textarea>
-          <div class="invalid-feedback">Please provide some text.</div>
+          <div
+            *ngIf="
+              exampleForm.get('message')?.touched &&
+              exampleForm.get('message')?.invalid
+            "
+            class="invalid-feedback"
+          >
+            Please provide some text.
+          </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

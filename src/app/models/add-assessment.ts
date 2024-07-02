@@ -11,6 +11,7 @@ export class Product {
   time: number;
   course_id: string;
   faculty_id: string;
+  isActive: boolean;
   itinery: Itinery[] = [];
 
   constructor(
@@ -20,6 +21,7 @@ export class Product {
     aImgSrc: string,
     aPrice: number,
     faculty_id: string,
+    isActive:boolean,
     marks: number,
     time: number,
     course_id: string,
@@ -35,6 +37,7 @@ export class Product {
     this.course_id = course_id;
     this.itinery = itin;
     this.faculty_id = faculty_id;
+    this.isActive = isActive;
   }
 }
 

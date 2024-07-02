@@ -65,7 +65,6 @@
           <thead>
             <tr>
               <th scope="col">Assessment Name</th>
-              <th scope="col">Attempt Id</th>
               <th scope="col">Total Marks</th>
               <th scope="col">Marks Obtained</th>
               <th scope="col">Result</th>
@@ -75,7 +74,6 @@
           <tbody>
             <tr *ngFor="let assessment of arrAssessmentScore">
               <td>{{ assessment.assessmentName }}</td>
-              <td>{{ assessment.id }}</td>
               <td>{{ assessment.totalMarks }}</td>
               <td>{{ assessment.score }}</td>
               <td>
