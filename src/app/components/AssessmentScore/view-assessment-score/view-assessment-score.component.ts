@@ -7,7 +7,7 @@ import { User } from '../../../models/user';
 @Component({
   selector: 'app-view-assessment-score',
   templateUrl: './view-assessment-score.component.html',
-  styleUrls: ['./view-assessment-score.component.scss']
+  styleUrls: ['./view-assessment-score.component.scss'],
 })
 export class ViewAssessmentScoreComponent implements OnInit {
   assessmentScores: any[] = []; // Change the type to 'any' to include user names
@@ -37,13 +37,14 @@ export class ViewAssessmentScoreComponent implements OnInit {
   loadAssessmentScores(): void {
     this.assessmentScoreService.getAssessmentScores().subscribe(
       (scores) => {
-        this.assessmentScores = scores.map(score => {
-          const user = this.users.find(u => u.id === score.userId);
+        this.assessmentScores = scores.map((score) => {
+          const user = this.users.find((u) => u.id === score.userId);
           return {
             ...score,
-            userName: user ? `${user.fName} ${user.lName}` : 'Unknown User'
+            userName: user ? `${user.fName} ${user.lName}` : 'Unknown User',
           };
         });
+        console.log(this.assessmentScores);
       },
       (error) => {
         console.error('Error fetching assessment scores', error);

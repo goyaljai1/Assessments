@@ -47,13 +47,7 @@
       </mat-form-field>
       <mat-form-field appearance="fill" style="padding-right: 20px">
         <mat-label>Faculty Id</mat-label>
-        <input
-          matInput
-          *ngIf="userRole == 'faculty'"
-          placeholder="{{ userId }}"
-          formControlName="facultyIdCtrl"
-          required
-        />
+        <input matInput formControlName="facultyIdCtrl" required />
       </mat-form-field>
       <mat-form-field appearance="fill" style="padding-right: 20px">
         <mat-label>Assessment Price</mat-label>
