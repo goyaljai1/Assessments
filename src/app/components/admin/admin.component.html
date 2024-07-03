@@ -5,9 +5,13 @@
     </div>
     <div class="container" id="admin_crud">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation" *ngIf="(userRole === 'admin')">
+        <li class="nav-item" role="presentation">
           <button
             class="nav-link"
+            [ngClass]="{
+              active: userRole === 'admin'
+            }"
+            *ngIf="userRole === 'admin'"
             id="user-tab"
             data-bs-toggle="tab"
             data-bs-target="#user-tab-pane"
@@ -19,9 +23,10 @@
             User
           </button>
         </li>
-        <li class="nav-item" role="presentation" *ngIf="userRole === 'admin'">
+        <li class="nav-item" role="presentation">
           <button
             class="nav-link"
+            *ngIf="userRole === 'admin'"
             id="course-tab"
             data-bs-toggle="tab"
             data-bs-target="#course-tab-pane"
@@ -33,10 +38,11 @@
             Course
           </button>
         </li>
-        <li class="nav-item" role="presentation" *ngIf="userRole === 'admin'">
+        <li class="nav-item" role="presentation">
           <button
             class="nav-link"
             id="course-category-tab"
+            *ngIf="userRole === 'admin'"
             data-bs-toggle="tab"
             data-bs-target="#course-category-tab-pane"
             type="button"
@@ -47,13 +53,12 @@
             Course Category
           </button>
         </li>
-        <li
-          class="nav-item"
-          role="presentation"
-          *ngIf="userRole === 'faculty' || userRole === 'admin'"
-        >
+        <li class="nav-item" role="presentation">
           <button
-            class="nav-link active"
+            class="nav-link"
+            [ngClass]="{
+              'show active': userRole === 'faculty'
+            }"
             id="assessment-tab"
             data-bs-toggle="tab"
             data-bs-target="#assessment-tab-pane"
@@ -65,7 +70,7 @@
             Assessment
           </button>
         </li>
-        <li class="nav-item" role="presentation" *ngIf="userRole === 'admin'">
+        <li class="nav-item" role="presentation">
           <button
             class="nav-link"
             id="assessment-score-tab"
@@ -79,7 +84,7 @@
             Assessment Score
           </button>
         </li>
-        <li class="nav-item" role="presentation" *ngIf="userRole === 'admin'">
+        <li class="nav-item" role="presentation">
           <button
             class="nav-link"
             id="report-tab"
@@ -111,12 +116,14 @@
       <div class="tab-content">
         <!-- User Tab Pane -->
         <div
-          class="tab-pane fade show active"
+          class="tab-pane fade"
+          [ngClass]="{
+            'show active': userRole === 'admin'
+          }"
           id="user-tab-pane"
           role="tabpanel"
           aria-labelledby="user-tab"
           tabindex="0"
-          *ngIf="userRole === 'admin'"
         >
           <div class="container" style="padding: 10px">Welcome User...</div>
           <div class="container">
@@ -294,6 +301,7 @@
             </div>
           </div>
         </div>
+        <!-- Report Tab Pane -->
         <div
           class="tab-pane fade"
           id="report-tab-pane"
@@ -303,6 +311,7 @@
         >
           <app-report></app-report>
         </div>
+        <!-- Course category Tab Pane -->
         <div
           class="tab-pane fade"
           id="course-category-tab-pane"
@@ -394,6 +403,9 @@
         <!-- Assessment Tab Pane -->
         <div
           class="tab-pane fade"
+          [ngClass]="{
+            'show active': userRole === 'faculty'
+          }"
           id="assessment-tab-pane"
           role="tabpanel"
           aria-labelledby="assessment-tab"
