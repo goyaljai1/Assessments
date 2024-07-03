@@ -24,11 +24,7 @@
     "@angular/router": "^18.0.0",
     "@angular/ssr": "^18.0.3",
     "@canvasjs/angular-charts": "^1.2.0",
-<<<<<<< HEAD
-    "@stripe/stripe-js": "^4.0.0",
-=======
     "@ngneat/helipopper": "^1.5.1",
->>>>>>> 91b996cc92dcb358e863786d48b2da663841ca76
     "bootstrap": "^5.3.3",
     "buffer": "^6.0.3",
     "chart.js": "^4.4.3",
@@ -39,6 +35,8 @@
     "i": "^0.3.7",
     "jspdf": "^2.5.1",
     "ngx-doc-viewer": "^15.0.1",
+    "pptxgenjs": "^3.12.0",
+    "pptxgenjs-angular": "^1.0.0-beta",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

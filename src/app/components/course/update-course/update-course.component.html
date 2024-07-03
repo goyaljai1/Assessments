@@ -1,24 +1,29 @@
 <div class="container">
   <form
     [formGroup]="myForm"
-    (ngSubmit)="onSubmit(myForm.value)"
+    (ngSubmit)="onSubmit()"
     class="needs-validation"
     novalidate
   >
-    <div class="form-group" class="col-md-12">
-      <label class="form-group" for="id">Select a course for update:</label>
+    <div class="form-group col-md-12">
+      <label for="id">Select a course for update:</label>
       <select
         class="form-select"
         id="id"
         formControlName="id"
         (change)="onChangeType($event)"
+        [ngClass]="{ 'is-invalid': submitted && formControl['id'].errors }"
       >
         <option selected>Select a Course</option>
         <option *ngFor="let course of arrCourses" [ngValue]="course.id">
           {{ course.cName }}
         </option>
       </select>
+      <div *ngIf="submitted && formControl['id'].errors?.['required']" class="invalid-feedback">
+        ! Course selection is required!
+      </div>
     </div>
+
     <div class="row mb-3">
       <div class="col-md-6">
         <label for="CourseNameInput" class="form-label">Course Name</label>
@@ -27,14 +32,11 @@
           id="CourseNameInput"
           formControlName="courseName"
           class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControl['courseName'].errors }"
           required
         />
-        <div
-          *ngIf="submitted && formControl['courseName'].errors?.['required']"
-          class="invalid"
-          style="background-color: lightcoral; border: 1px solid salmon"
-        >
-          ! First Name is required!
+        <div *ngIf="submitted && formControl['courseName'].errors?.['required']" class="invalid-feedback">
+          ! Course Name is required!
         </div>
       </div>
       <div class="col-md-6">
@@ -44,13 +46,10 @@
           id="categoryId"
           formControlName="categoryId"
           class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControl['categoryId'].errors }"
           required
         />
-        <div
-          *ngIf="submitted && formControl['categoryId'].errors?.['required']"
-          class="invalid"
-          style="background-color: lightcoral; border: 1px solid salmon"
-        >
+        <div *ngIf="submitted && formControl['categoryId'].errors?.['required']" class="invalid-feedback">
           ! Category Id is required!
         </div>
       </div>
@@ -58,16 +57,18 @@
 
     <div class="row mb-3">
       <div class="col-md-6">
-        <label for="courseDescriptionInput" class="form-label"
-          >Course Description</label
-        >
+        <label for="courseDescriptionInput" class="form-label">Course Description</label>
         <textarea
           id="courseDescriptionInput"
           formControlName="courseDescription"
           class="form-control"
           rows="5"
+          [ngClass]="{ 'is-invalid': submitted && formControl['courseDescription'].errors }"
           required
         ></textarea>
+        <div *ngIf="submitted && formControl['courseDescription'].errors?.['required']" class="invalid-feedback">
+          ! Course Description is required!
+        </div>
       </div>
     </div>
 

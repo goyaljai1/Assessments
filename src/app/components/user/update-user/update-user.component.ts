@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective } from '@angular/forms';
 import { User } from '../../../models/user';
 import { UserService } from '../../../services/user.service'; // Import UserService
 
@@ -19,22 +19,22 @@ export class UpdateUserComponent implements OnInit {
     this.myForm = this.fb.group({
       id: [0, Validators.required],
       firstName: ['', Validators.required],
-      lastName: [''],
-      email: [''],
-      mobile: [''],
-      dob: [''],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      mobile: ['', Validators.required],
+      dob: ['', [Validators.required, this.dateOfBirthValidator]],
       role: ['', Validators.required],
-      password: [''],
-      confirmPassword: [''],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
       address: this.fb.group({
-        houseNo: [''],
-        street: [''],
-        area: [''],
-        state: [''],
-        country: [''],
-        pincode: [''],
+        houseNo: ['', Validators.required],
+        street: ['', Validators.required],
+        area: ['', Validators.required],
+        state: ['', Validators.required],
+        country: ['', Validators.required],
+        pincode: ['', Validators.required],
       }),
-    });
+    }, { validator: this.passwordMatchValidator });
   }
 
   ngOnInit(): void {
@@ -52,7 +52,17 @@ export class UpdateUserComponent implements OnInit {
     return this.myForm.controls;
   }
 
+  getAddressFormControl(controlName: string) {
+    return (this.myForm.get('address') as FormGroup).controls[controlName];
+  }
+
   onSubmit(frmValue: any): void {
+    this.submitted = true;
+
+    if (this.myForm.invalid) {
+      return;
+    }
+
     console.log('Form Value:', frmValue);
 
     const tempUser: User = {
@@ -83,6 +93,7 @@ export class UpdateUserComponent implements OnInit {
       }
     );
   }
+
   onChangeType(evt: any) {
     console.log(evt.target.value);
 
@@ -101,10 +112,36 @@ export class UpdateUserComponent implements OnInit {
           dob: this.arrUsers[i].dob,
           role: this.arrUsers[i].role,
           password: this.arrUsers[i].password,
+          confirmPassword: this.arrUsers[i].password
         });
 
         var addressArray = this.arrUsers[i].address;
+        this.myForm.patchValue({
+          address: {
+            houseNo: addressArray.houseNo,
+            street: addressArray.street,
+            area: addressArray.area,
+            state: addressArray.state,
+            country: addressArray.country,
+            pincode: addressArray.pincode,
+          }
+        });
       }
     }
+  }
+
+  dateOfBirthValidator(control: any) {
+    const dob = new Date(control.value);
+    const today = new Date();
+    if (dob > today) {
+      return { invalidDob: true };
+    }
+    return null;
+  }
+
+  passwordMatchValidator(group: FormGroup) {
+    const password = group.get('password')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { mismatch: true };
   }
 }

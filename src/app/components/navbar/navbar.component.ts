@@ -44,7 +44,6 @@ export class NavbarComponent implements OnInit {
         email: ['', [Validators.required, Validators.email]],
         mobile: ['', Validators.required],
         dob: ['', [Validators.required, this.dateOfBirthValidator]],
-        role: ['', Validators.required],
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
         address: this.fb.group({
@@ -110,7 +109,7 @@ export class NavbarComponent implements OnInit {
             email: frmValue.value.email,
             mobile: frmValue.value.mobile,
             dob: frmValue.value.dob,
-            role: frmValue.value.role,
+            role: 'trainee',
             password: frmValue.value.password,
             address: {
               houseNo: frmValue.value.address.houseNo,

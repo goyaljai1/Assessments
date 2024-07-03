@@ -6,7 +6,7 @@ import { Course } from '../../../models/course';
 @Component({
   selector: 'app-add-course',
   templateUrl: './add-course.component.html',
-  styleUrl: './add-course.component.scss',
+  styleUrls: ['./add-course.component.scss'],
 })
 export class AddCourseComponent implements OnInit {
   addCourseForm: FormGroup;
@@ -16,8 +16,8 @@ export class AddCourseComponent implements OnInit {
     this.addCourseForm = this.fb.group({
       courseId: ['', Validators.required],
       categoryId: ['', Validators.required],
-      courseName: [''],
-      courseDescription: [''],
+      courseName: ['', Validators.required],
+      courseDescription: ['', Validators.required],
     });
   }
 
@@ -27,29 +27,28 @@ export class AddCourseComponent implements OnInit {
     return this.addCourseForm.controls;
   }
 
-  onSubmit(frmValue: any): void {
-    console.log('Form Value:', frmValue);
+  onSubmit(): void {
+    this.submitted = true;
 
-    this.courseService.getCourses().subscribe(
-      () => {
-        const tempCourse: Course = {
-          id: frmValue.courseId,
-          categoryId: frmValue.categoryId,
-          cName: frmValue.courseName,
-          cDescription: frmValue.courseDescription,
-        };
+    if (this.addCourseForm.invalid) {
+      return;
+    }
 
-        this.courseService.addCourse(tempCourse).subscribe(
-          (response: any) => {
-            console.log('Course added successfully', response);
-          },
-          (error: any) => {
-            console.error('Error adding Course', error);
-          }
-        );
+    console.log('Form Value:', this.addCourseForm.value);
+
+    const tempCourse: Course = {
+      id: this.addCourseForm.value.courseId,
+      categoryId: this.addCourseForm.value.categoryId,
+      cName: this.addCourseForm.value.courseName,
+      cDescription: this.addCourseForm.value.courseDescription,
+    };
+
+    this.courseService.addCourse(tempCourse).subscribe(
+      (response: any) => {
+        console.log('Course added successfully', response);
       },
       (error: any) => {
-        console.error('Error fetching Courses', error);
+        console.error('Error adding course', error);
       }
     );
   }

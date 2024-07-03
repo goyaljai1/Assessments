@@ -1,7 +1,7 @@
 <div class="container">
   <form
     [formGroup]="addCourseForm"
-    (ngSubmit)="onSubmit(addCourseForm.value)"
+    (ngSubmit)="onSubmit()"
     class="needs-validation"
     novalidate
   >
@@ -9,7 +9,7 @@
       <div class="col-md-6">
         <label for="courseIdInput" class="form-label">Course Id</label>
         <input
-          type="string"
+          type="text"
           id="courseIdInput"
           formControlName="courseId"
           class="form-control"
@@ -26,7 +26,7 @@
       <div class="col-md-6">
         <label for="categoryIdInput" class="form-label">Category Id</label>
         <input
-          type="string"
+          type="text"
           id="categoryIdInput"
           formControlName="categoryId"
           class="form-control"
@@ -74,6 +74,13 @@
           rows="5"
           required
         ></textarea>
+        <div
+          *ngIf="submitted && formControl['courseDescription'].errors?.['required']"
+          class="invalid"
+          style="background-color: lightcoral; border: 1px solid salmon"
+        >
+          ! Course Description is required!
+        </div>
       </div>
     </div>
 

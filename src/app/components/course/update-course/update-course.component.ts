@@ -6,7 +6,7 @@ import { CourseService } from '../../../services/course.service';
 @Component({
   selector: 'app-update-course',
   templateUrl: './update-course.component.html',
-  styleUrl: './update-course.component.scss',
+  styleUrls: ['./update-course.component.scss'],
 })
 export class UpdateCourseComponent implements OnInit {
   myForm: FormGroup;
@@ -15,12 +15,11 @@ export class UpdateCourseComponent implements OnInit {
   idUpdated: number = 0;
 
   constructor(private fb: FormBuilder, private courseService: CourseService) {
-    // Inject UserService
     this.myForm = this.fb.group({
-      id: [0, Validators.required],
+      id: [null, Validators.required],
       courseName: ['', Validators.required],
-      categoryId: [''],
-      courseDescription: [''],
+      categoryId: ['', Validators.required],
+      courseDescription: ['', Validators.required],
     });
   }
 
@@ -30,7 +29,7 @@ export class UpdateCourseComponent implements OnInit {
         this.arrCourses = courses;
       },
       (error) => {
-        console.error('Error fetching users:', error);
+        console.error('Error fetching courses:', error);
       }
     );
   }
@@ -39,41 +38,46 @@ export class UpdateCourseComponent implements OnInit {
     return this.myForm.controls;
   }
 
-  onSubmit(frmValue: any): void {
-    console.log('Form Value:', frmValue);
+  onSubmit(): void {
+    this.submitted = true;
+
+    if (this.myForm.invalid) {
+      return;
+    }
+
+    console.log('Form Value:', this.myForm.value);
 
     const tempCourse: Course = {
-      id: frmValue.id,
-      cName: frmValue.courseName,
-      categoryId: frmValue.categoryId,
-      cDescription: frmValue.courseDescription,
+      id: this.myForm.value.id,
+      cName: this.myForm.value.courseName,
+      categoryId: this.myForm.value.categoryId,
+      cDescription: this.myForm.value.courseDescription,
     };
 
     this.courseService.updateCourse(tempCourse).subscribe(
       (response: Course[]) => {
         console.log('Course updated successfully', response);
+        this.submitted = false; // Reset submitted after successful submission
+        this.myForm.reset(); // Reset the form after successful submission
       },
       (error: any) => {
         console.error('Error updating course', error);
       }
     );
   }
-  onChangeType(evt: any) {
-    console.log(evt.target.value);
 
-    var idObtained = evt.target.value;
-    this.idUpdated = parseInt(idObtained.split(':')[1].trim());
-    console.log(this.idUpdated);
+  onChangeType(evt: any): void {
+    const idObtained = evt.target.value;
+    this.idUpdated = parseInt(idObtained, 10);
 
-    for (var i = 0; i < this.arrCourses.length; i++) {
-      if (this.idUpdated == parseInt(this.arrCourses[i].id)) {
-        this.myForm.patchValue({
-          id: this.arrCourses[i].id,
-          courseName: this.arrCourses[i].cName,
-          categoryId: this.arrCourses[i].categoryId,
-          courseDescription: this.arrCourses[i].cDescription,
-        });
-      }
+    const selectedCourse = this.arrCourses.find(course => parseInt(course.id) == this.idUpdated);
+    if (selectedCourse) {
+      this.myForm.patchValue({
+        id: selectedCourse.id,
+        courseName: selectedCourse.cName,
+        categoryId: selectedCourse.categoryId,
+        courseDescription: selectedCourse.cDescription,
+      });
     }
   }
 }

@@ -119,3 +119,38 @@ body > div:first-of-type {
 .table th {
   background-color: #f8f9fa;
 }
+
+
+
+
+// Styles specific to PowerPoint slides
+.slide {
+  background-color: #FFFFFF;
+  color: #000000;
+  font-family: Arial, sans-serif;
+}
+
+.slide-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.slide-subtitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.slide-content {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.slide-footer {
+  background-color: #0066CC;
+  color: #FFFFFF;
+  font-size: 12px;
+  text-align: center;
+  padding: 5px;
+}

@@ -304,25 +304,6 @@
                           Date of Birth is required and cannot be in the future!
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <label for="roleInput" class="form-label">Role</label>
-                        <input
-                          type="text"
-                          id="roleInput"
-                          formControlName="role"
-                          class="form-control"
-                          required
-                        />
-                        <div
-                          *ngIf="
-                            registerForm.get('role')?.touched &&
-                            registerForm.get('role')?.invalid
-                          "
-                          class="invalid-feedback"
-                        >
-                          Role is required!
-                        </div>
-                      </div>
                     </div>
 
                     <div class="row mb-3">

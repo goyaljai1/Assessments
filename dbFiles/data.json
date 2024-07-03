@@ -10,12 +10,12 @@
       "role": "admin",
       "password": "pass123",
       "address": {
-        "houseNo": "1",
-        "street": "First Avenue",
-        "area": "Downtown",
-        "state": "California",
-        "country": "USA",
-        "pincode": "90210"
+        "houseNo": "",
+        "street": "",
+        "area": "",
+        "state": "",
+        "country": "",
+        "pincode": ""
       }
     },
     {
@@ -216,6 +216,18 @@
       "cName": "HTML Web Development",
       "categoryId": "104",
       "cDescription": "A detailed course on HTML development from basic to advanced."
+    },
+    {
+      "id": "",
+      "categoryId": "",
+      "cName": "",
+      "cDescription": ""
+    },
+    {
+      "id": "",
+      "categoryId": "",
+      "cName": "",
+      "cDescription": ""
     },
     {
       "id": "",
@@ -482,6 +494,30 @@
       "course_id": "101",
       "faculty_id": "11",
       "isActive": false
+    },
+    {
+      "id": "8",
+      "itinery": [
+        {
+          "id": "1",
+          "category": "truefalse",
+          "question": "ADA",
+          "options": {
+            "optionTrue": "True",
+            "optionFalse": "False"
+          },
+          "correctAns": ""
+        }
+      ],
+      "aName": "aaa",
+      "aDes": "adad",
+      "aImgSrc": "dd",
+      "aPrice": "111",
+      "marks": "11",
+      "time": "11",
+      "course_id": "adad",
+      "faculty_id": "adad",
+      "isActive": true
     }
   ],
   "purchases": [
@@ -527,7 +563,7 @@
       "items": [
         {
           "assessmentId": "2",
-          "quantity": 4
+          "quantity": 5
         },
         {
           "assessmentId": "3",
@@ -556,6 +592,10 @@
     {
       "id": "106",
       "catDescription": "Course Category Description 106"
+    },
+    {
+      "id": "",
+      "catDescription": ""
     }
   ],
   "assessment-score": [

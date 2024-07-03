@@ -13,7 +13,6 @@
             id="name"
             formControlName="name"
             required
-            [class.is-invalid]="name?.invalid && (name?.dirty || name?.touched)"
           />
           <div
             *ngIf="
@@ -34,7 +33,6 @@
             formControlName="email"
             placeholder="name@example.com"
             required
-            [class.is-invalid]="email?.invalid && (email?.dirty || email?.touched)"
           />
           <div
             *ngIf="
@@ -55,7 +53,6 @@
             rows="3"
             formControlName="message"
             required
-            [class.is-invalid]="message?.invalid && (message?.dirty || message?.touched)"
           ></textarea>
           <div
             *ngIf="

@@ -2,19 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from '../../../services/category.service';
 import { Category } from '../../../models/category';
+
 @Component({
   selector: 'app-add-category',
   templateUrl: './add-category.component.html',
-  styleUrl: './add-category.component.scss'
+  styleUrls: ['./add-category.component.scss']
 })
-export class AddCategoryComponent implements OnInit{
+export class AddCategoryComponent implements OnInit {
   addCategoryForm: FormGroup;
   submitted: boolean = false;
 
   constructor(private fb: FormBuilder, private categoryService: CategoryService) {
     this.addCategoryForm = this.fb.group({
       categoryId: ['', Validators.required],
-      categoryDescription: ['',Validators.required],
+      categoryDescription: ['', Validators.required],
     });
   }
 
@@ -24,27 +25,28 @@ export class AddCategoryComponent implements OnInit{
     return this.addCategoryForm.controls;
   }
 
-  onSubmit(frmValue: any): void {
-    console.log('Form Value:', frmValue);
+  onSubmit(): void {
+    this.submitted = true;
 
-    this.categoryService.getCategory().subscribe(
-      () => {
-        const tempCategory: Category = {
-          id: frmValue.categoryId,
-          catDescription: frmValue.categoryDescription,
-        };
+    if (this.addCategoryForm.invalid) {
+      return;
+    }
 
-        this.categoryService.addCategory(tempCategory).subscribe(
-          (response: any) => {
-            console.log('Category added successfully', response);
-          },
-          (error: any) => {
-            console.error('Error adding Category', error);
-          }
-        );
+    console.log('Form Value:', this.addCategoryForm.value);
+
+    const tempCategory: Category = {
+      id: this.addCategoryForm.value.categoryId,
+      catDescription: this.addCategoryForm.value.categoryDescription,
+    };
+
+    this.categoryService.addCategory(tempCategory).subscribe(
+      (response: any) => {
+        console.log('Category added successfully', response);
+        this.submitted = false; // Reset submitted after successful submission
+        this.addCategoryForm.reset(); // Reset the form after successful submission
       },
       (error: any) => {
-        console.error('Error fetching Category', error);
+        console.error('Error adding category', error);
       }
     );
   }

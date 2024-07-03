@@ -1,14 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 import { Itinery, Product } from '../../../models/add-assessment';
 import { ProductService } from '../../../services/add-assessment.service';
-import { privateDecrypt } from 'crypto';
 import { LocalStorageService } from '../../../services/local-storage-service.service';
 
 @Component({
@@ -17,24 +11,17 @@ import { LocalStorageService } from '../../../services/local-storage-service.ser
   styleUrls: ['./add-assessment.component.scss'],
 })
 export class AddAssessmentComponent implements OnInit {
+  @ViewChild('stepper') private stepper!: MatStepper;
+
   isLinear = false;
-  count = 0;
-  countSecondFormSubmit = 0;
   userId: any;
   userRole: any;
   product: Product = new Product('', '', '', '', 0, '', true, 0, 0, '', []);
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  public itineryForm: FormGroup;
+  itineryForm: FormGroup;
   itineries: Itinery[] = [];
-  panelOpenState = false;
-
   arrProducts: Product[] = [];
-
-  selectedCar: number = 1;
-  htmlItinery: Itinery[] = [];
-
-  tempProduct: Product = new Product('', '', '', '', 0, '', true, 0, 0, '', []);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,20 +30,20 @@ export class AddAssessmentComponent implements OnInit {
   ) {
     this.userId = this.localStorageService.getItem('userId');
     this.userRole = this.localStorageService.getItem('role');
-    console.log(this.userId);
-    this.itineryForm = this.formBuilder.group({
-      itineries: this.formBuilder.array([this.createItineryFormGroup()]),
-    });
 
     this.firstFormGroup = this.formBuilder.group({
-      aNameCtrl: ['', Validators.required],
-      marksCtrl: ['', Validators.required],
-      timeCtrl: ['', Validators.required],
+      aNameCtrl: ['', [Validators.required, Validators.minLength(3)]],
+      marksCtrl: ['', [Validators.required, Validators.min(1)]],
+      timeCtrl: ['', [Validators.required, Validators.min(1)]],
       cIdCtrl: ['', Validators.required],
-      facultyIdCtrl: [],
-      aDesCtrl: [''],
-      priceCtrl: [''],
-      imgSrcCtrl: [''],
+      facultyIdCtrl: ['', Validators.required],
+      aDesCtrl: ['', Validators.required],
+      priceCtrl: ['', [Validators.required, Validators.min(0)]],
+      imgSrcCtrl: ['', Validators.required],
+    });
+
+    this.itineryForm = this.formBuilder.group({
+      itineries: this.formBuilder.array([this.createItineryFormGroup()]),
     });
 
     this.secondFormGroup = this.formBuilder.group({
@@ -81,22 +68,20 @@ export class AddAssessmentComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data) => {
       this.arrProducts = data;
-      console.log(data);
     });
   }
 
   private createItineryFormGroup(): FormGroup {
-    this.count++;
     return this.formBuilder.group({
       category: ['', Validators.required],
-      question: ['', Validators.required],
+      question: ['', [Validators.required, Validators.minLength(5)]],
       optionA: [''],
       optionB: [''],
       optionC: [''],
       optionD: [''],
       optionTrue: ['True'],
       optionFalse: ['False'],
-      correctAns: [''],
+      correctAns: ['', Validators.required],
     });
   }
 
@@ -104,40 +89,40 @@ export class AddAssessmentComponent implements OnInit {
     return this.itineryForm.get('itineries') as FormArray;
   }
 
-  public addItineryFormGroup() {
+  addItineryFormGroup() {
     this.itineriesArr().push(this.createItineryFormGroup());
   }
 
-  public removeOrClearItinery(i: number) {
-    const product_itineries = this.itineriesArr();
-    if (product_itineries.length > 1) {
-      product_itineries.removeAt(i);
+  removeOrClearItinery(i: number) {
+    const productItineries = this.itineriesArr();
+    if (productItineries.length > 1) {
+      productItineries.removeAt(i);
     } else {
-      product_itineries.reset();
+      productItineries.reset();
     }
   }
 
-  saveFirstStepData(formdata: FormGroup) {
-    console.log(formdata.value);
+  saveFirstStepData() {
+    if (this.firstFormGroup.valid) {
+      this.product.id = this.generateUniqueId(this.arrProducts);
+      this.product.aName = this.firstFormGroup.value.aNameCtrl;
+      this.product.marks = this.firstFormGroup.value.marksCtrl;
+      this.product.time = this.firstFormGroup.value.timeCtrl;
+      this.product.course_id = this.firstFormGroup.value.cIdCtrl;
+      this.product.faculty_id = this.firstFormGroup.value.facultyIdCtrl;
+      this.product.aDes = this.firstFormGroup.value.aDesCtrl;
+      this.product.aPrice = this.firstFormGroup.value.priceCtrl;
+      this.product.aImgSrc = this.firstFormGroup.value.imgSrcCtrl;
 
-    this.product.id = this.generateUniqueId(this.arrProducts);
-    this.product.aName = formdata.value.aNameCtrl;
-    this.product.marks = formdata.value.marksCtrl;
-    this.product.time = formdata.value.timeCtrl;
-    this.product.course_id = formdata.value.cIdCtrl;
-    this.product.faculty_id = formdata.value.facultyIdCtrl;
-    this.product.aDes = formdata.value.aDesCtrl;
-    this.product.aPrice = formdata.value.priceCtrl;
-    this.product.aImgSrc = formdata.value.imgSrcCtrl;
-    console.log(this.product);
+      this.stepper.next();
+    } else {
+      this.firstFormGroup.markAllAsTouched(); // Mark all fields as touched to show validation errors
+    }
   }
 
-  saveSecondStepData(formdata: any) {
+  saveSecondStepData() {
     if (this.itineryForm.valid) {
-      const formData = this.itineryForm.value;
-      console.log(formdata.itineries);
-
-      formdata.itineries.forEach((fmData: any) => {
+      this.itineryForm.value.itineries.forEach((fmData: any) => {
         const category = fmData.category;
         const question = fmData.question;
         const correctAns = fmData.correctAns;
@@ -163,15 +148,14 @@ export class AddAssessmentComponent implements OnInit {
         );
       });
 
-      console.log('Itineries:', this.itineries);
       this.product.itinery = this.itineries;
       this.productService.addProduct(this.product).subscribe((product) => {
         this.arrProducts.push(product);
         this.resetForm();
-        console.log(this.arrProducts);
+        this.stepper.next(); // Move to the next step after saving the data
       });
     } else {
-      // Handle form invalid case
+      this.itineryForm.markAllAsTouched(); // Mark all fields as touched to show validation errors
     }
   }
 
